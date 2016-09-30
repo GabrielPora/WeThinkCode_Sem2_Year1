@@ -1,0 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   define.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/30 14:11:05 by ggroener          #+#    #+#             */
+/*   Updated: 2016/09/30 14:11:06 by ggroener         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef DEFINE_H
+# define DEFINE_H
+
+# define E_ZOOM env->position->zoom
+# define E_OFF_X env->position->offset_x
+# define E_OFF_Y env->position->offset_y
+# define ZOOM_CHECK_IN {E_ZOOM*=1.5;E_OFF_X+=1/E_ZOOM;E_OFF_Y+=1/E_ZOOM;}
+# define ZOOM_CHECK_OUT {E_ZOOM/=1.5;E_OFF_X-=1/E_ZOOM;E_OFF_Y-=1/E_ZOOM;}
+
+# include "complex.h"
+# include "coord.h"
+# include "env.h"
+
+int			burningship(t_env *env, t_complex *c1, t_complex *c2, t_coord *dot);
+void		draw(t_env *env);
+void		draw_reset(t_env *env);
+void		env_init(t_env *env, char *type);
+void		error_quit(char *error_message);
+int			expose_hook(void *param);
+int			key_hook(int key, void *param);
+int			mouse_hook(int x, int y, void *param);
+int			julia(t_env *env, t_complex *c1, t_complex *c2, t_coord *dot);
+int			mandelbrot(t_env *env, t_complex *c1, t_complex *c2, t_coord *dot);
+void		pixel_put(t_env *env, int x, int y, unsigned int colour);
+int			close_window(t_env *env);
+int			mouse_hook2(int key, int x, int y, void *param);
+
+#endif
