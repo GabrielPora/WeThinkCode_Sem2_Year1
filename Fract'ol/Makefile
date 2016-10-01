@@ -107,6 +107,8 @@ re: fclean all
 
 format: norme me
 
+norme: norm
+
 norm:
 	@clear
 	@$(call colourecho2, "Norminette:")
