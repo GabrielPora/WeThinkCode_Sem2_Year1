@@ -22,6 +22,7 @@ typedef struct		s_env
 	t_position		*position;
 	char			fractal;
 	char			*arg;
+	char			cap_mouse;
 }					t_env;
 
 #endif
