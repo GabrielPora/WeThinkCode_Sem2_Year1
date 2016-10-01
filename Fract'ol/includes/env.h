@@ -21,6 +21,7 @@ typedef struct		s_env
 	t_window		*window;
 	t_position		*position;
 	char			fractal;
+	char			*arg;
 }					t_env;
 
 #endif
