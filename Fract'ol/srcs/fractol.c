@@ -40,6 +40,7 @@ int		main(int ac, char **av)
 
 	if (!(env = malloc(sizeof(*env))))
 		error_quit("Failed to malloc enviroment setup");
+	ft_bzero(env, sizeof(t_env));
 	manage_args(env, ac, av);
 	env_init(env, env->arg);
 	mlx_key_hook(env->window->mlx_window, &key_hook, env);
