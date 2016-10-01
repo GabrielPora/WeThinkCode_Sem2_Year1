@@ -18,7 +18,7 @@ int		manage_args(t_env *env, int ac, char **av)
 
 	forked = 0;
 	if (ac < 2)
-		error_quit("Use: ./fractol [mandelbrot, julia, burningship]");
+		error_quit("Use: ./fractol [mandelbrot, julia, burningship]...");
 	else if (ac == 2)
 		env->arg = av[1];
 	else
