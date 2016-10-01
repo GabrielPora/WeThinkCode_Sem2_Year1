@@ -20,18 +20,18 @@ INCLUDES_PATH = includes/
 
 SRCS_PATH = srcs/
 
-SRCS_NAME = event_listener.c \
-			fractol.c \
-			window_init.c \
-			mandelbrot.c \
-			julia.c \
-			burningship.c \
-			env_init.c \
-			draw.c \
-			close_window.c \
-			pixel_put.c \
-			error_quit.c \
-			draw_reset.c
+SRCS_NAME = event_listener.c 			\
+			fractol.c 					\
+			window_init.c 				\
+			mandelbrot.c 				\
+			julia.c 					\
+			burningship.c 				\
+			env_init.c 					\
+			draw.c 						\
+			close_window.c 				\
+			pixel_put.c 				\
+			error_quit.c 				\
+			draw_reset.c				\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
@@ -51,14 +51,14 @@ INCLUDES = -I includes/ -I libft/includes
  
 #INCLUDES = -I includes/ -I libft/includes -I /usr/X11/include
 
-HEADER = 	$(INCLUDES_PATH)complex.h \
-			$(INCLUDES_PATH)coord.h \
-			$(INCLUDES_PATH)env.h \
-			$(INCLUDES_PATH)fractol.h \
-			$(INCLUDES_PATH)includes.h \
-			$(INCLUDES_PATH)position.h \
-			$(INCLUDES_PATH)window.h \
-			$(INCLUDES_PATH)define.h \
+HEADER = 	$(INCLUDES_PATH)complex.h 	\
+			$(INCLUDES_PATH)coord.h 	\
+			$(INCLUDES_PATH)env.h 		\
+			$(INCLUDES_PATH)fractol.h 	\
+			$(INCLUDES_PATH)includes.h 	\
+			$(INCLUDES_PATH)position.h 	\
+			$(INCLUDES_PATH)window.h 	\
+			$(INCLUDES_PATH)define.h 	\
 
 all: qme odir $(NAME)
 
@@ -114,8 +114,9 @@ norm:
 	@norminette $(HEADER)
 
 qme:
-	@rm -Rf author
-	@echo ggroener > author
+	@if [ ! -f author ]; then \
+		whoami > author; \
+	fi
 	
 me: qme
 	cat -e author
