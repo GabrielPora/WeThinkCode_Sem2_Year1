@@ -6,7 +6,7 @@
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/30 13:43:24 by ggroener          #+#    #+#             */
-/*   Updated: 2016/09/30 13:43:26 by ggroener         ###   ########.fr       */
+/*   Updated: 2016/10/01 09:44:16 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		mouse_hook(int x, int y, void *param)
 	t_env		*env;
 
 	env = (t_env*)param;
-	if (env->fractal == 2)
+	if (env->fractal == 2 && env->cap_mouse)
 	{
 		env->position->julia_x_factor = (double)x / (double)env->window->width;
 		env->position->julia_y_factor = (double)y / (double)env->window->height;
@@ -102,21 +102,19 @@ int		mouse_hook2(int key, int x, int y, void *param)
 
 	k++;
 	env = (t_env*)param;
-	if (key == 4 && (k % 2) == 0)
+	if (key == 1)
+		env->cap_mouse = (env->cap_mouse) ? 0 : 1;
+	else if (key == 4 && (k % 2) == 0)
 	{
 		E_ZOOM *= 1.5;
-		E_OFF_X += ((float)x / (float)(env->window->width) * 2)
-			/ E_ZOOM;
-		E_OFF_Y += ((float)y / (float)(env->window->height) * 2)
-			/ E_ZOOM;
+		E_OFF_X += ((float)x / (float)(env->window->width) * 2) / E_ZOOM;
+		E_OFF_Y += ((float)y / (float)(env->window->height) * 2) / E_ZOOM;
 	}
-	if (key == 5 && (k % 2) == 0)
+	else if (key == 5 && (k % 2) == 0)
 	{
 		E_ZOOM /= 1.5;
-		E_OFF_X -= ((float)x / (float)(env->window->width) * 2)
-			/ E_ZOOM;
-		E_OFF_Y -= ((float)y / (float)(env->window->height) * 2)
-			/ E_ZOOM;
+		E_OFF_X -= ((float)x / (float)(env->window->width) * 2) / E_ZOOM;
+		E_OFF_Y -= ((float)y / (float)(env->window->height) * 2) / E_ZOOM;
 	}
 	check_position(env);
 	draw(env);
