@@ -14,7 +14,7 @@
 
 void	error_quit(char *error_message)
 {
-	ft_putstr("Error happened: ");
+	ft_putstr("Error happened, STOP TRYING TO BREAK MY CODE: ");
 	ft_putendl(error_message);
 	exit(-1);
 }
