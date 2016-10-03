@@ -20,7 +20,7 @@ static double	d_abs(double n)
 static int		get_colour(float i, float max_i)
 {
 	if (max_i == i)
-		return (0xFF1010);
+		return (0x336600);
 	return ((int)(0xFF0000 * i / max_i) / 0x010000);
 }
 
