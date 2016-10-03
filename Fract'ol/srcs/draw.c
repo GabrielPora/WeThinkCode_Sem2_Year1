@@ -79,7 +79,6 @@ void			draw(t_env *env)
 	t_complex	*c2;
 	t_coord		*dot;
 
-	draw_reset(env);
 	if (!(dot = malloc(sizeof(*dot))))
 		return ;
 	if (!(c1 = malloc(sizeof(*c1))))
