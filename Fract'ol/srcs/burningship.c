@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-static double	abc(double n)
+static double	d_abs(double n)
 {
 	return (n < 0 ? -n : n);
 }
@@ -20,8 +20,8 @@ static double	abc(double n)
 static int		get_colour(float i, float max_i)
 {
 	if (max_i == i)
-		return (0);
-	return ((int)(0xFF0000 * i / max_i) / 0x010000 * 0x010000);
+		return (0xFF1010);
+	return ((int)(0xFF0000 * i / max_i) / 0x010000);
 }
 
 int				burningship(t_env *env, t_complex *c1, t_complex *c2
@@ -37,8 +37,8 @@ int				burningship(t_env *env, t_complex *c1, t_complex *c2
 	while (i < max_i && (c1->real * c1->real + c1->imaginary
 				* c1->imaginary) < 4)
 	{
-		c2->real = abc(c1->real);
-		c2->imaginary = abc(c1->imaginary);
+		c2->real = d_abs(c1->real);
+		c2->imaginary = d_abs(c1->imaginary);
 		c1->real = c2->real * c2->real - c2->imaginary * c2->imaginary
 			+ dot->x;
 		c1->imaginary = 2. * c2->real * c2->imaginary + dot->y / 1.777777;
