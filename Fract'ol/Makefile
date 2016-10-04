@@ -32,6 +32,7 @@ SRCS_NAME = event_listener.c 			\
 			pixel_put.c 				\
 			error_quit.c 				\
 			draw_reset.c				\
+			formula.c					\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
