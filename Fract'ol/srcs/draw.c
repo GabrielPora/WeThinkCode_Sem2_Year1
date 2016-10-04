@@ -17,9 +17,7 @@ static void		put_pixel(t_env *env, t_complex *c1, t_complex *c2,
 {
 	int		fractol_colour;
 
-	if (env->fractal == 1
-			|| env->fractal == 2
-			|| env->fractal == 3)
+	if (0 < env->fractal && env->fractal < 5)
 	{
 		fractol_colour = 0;
 		if (env->fractal == 1)
