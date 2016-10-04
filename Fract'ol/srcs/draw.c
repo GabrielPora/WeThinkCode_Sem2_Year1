@@ -57,22 +57,6 @@ static void		render(t_env *env, t_complex *c1, t_complex *c2, t_coord *dot)
 	}
 }
 
-/*
-**void	*draw(void *t)
-**{
-**		t_fr_thread *temp;
-**
-**	temp = (t_fr_thread*)t;
-**	if (temp->env->code == 1)
-**		mandelbrot(temp->env);
-**	else if (temp->env->code == 2)
-**	{
-**		julia((t_fr_thread*)t);
-**	}
-**	return (NULL);
-**}
-*/
-
 void			draw(t_env *env)
 {
 	t_complex	*c1;
@@ -99,31 +83,3 @@ void			draw(t_env *env)
 	free(c1);
 	free(c2);
 }
-
-/*
-**void	make_threads(t_env *env)
-**{
-**	t_draw_thread	bounds[NO_THREADS];
-**	pthread_t	thread_id[NO_THREADS];
-**	int			i;
-**	t_env		env_id[NO_THREADS];
-**	int			d;
-**
-**	d = -1;
-**	while (++d < NO_THREADS)
-**		env_id[d] = *env;
-**	i = -1;
-**	bounds[0] = (t_draw_thread){0, WIN_X, 0, WIN_Y / 4, &env_id[0]};
-**	bounds[1] = (t_draw_thread){0, WIN_X, WIN_Y / 4,
-**		WIN_Y / 4 * 2, &env_id[1]};
-**	bounds[2] = (t_draw_thread){0, WIN_X, WIN_Y / 4 * 2,
-**		WIN_Y / 4 * 3, &env_id[2]};
-**	bounds[3] = (t_draw_thread){0, WIN_X, WIN_Y / 4 * 3,
-**		WIN_Y, &env_id[3]};
-**	while (++i < NO_THREADS)
-**		pthread_create(&thread_id[i], NULL, draw, &bounds[i]);
-**	i = -1;
-**	while (++i < NO_THREADS)
-**		pthread_join(thread_id[i], NULL);
-**}
-*/
