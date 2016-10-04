@@ -35,7 +35,7 @@ int			init_formula(t_env *env, char *formula)
 	env->position->f.z_const = (float)num / int_len(num);
 	F_CHECK('z', 'Z');
 	EXTRACT_NUM;
-	env->position->f.z_pow = num;
+	env->position->f.z_pow = (num > 0) ? num : 1;
 	POW_CHECK;
 	OP_CHECK;
 	env->position->f.op = s[k];
@@ -43,7 +43,7 @@ int			init_formula(t_env *env, char *formula)
 	env->position->f.c_const = (float)num / int_len(num);
 	F_CHECK('c', 'C');
 	EXTRACT_NUM;
-	env->position->f.c_pow = num;
+	env->position->f.c_pow = (num > 0) ? num : 1;
 	POW_CHECK;
 	return (1);
 }
