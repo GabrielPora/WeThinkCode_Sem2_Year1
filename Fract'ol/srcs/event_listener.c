@@ -17,7 +17,7 @@ void	check_position(t_env *env)
 	if (E_ZOOM < 1)
 		E_ZOOM = 1;
 	else if (E_ZOOM > 1000000)
-		E_ZOOM = 1000000;
+		ZOOM_CHECK_OUT;
 	if (E_OFF_X < 0)
 		E_OFF_X = 0;
 	else if (E_OFF_X > 4 - .5 / E_ZOOM)
