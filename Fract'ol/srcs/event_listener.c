@@ -104,13 +104,13 @@ int		mouse_hook2(int key, int x, int y, void *param)
 	env = (t_env*)param;
 	if (key == 1)
 		env->cap_mouse = (env->cap_mouse) ? 0 : 1;
-	else if (key == 4 && (k % 2) == 0)
+	else if (key == 4 && (k & 0x01) == 0)
 	{
 		E_ZOOM *= 1.5;
 		E_OFF_X += ((float)x / (float)(env->window->width) * 2) / E_ZOOM;
 		E_OFF_Y += ((float)y / (float)(env->window->height) * 2) / E_ZOOM;
 	}
-	else if (key == 5 && (k % 2) == 0)
+	else if (key == 5 && (k & 0x01) == 0)
 	{
 		E_ZOOM /= 1.5;
 		E_OFF_X -= ((float)x / (float)(env->window->width) * 2) / E_ZOOM;
