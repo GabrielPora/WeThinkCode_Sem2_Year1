@@ -77,7 +77,7 @@ int		mouse_hook(int x, int y, void *param)
 	t_env		*env;
 
 	env = (t_env*)param;
-	if (env->fractal == 2 && env->cap_mouse)
+	if ((env->fractal == 2 || env->fractal == 4) && env->cap_mouse)
 	{
 		env->position->julia_x_factor = (double)x / (double)env->window->width;
 		env->position->julia_y_factor = (double)y / (double)env->window->height;
