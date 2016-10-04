@@ -28,6 +28,8 @@ static void		put_pixel(t_env *env, t_complex *c1, t_complex *c2,
 			fractol_colour = julia(env, c1, c2, dot);
 		else if (env->fractal == 3)
 			fractol_colour = burningship(env, c1, c2, dot);
+		else if (env->fractal == 4)
+			fractol_colour = formula(env, c1, c2, dot);
 		pixel_put(env, (dot->x - env->position->min_x)
 				/ (env->position->max_x - env->position->min_x)
 				* env->window->width
