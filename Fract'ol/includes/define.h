@@ -19,7 +19,7 @@
 # define ZOOM_CHECK_IN {E_ZOOM*=1.5;E_OFF_X+=1/E_ZOOM;E_OFF_Y+=1/E_ZOOM;}
 # define ZOOM_CHECK_OUT {E_ZOOM/=1.5;E_OFF_X-=1/E_ZOOM;E_OFF_Y-=1/E_ZOOM;}
 
-# define F_ERROR "incorrect formula.\nFormat: f=aZb[op: +, -, *]cCd"
+# define F_ERROR "incorrect formula.\nFormat: f=0.aZb[op: +]0.cCd"
 # define EXTRACT_NUM num = 0;while(ft_isdigit(s[++k]))num=(num*10)+s[k]-'0'
 # define F_CHECK(x, y) if(s[k]!=x&&s[k]!=y)error_quit(F_ERROR)
 # define POW_CHECK if(num>50)error_quit(F_ERROR)

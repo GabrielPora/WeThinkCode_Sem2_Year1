@@ -12,6 +12,17 @@
 
 #include "../includes/fractol.h"
 
+int			int_len(float k)
+{
+	int		l;
+
+	k = floor(fabs(k));
+	l = 1;
+	while ((k / (l)) >= 10)
+		l *= 10;
+	return (k = 0 ? 0 : l * 10);
+}
+
 int			init_formula(t_env *env, char *formula)
 {
 	char	*s;
@@ -21,7 +32,7 @@ int			init_formula(t_env *env, char *formula)
 	s = &(formula[2]);
 	k = -1;
 	EXTRACT_NUM;
-	env->position->f.z_const = num;
+	env->position->f.z_const = (float)num / int_len(num);
 	F_CHECK('z', 'Z');
 	EXTRACT_NUM;
 	env->position->f.z_pow = num;
@@ -29,7 +40,7 @@ int			init_formula(t_env *env, char *formula)
 	OP_CHECK;
 	env->position->f.op = s[k];
 	EXTRACT_NUM;
-	env->position->f.c_const = num;
+	env->position->f.c_const = (float)num / int_len(num);
 	F_CHECK('c', 'C');
 	EXTRACT_NUM;
 	env->position->f.c_pow = num;
@@ -60,14 +71,13 @@ int			formula(t_env *env, t_complex *c1, t_complex *c2, t_coord *dot)
 	{
 		c2->real = c1->real;
 		c2->imaginary = c1->imaginary;
-		//c1->real = pow(c2->real, 2) - pow(c2->imaginary, 2) - 0.7
-		//	- env->position->julia_x_factor / 10.0;
-		//c1->imaginary = 2 * c2->real * c2->imaginary + 0.27
-		//	+ env->position->julia_y_factor / 10.0;
-		c1->real = pow(c2->real, 2) - pow(c2->imaginary, 2) - 0.7 
+		c1->real = pow(c2->real, env->position->f.c_pow) - pow(c2->imaginary,
+				env->position->f.z_pow) - env->position->f.c_const
 				- env->position->julia_x_factor / 10.0;
-		c1->imaginary = pow((c2->real - c2->imaginary), 2) - c1->real
-				+ env->position->julia_y_factor / 10.0;;
+		c1->imaginary = (pow((c2->real + c2->imaginary), env->position->f.z_pow)
+				- pow(c2->real, env->position->f.c_pow) - pow(c2->imaginary,
+				env->position->f.z_pow)) + env->position->f.z_const
+				+ env->position->julia_y_factor / 10.0;
 		i++;
 	}
 	return (get_colour(i, max_i));
