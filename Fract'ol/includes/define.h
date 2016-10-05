@@ -45,5 +45,6 @@ int			mouse_hook2(int key, int x, int y, void *param);
 
 int			init_formula(t_env *env, char *formula);
 int			formula(t_env *env, t_complex *c1, t_complex *c2, t_coord *dot);
+void		rotate_colour(int key, t_env *env);
 
 #endif
