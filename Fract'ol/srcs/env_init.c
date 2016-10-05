@@ -48,6 +48,7 @@ static void	position_init(t_env *env)
 	env->position->offset_y = 0.;
 	env->position->julia_x_factor = 0;
 	env->position->julia_y_factor = 0;
+	env->position->f.colour = 1;
 }
 
 void		env_init(t_env *env, char *type)
@@ -60,7 +61,9 @@ void		env_init(t_env *env, char *type)
 		env->fractal = 2;
 	else if (ft_strcmp(type, "burningship") == 0)
 		env->fractal = 3;
+	else if (!ft_strncmp("f=", type, 2) && init_formula(env, type))
+		env->fractal = 4;
 	else
 		error_quit("Use: ./fractal [mandelbrot, julia, burningship]");
-	env->cap_mouse = (env->fractal == 2) ? 1 : 0;
+	env->cap_mouse = 0;
 }

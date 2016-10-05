@@ -17,7 +17,7 @@ void	check_position(t_env *env)
 	if (E_ZOOM < 1)
 		E_ZOOM = 1;
 	else if (E_ZOOM > 1000000)
-		E_ZOOM = 1000000;
+		ZOOM_CHECK_OUT;
 	if (E_OFF_X < 0)
 		E_OFF_X = 0;
 	else if (E_OFF_X > 4 - .5 / E_ZOOM)
@@ -67,6 +67,7 @@ int		key_hook(int key, void *param)
 		env->position->density *= 1.5;
 	else if (key == 75)
 		env->position->density /= 1.5;
+	rotate_colour(key, env);
 	check_position(env);
 	draw(env);
 	return (0);
@@ -77,7 +78,7 @@ int		mouse_hook(int x, int y, void *param)
 	t_env		*env;
 
 	env = (t_env*)param;
-	if (env->fractal == 2 && env->cap_mouse)
+	if ((env->fractal == 2 || env->fractal == 4) && env->cap_mouse)
 	{
 		env->position->julia_x_factor = (double)x / (double)env->window->width;
 		env->position->julia_y_factor = (double)y / (double)env->window->height;
@@ -102,15 +103,15 @@ int		mouse_hook2(int key, int x, int y, void *param)
 
 	k++;
 	env = (t_env*)param;
-	if (key == 1)
+	if (key == 2)
 		env->cap_mouse = (env->cap_mouse) ? 0 : 1;
-	else if (key == 4 && (k % 2) == 0)
+	else if (key == 4 && (k & 0x01) == 0)
 	{
 		E_ZOOM *= 1.5;
 		E_OFF_X += ((float)x / (float)(env->window->width) * 2) / E_ZOOM;
 		E_OFF_Y += ((float)y / (float)(env->window->height) * 2) / E_ZOOM;
 	}
-	else if (key == 5 && (k % 2) == 0)
+	else if (key == 5 && (k & 0x01) == 0)
 	{
 		E_ZOOM /= 1.5;
 		E_OFF_X -= ((float)x / (float)(env->window->width) * 2) / E_ZOOM;

@@ -13,6 +13,16 @@
 #ifndef POSITION_H
 # define POSITION_H
 
+typedef struct		s_formula
+{
+	float			z_const;
+	float			c_const;
+	int				z_pow;
+	int				c_pow;
+	char			op;
+	char			colour;
+}					t_formula;
+
 typedef struct		s_position
 {
 	double			julia_x_factor;
@@ -27,6 +37,7 @@ typedef struct		s_position
 	double			zoom;
 	double			x;
 	double			y;
+	t_formula		f;
 }					t_position;
 
 #endif

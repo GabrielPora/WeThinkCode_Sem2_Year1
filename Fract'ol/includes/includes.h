@@ -16,5 +16,6 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <mlx.h>
+# include <math.h>
 
 #endif
