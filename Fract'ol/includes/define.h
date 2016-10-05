@@ -6,7 +6,7 @@
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/30 14:11:05 by ggroener          #+#    #+#             */
-/*   Updated: 2016/09/30 14:11:06 by ggroener         ###   ########.fr       */
+/*   Updated: 2016/10/05 14:22:15 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 
 int			burningship(t_env *env, t_complex *c1, t_complex *c2, t_coord *dot);
 void		draw(t_env *env);
-void		draw_reset(t_env *env);
 void		env_init(t_env *env, char *type);
 void		error_quit(char *error_message);
 int			expose_hook(void *param);

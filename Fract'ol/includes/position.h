@@ -15,8 +15,8 @@
 
 typedef struct		s_formula
 {
-	float			z_const;
-	float			c_const;
+	double			z_const;
+	double			c_const;
 	int				z_pow;
 	int				c_pow;
 	char			op;
