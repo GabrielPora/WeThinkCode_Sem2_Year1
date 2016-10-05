@@ -64,5 +64,5 @@ void		env_init(t_env *env, char *type)
 		env->fractal = 4;
 	else
 		error_quit("Use: ./fractal [mandelbrot, julia, burningship]");
-	env->cap_mouse = (env->fractal == 2) ? 1 : 0;
+	env->cap_mouse = 0;
 }

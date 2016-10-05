@@ -102,7 +102,7 @@ int		mouse_hook2(int key, int x, int y, void *param)
 
 	k++;
 	env = (t_env*)param;
-	if (key == 1)
+	if (key == 2)
 		env->cap_mouse = (env->cap_mouse) ? 0 : 1;
 	else if (key == 4 && (k & 0x01) == 0)
 	{
