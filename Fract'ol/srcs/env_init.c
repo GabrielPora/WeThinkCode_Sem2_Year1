@@ -48,6 +48,7 @@ static void	position_init(t_env *env)
 	env->position->offset_y = 0.;
 	env->position->julia_x_factor = 0;
 	env->position->julia_y_factor = 0;
+	env->position->f.colour = 1;
 }
 
 void		env_init(t_env *env, char *type)

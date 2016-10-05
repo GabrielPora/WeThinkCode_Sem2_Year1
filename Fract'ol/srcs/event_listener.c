@@ -67,6 +67,7 @@ int		key_hook(int key, void *param)
 		env->position->density *= 1.5;
 	else if (key == 75)
 		env->position->density /= 1.5;
+	rotate_colour(key, env);
 	check_position(env);
 	draw(env);
 	return (0);

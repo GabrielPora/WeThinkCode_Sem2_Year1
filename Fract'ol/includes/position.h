@@ -20,6 +20,7 @@ typedef struct		s_formula
 	int				z_pow;
 	int				c_pow;
 	char			op;
+	char			colour;
 }					t_formula;
 
 typedef struct		s_position
