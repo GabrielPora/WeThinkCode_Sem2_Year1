@@ -61,7 +61,7 @@ void		rotate_colour(int key, t_env *env)
 	}
 }
 
-static int	get_colour(t_env * env, double i, double max_i)
+static int	get_colour(t_env *env, double i, double max_i)
 {
 	if (env->position->f.colour == 2)
 	{
@@ -80,7 +80,7 @@ static int	get_colour(t_env * env, double i, double max_i)
 		return (0xFFFFFF * i / max_i);
 	}
 	if (max_i == i)
-			return (0);
+		return (0);
 	if (i < max_i / 2)
 		return (0x0000FF * i / (max_i / 2));
 	return (0x0000FF + 0xFFFF00 * i / max_i);
