@@ -12,17 +12,6 @@
 
 #include "../includes/fractol.h"
 
-int			int_len(float k)
-{
-	int		l;
-
-	k = floor(fabs(k));
-	l = 1;
-	while ((k / (l)) >= 10)
-		l *= 10;
-	return (k = 0 ? 0 : l * 10);
-}
-
 int			init_formula(t_env *env, char *formula)
 {
 	char	*s;
@@ -32,7 +21,7 @@ int			init_formula(t_env *env, char *formula)
 	s = &(formula[2]);
 	k = -1;
 	EXTRACT_NUM;
-	env->position->f.z_const = (float)num / int_len(num);
+	env->position->f.z_const = (float)num / 100000;
 	F_CHECK('z', 'Z');
 	EXTRACT_NUM;
 	env->position->f.z_pow = (num > 0) ? num : 1;
@@ -40,7 +29,7 @@ int			init_formula(t_env *env, char *formula)
 	OP_CHECK;
 	env->position->f.op = s[k];
 	EXTRACT_NUM;
-	env->position->f.c_const = (float)num / int_len(num);
+	env->position->f.c_const = (float)num / 100000;
 	F_CHECK('c', 'C');
 	EXTRACT_NUM;
 	env->position->f.c_pow = (num > 0) ? num : 1;
@@ -62,7 +51,7 @@ int			formula(t_env *env, t_complex *c1, t_complex *c2, t_coord *dot)
 	int			max_i;
 	int			i;
 
-	max_i = 100 * env->position->density;
+	max_i = 50 * env->position->density;
 	i = 0;
 	c1->real = dot->x;
 	c1->imaginary = dot->y;
