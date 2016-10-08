@@ -108,14 +108,14 @@ int		mouse_hook2(int key, int x, int y, void *param)
 	else if (key == 4 && (k & 0x01) == 0)
 	{
 		E_ZOOM *= 1.5;
-		E_OFF_X += ((float)x / (float)(env->window->width) * 2) / E_ZOOM;
-		E_OFF_Y += ((float)y / (float)(env->window->height) * 2) / E_ZOOM;
+		E_OFF_X += ((double)x / (double)(env->window->width) * 2) / E_ZOOM;
+		E_OFF_Y += ((double)y / (double)(env->window->height) * 2) / E_ZOOM;
 	}
 	else if (key == 5 && (k & 0x01) == 0)
 	{
 		E_ZOOM /= 1.5;
-		E_OFF_X -= ((float)x / (float)(env->window->width) * 2) / E_ZOOM;
-		E_OFF_Y -= ((float)y / (float)(env->window->height) * 2) / E_ZOOM;
+		E_OFF_X -= ((double)x / (double)(env->window->width) * 2) / E_ZOOM;
+		E_OFF_Y -= ((double)y / (double)(env->window->height) * 2) / E_ZOOM;
 	}
 	check_position(env);
 	draw(env);

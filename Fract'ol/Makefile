@@ -6,7 +6,7 @@
 #    By: ggroener <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/09/28 11:16:22 by ggroener          #+#    #+#              #
-#    Updated: 2016/10/05 14:08:44 by khansman         ###   ########.fr        #
+#    Updated: 2016/10/08 10:32:05 by khansman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ SRCS_NAME = event_listener.c 			\
 			close_window.c 				\
 			pixel_put.c 				\
 			error_quit.c 				\
-			draw_reset.c				\
 			formula.c					\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))

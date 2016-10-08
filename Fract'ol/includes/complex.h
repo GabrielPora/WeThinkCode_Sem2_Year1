@@ -15,8 +15,8 @@
 
 typedef struct		s_complex
 {
-	float			real;
-	float			imaginary;
+	double			real;
+	double			imaginary;
 }					t_complex;
 
 #endif

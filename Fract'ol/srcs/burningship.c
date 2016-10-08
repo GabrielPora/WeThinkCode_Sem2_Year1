@@ -17,7 +17,7 @@ static double	d_abs(double n)
 	return (n < 0 ? -n : n);
 }
 
-static int		get_colour(float i, float max_i)
+static int		get_colour(double i, double max_i)
 {
 	if (max_i == i)
 		return (0x336600);
