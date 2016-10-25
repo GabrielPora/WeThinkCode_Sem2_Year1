@@ -5,6 +5,6 @@
 # define MAP_SIZE 500
 # define RAIN_RAND 0.01
 # define FLOW_FACTOR 2
-//# define TOPWATER(x,y) (env->water_tmp[x][y] + env->map[x][y])
+# define TOPWATER(x,y) (env->water_tmp[x][y] + env->map[x][y])
 
 #endif
