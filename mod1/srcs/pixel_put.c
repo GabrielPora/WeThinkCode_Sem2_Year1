@@ -15,11 +15,11 @@ void	pixel_put(t_env *env, int x, int y, int color)
 	if (x >= 0 && x < env->window->width
 			&& y >= 0 && y < env->window->height)
 	{
-		env->window->data[y * env->window->width * env->window->bpp / 8
-			+ env->window->bpp / 8 * x] = b;
-		env->window->data[y * env->window->width * env->window->bpp / 8
-			+ env->window->bpp / 8 * x + 1] = g;
-		env->window->data[y * env->window->width * env->window->bpp / 8
-			+ env->window->bpp / 8 * x + 2] = r;
+		env->window->data[y * env->window->width * (env->window->bpp >> 3)
+			+ (env->window->bpp >> 3) * x] = b;
+		env->window->data[y * env->window->width * (env->window->bpp >> 3)
+			+ (env->window->bpp >> 3) * x + 1] = g;
+		env->window->data[y * env->window->width * (env->window->bpp >> 3)
+			+ (env->window->bpp >> 3) * x + 2] = r;
 	}
 }
