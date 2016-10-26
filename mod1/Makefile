@@ -20,75 +20,35 @@ INCLUDES_PATH = includes/
 
 SRCS_PATH = srcs/
 
-#SRCS_NAME1 = main.c \
-			window_init.c \
-			error_quit.c \
-			event_listener.c \
-			pixel_put.c \
-			map_init.c \
-			get_map_color.c \
-			draw.c \
-			get_screen_coord.c \
-			map_post_load.c 
-
-#SRCS_NAME2 = get_next_line.c \
-			map_parse.c \
-			map_place_mount_line.c \
-			map_place_mount.c \
-			valid_int.c \
-			window_reset.c \
-			flow.c \
-			scenar_wave.c \
-			scenar_uprising.c \
-			scenar_rain.c 
-
-#SRCS_NAME3 = scenar_emptying.c \
-			scenar_escaping.c \
-			water_bck.c \
-			water_reset.c \
-			flow_wave.c \
-			flow_rain.c \
-			flow_uprising.c \
-			flow_escaping.c \
-			close_window.c 
-
-SRCS_NAME = main.c \
-			window_init.c \
-			error_quit.c \
-			event_listener.c \
-			pixel_put.c \
-			map_init.c \
-			get_map_color.c \
-			draw.c \
-			get_screen_coord.c \
-			map_post_load.c \
-			get_next_line.c \
-			map_parse.c \
-			map_place_mount_line.c \
-			map_place_mount.c \
-			valid_int.c \
-			window_reset.c \
-			close_window.c \
-			flow.c \
-			scenar_wave.c \
-			scenar_uprising.c \
-			scenar_rain.c \
-			scenar_emptying.c \
-			scenar_escaping.c \
-			water_bck.c \
-			water_reset.c \
-			flow_wave.c \
-			flow_rain.c \
-			flow_uprising.c \
-			flow_escaping.c \
-
-#SRCS3 = $(addprefix $(SRCS_PATH), $(SRCS_NAME3))
-
-#SRCS2 = $(addprefix $(SRCS_PATH), $(SRCS_NAME2))
-
-#SRCS1 = $(addprefix $(SRCS_PATH), $(SRCS_NAME1))
-
-#SRCS = $(SRCS1) $(SRCS2) $(SRCS3)
+SRCS_NAME = main.c 					\
+			window_init.c 			\
+			error_quit.c 			\
+			event_listener.c 		\
+			pixel_put.c 			\
+			map_init.c 				\
+			get_map_color.c 		\
+			draw.c 					\
+			get_screen_coord.c 		\
+			map_post_load.c 		\
+			get_next_line.c 		\
+			map_parse.c 			\
+			map_place_mount_line.c 	\
+			map_place_mount.c 		\
+			valid_int.c 			\
+			window_reset.c 			\
+			close_window.c 			\
+			flow.c 					\
+			scenar_wave.c 			\
+			scenar_uprising.c 		\
+			scenar_rain.c 			\
+			scenar_emptying.c 		\
+			scenar_escaping.c 		\
+			water_bck.c 			\
+			water_reset.c 			\
+			flow_wave.c 			\
+			flow_rain.c 			\
+			flow_uprising.c 		\
+			flow_escaping.c 		\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
@@ -108,14 +68,14 @@ INCLUDES = -I includes/ -I libft/includes
  
 #INCLUDES = -I includes/ -I libft/includes -I /usr/X11/include
 
-HEADER = 	$(INCLUDES_PATH)get_next_line.h 	\
-			$(INCLUDES_PATH)scenario.h 	\
-			$(INCLUDES_PATH)env.h 		\
-			$(INCLUDES_PATH)mod1.h 		\
-			$(INCLUDES_PATH)includes.h 	\
+HEADER = 	$(INCLUDES_PATH)get_next_line.h \
+			$(INCLUDES_PATH)scenario.h 		\
+			$(INCLUDES_PATH)env.h 			\
+			$(INCLUDES_PATH)mod1.h 			\
+			$(INCLUDES_PATH)includes.h 		\
 			$(INCLUDES_PATH)prototypes.h 	\
-			$(INCLUDES_PATH)window.h 	\
-			$(INCLUDES_PATH)define.h 	\
+			$(INCLUDES_PATH)window.h 		\
+			$(INCLUDES_PATH)define.h 		\
 			$(INCLUDES_PATH)structures.h	\
 
 all: qme odir $(NAME)
