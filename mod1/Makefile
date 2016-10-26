@@ -116,6 +116,7 @@ HEADER = 	$(INCLUDES_PATH)get_next_line.h 	\
 			$(INCLUDES_PATH)prototypes.h 	\
 			$(INCLUDES_PATH)window.h 	\
 			$(INCLUDES_PATH)define.h 	\
+			$(INCLUDES_PATH)structures.h	\
 
 all: qme odir $(NAME)
 

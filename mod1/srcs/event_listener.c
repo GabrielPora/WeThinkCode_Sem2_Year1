@@ -1,35 +1,39 @@
 
 #include "mod1.h"
 
+/*
+** Debug:
+** printf("key number = %i\n", key);
+** printf("temp = %i\n", (int)temp);
+** printf("env->scenario = %i\n", (int)env->scenario);
+*/
+
 int		key_listener(int key, void *data)
 {
 	t_env	*env;
 	static t_scenario	temp;
 	static char			set;
 
-	//printf("key number = %i\n", key);
 	env = (t_env*)data;
 	if(!set && ++set)
 		temp = env->scenario;
-	printf("temp = %i\n", (int)temp);
-	printf("env->scenario = %i\n", (int)env->scenario);
-	if (key == 49) // spacebar
+	if (key == KEY_SPACE)
 	{
 		env->scenar_count += 50;
 		if (env->scenar_count > MAP_SIZE / 4. * 50.)
 			env->scenar_count = MAP_SIZE / 4. * 50.;
 	}
-	if (key == 35) // p
+	if (key == KEY_P)
 		env->pause = !env->pause;
-	if (key == 3) // f
+	if (key == KEY_F)
 		env->flow_pause = !env->flow_pause;
-	if (key == 53) // Esc
+	if (key == KEY_ESC)
 		exit(0);
-	if (key == 14 && env->scenario == RAIN) // e
+	if (key == KEY_E && env->scenario == RAIN)
 		env->scenario = ESCAPING;
-	else if (key == 9 && env->scenario != ESCAPING) // v
+	else if (key == KEY_V && env->scenario != ESCAPING)
 		env->scenario = EMPTYING;
-	else if (key == 15) // r
+	else if (key == KEY_R)
 	{
 		env->scenario = temp;
 		env->scenar_count = 0;

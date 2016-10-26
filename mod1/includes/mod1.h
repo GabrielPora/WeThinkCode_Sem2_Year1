@@ -8,5 +8,6 @@
 # include "prototypes.h"
 # include "includes.h"
 # include "define.h"
+# include "structures.h"
 
 #endif
