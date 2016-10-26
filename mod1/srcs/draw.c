@@ -50,10 +50,10 @@ static void		draw_water(t_env *env, int x, int y)
 
 static void		draw2(t_env *env, t_draw var)
 {
-	pixel_put(env, var.dx, var.dy + var.i, MAP_COLOUR;
-	pixel_put(env, var.dx, var.dy + var.i + 1, MAP_COLOUR;
-	pixel_put(env, var.dx, var.dy + var.i + 2, MAP_COLOUR;
-	pixel_put(env, var.dx, var.dy + var.i + 3, MAP_COLOUR;
+	pixel_put(env, var.dx, var.dy + var.i, MAP_COLOUR);
+	pixel_put(env, var.dx, var.dy + var.i + 1, MAP_COLOUR);
+	pixel_put(env, var.dx, var.dy + var.i + 2, MAP_COLOUR);
+	pixel_put(env, var.dx, var.dy + var.i + 3, MAP_COLOUR);
 }
 
 void			draw(t_env *env)
@@ -76,8 +76,7 @@ void			draw(t_env *env)
 		}
 	}
 	mlx_put_image_to_window(MLX, WIN, env->window->img, 0, 0);
-	var.str = SCENARIO == RAIN ? "Rain" : (SCENARIO == UPRISING ? "Uprising" :
-		(SCENARIO == WAVE ? "Wave" : (EMPT_OR_ESC)));
+	var.str = SCENARIO == RAIN ? "Rain" : SET_W_OR_U;
 	mlx_string_put(MLX, WIN, 11, 11, 0, var.str);
 	mlx_string_put(MLX, WIN, 10, 10, 0xECECEC, var.str);
 }

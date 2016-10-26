@@ -23,7 +23,7 @@
 ** Norming Defines
 */
 
-# define MAP_COLOUR get_map_color(env->map[var.y][var.x]))
+# define MAP_COLOUR get_map_color(env->map[var.y][var.x])
 # define WIN env->window->mlx_window
 # define MLX env->window->mlx
 # define SCENARIO env->scenario
@@ -31,6 +31,8 @@
 # define LEVEL_CHANGE(z) env->water[ z ][y]++;env->water[x][y]--
 # define E_WATER_T env->water_tmp
 # define SKP_NUM while (line[i] >= '0' && line[i] <= '9') i++
+# define SET_WAVE (SCENARIO == WAVE ? "Wave" : (EMPT_OR_ESC))
+# define SET_W_OR_U (SCENARIO == UPRISING ? "Uprising" : SET_WAVE)
 
 # define KEY_SPACE 49
 # define KEY_P     35
