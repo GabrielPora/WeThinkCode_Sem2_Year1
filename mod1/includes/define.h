@@ -19,6 +19,7 @@
 # define EMPT_OR_ESC SCENARIO == EMPTYING ? "Emptying" : "Escaping"
 # define LEVEL_CHANGE(z) env->water[ z ][y]++;env->water[x][y]--
 # define E_WATER_T env->water_tmp
+# define SKP_NUM while (line[i] >= '0' && line[i] <= '9') i++
 
 # define KEY_SPACE 49
 # define KEY_P     35
