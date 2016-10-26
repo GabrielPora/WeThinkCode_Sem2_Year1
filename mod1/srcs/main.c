@@ -1,7 +1,27 @@
 
 #include "mod1.h"
 
-int		main(int ac, char **av)
+static t_env	main2(t_env env, char **av)
+{
+	srand(time(NULL));
+	env.scenar_count = 0;
+	if (!(env.window = malloc(sizeof(*env.window))))
+		error_quit("Failed to malloc window");
+	map_init(&env);
+	map_parse(&env, av[1]);
+	map_post_load(&env);
+	env.window->width = 1000;
+	env.window->height = 750;
+	window_init(&env);
+	scenar_wave(&env);
+	mlx_loop_hook(env.window->mlx, loop_listener, &env);
+	mlx_key_hook(env.window->mlx_window, key_listener, &env);
+	mlx_hook(env.window->mlx_window, 17, 0L, &close_window, &env);
+	mlx_loop(env.window->mlx);
+	return (env);
+}
+
+int				main(int ac, char **av)
 {
 	t_env	env;
 
@@ -23,20 +43,6 @@ int		main(int ac, char **av)
 		ft_putendl("Invalid scenario: wave | rain | uprising");
 		exit(-1);
 	}
-	srand(time(NULL));
-	env.scenar_count = 0;
-	if (!(env.window = malloc(sizeof(*env.window))))
-		error_quit("Failed to malloc window");
-	map_init(&env);
-	map_parse(&env, av[1]);
-	map_post_load(&env);
-	env.window->width = 1000;
-	env.window->height = 750;
-	window_init(&env);
-	scenar_wave(&env);
-	mlx_loop_hook(env.window->mlx, loop_listener, &env);
-	mlx_key_hook(env.window->mlx_window, key_listener, &env);
-	mlx_hook(env.window->mlx_window, 17, 0L, &close_window, &env);
-	mlx_loop(env.window->mlx);
+	env = main2(env, av);
 	return (0);
 }
