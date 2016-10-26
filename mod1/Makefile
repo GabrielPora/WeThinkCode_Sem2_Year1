@@ -116,6 +116,7 @@ HEADER = 	$(INCLUDES_PATH)get_next_line.h 	\
 			$(INCLUDES_PATH)prototypes.h 	\
 			$(INCLUDES_PATH)window.h 	\
 			$(INCLUDES_PATH)define.h 	\
+			$(INCLUDES_PATH)structures.h	\
 
 all: qme odir $(NAME)
 
@@ -169,9 +170,7 @@ norme: norm
 norm:
 	@clear
 	@$(call colourecho2, "Norminette:")
-	@norminette $(SRCS1)
-	@norminette $(SRCS2)
-	@norminette $(SRCS3)
+	@norminette $(SRCS)
 	@norminette $(HEADER)
 
 qme:

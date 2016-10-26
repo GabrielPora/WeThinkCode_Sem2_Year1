@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_parse.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/26 10:50:58 by ggroener          #+#    #+#             */
+/*   Updated: 2016/10/26 10:50:59 by khansman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "mod1.h"
 
@@ -11,18 +22,15 @@ static void		place_mount(t_env *env, char *line)
 		if (line[i] != '(')
 			error_quit("Invalid file line 1");
 		i++;
-		while (line[i] >= '0' && line[i] <= '9')
-			i++;
+		SKP_NUM;
 		if (line[i] != ',')
 			error_quit("Invalid file line 2");
 		i++;
-		while (line[i] >= '0' && line[i] <= '9')
-			i++;
+		SKP_NUM;
 		if (line[i] != ',')
 			error_quit("Invalid file line 3");
 		i++;
-		while (line[i] >= '0' && line[i] <= '9')
-			i++;
+		SKP_NUM;
 		if (line[i] != ')')
 			error_quit("Invalid file line 4");
 		i++;

@@ -1,22 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/26 10:55:07 by ggroener          #+#    #+#             */
-/*   Updated: 2016/10/26 10:55:08 by khansman         ###   ########.fr       */
+/*   Created: 2016/10/26 10:55:37 by ggroener          #+#    #+#             */
+/*   Updated: 2016/10/26 10:55:38 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#ifndef STRUCTURES_H
+# define STRUCTURES_H
 
-# include <limits.h>
-# include <fcntl.h>
-# include <math.h>
-# include <time.h>
-# include <mlx.h>
+typedef struct	s_draw_water
+{
+	double		t;
+	int			r;
+	int			g;
+	int			b;
+	int			xd;
+	int			yd;
+	int			i;
+}				t_draw_water;
+
+typedef struct	s_draw
+{
+	int			dx;
+	int			dy;
+	int			y;
+	int			x;
+	int			togoy;
+	int			i;
+	char		*str;
+}				t_draw;
+
+typedef struct	s_flow_rain
+{
+	int			add;
+	int			flowest[4];
+	int			lower;
+	int			lowest;
+	int			x;
+	int			y;
+}				t_flow_rain;
 
 #endif

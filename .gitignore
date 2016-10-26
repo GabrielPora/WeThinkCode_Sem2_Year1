@@ -14,3 +14,4 @@ a.out
 *.plist
 *.pdf
 fractol
+tmp.txt
