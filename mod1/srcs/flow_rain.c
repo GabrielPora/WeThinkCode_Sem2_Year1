@@ -6,7 +6,7 @@
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 10:48:44 by ggroener          #+#    #+#             */
-/*   Updated: 2016/10/26 10:48:45 by khansman         ###   ########.fr       */
+/*   Updated: 2016/10/26 11:42:18 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static t_flow_rain	flow_rain3(t_env *env, t_flow_rain var)
 		var.lower = 1;
 		var.lowest = WTR(var.x - 1, var.y);
 	}
-	else 
+	else
 		var = flow_rain5(env, var);
 	return (var);
 }
@@ -86,7 +86,7 @@ static t_flow_rain	flow_rain2(t_env *env, t_flow_rain var)
 {
 	var.flowest[0] = WTR(var.x, var.y);
 	if (var.x > 0)
-	var.flowest[0] = WTR(var.x - 1, var.y);
+		var.flowest[0] = WTR(var.x - 1, var.y);
 	var.flowest[1] = WTR(var.x, var.y);
 	if (var.x < MAP_SIZE - 1)
 		var.flowest[1] = WTR(var.x + 1, var.y);
@@ -101,7 +101,7 @@ static t_flow_rain	flow_rain2(t_env *env, t_flow_rain var)
 	return (var);
 }
 
-void	flow_rain(t_env *env)
+void				flow_rain(t_env *env)
 {
 	t_flow_rain	var;
 

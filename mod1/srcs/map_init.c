@@ -6,7 +6,7 @@
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 10:50:45 by ggroener          #+#    #+#             */
-/*   Updated: 2016/10/26 10:50:47 by khansman         ###   ########.fr       */
+/*   Updated: 2016/10/26 11:45:50 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void		water_tmp_init(t_env *env)
 		y++;
 	}
 }
-
 
 static void		water_init(t_env *env)
 {

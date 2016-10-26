@@ -40,7 +40,7 @@ int			key_listener(int key, void *data)
 	static char			set;
 
 	env = (t_env*)data;
-	if(!set && ++set)
+	if (!set && ++set)
 		temp = env->scenario;
 	if (key == KEY_R)
 	{
@@ -54,7 +54,7 @@ int			key_listener(int key, void *data)
 		if (env->scenar_count > MAP_SIZE / 4. * 50.)
 			env->scenar_count = MAP_SIZE / 4. * 50.;
 	}
-	else 
+	else
 		key_listener2(key, env);
 	return (0);
 }
@@ -101,7 +101,7 @@ int			loop_listener(void *data)
 		if (!env->flow_pause)
 			flow_uprising(env);
 	}
-	else  
+	else
 		loop_listener2(env);
 	draw(env);
 	return (0);

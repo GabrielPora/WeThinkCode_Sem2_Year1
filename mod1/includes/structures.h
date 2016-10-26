@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#ifndef STRUCTURES_H
+# define STRUCTURES_H
 
 typedef struct	s_draw_water
 {
@@ -21,7 +21,7 @@ typedef struct	s_draw_water
 	int			b;
 	int			xd;
 	int			yd;
-	int			i;	
+	int			i;
 }				t_draw_water;
 
 typedef struct	s_draw

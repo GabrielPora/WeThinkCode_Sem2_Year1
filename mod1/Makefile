@@ -170,9 +170,7 @@ norme: norm
 norm:
 	@clear
 	@$(call colourecho2, "Norminette:")
-	@norminette $(SRCS1)
-	@norminette $(SRCS2)
-	@norminette $(SRCS3)
+	@norminette $(SRCS)
 	@norminette $(HEADER)
 
 qme:
@@ -182,5 +180,6 @@ qme:
 	
 me: qme
 	cat -e author
+
 
 .PHONY: clean fclean re odir

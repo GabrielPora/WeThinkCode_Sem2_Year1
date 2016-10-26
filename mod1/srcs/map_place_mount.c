@@ -6,7 +6,7 @@
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/26 10:51:07 by ggroener          #+#    #+#             */
-/*   Updated: 2016/10/26 10:51:08 by khansman         ###   ########.fr       */
+/*   Updated: 2016/10/26 11:40:27 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static double	get_k(int dx, int dy, int z)
 	return (((double)z / 2. * (1. + cos(hyp / (double)z * M_PI))));
 }
 
-void		map_place_mount(t_env *env, int x, int y, int z)
+void			map_place_mount(t_env *env, int x, int y, int z)
 {
 	int		i;
 	int		j;
