@@ -6,6 +6,7 @@
 # define RAIN_RAND 0.01
 # define FLOW_FACTOR 2
 # define TOPWATER(x,y) (env->water_tmp[x][y] + env->map[x][y])
+# define WTR(x, y) (env->water_tmp[x][y] + env->map[x][y])
 
 /*
 ** Norming Defines

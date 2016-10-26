@@ -1,6 +1,5 @@
 
 #include "mod1.h"
-#define WTR(x, y) (env->water_tmp[x][y] + env->map[x][y])
 
 void	flow_escaping(t_env *env)
 {
