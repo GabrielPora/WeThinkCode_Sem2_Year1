@@ -135,7 +135,8 @@ norm:
 
 qme:
 	@if [ ! -f author ]; then \
-		whoami > author; \
+		echo ggroener > author; \
+		echo khansman >> author; \
 	fi
 	
 me: qme
