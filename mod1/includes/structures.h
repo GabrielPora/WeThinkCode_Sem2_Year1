@@ -24,4 +24,14 @@ typedef struct	s_draw
 	char		*str;
 }				t_draw;
 
+typedef struct	s_flow_rain
+{
+	int			add;
+	int			flowest[4];
+	int			lower;
+	int			lowest;
+	int			x;
+	int			y;
+}				t_flow_rain;
+
 #endif
