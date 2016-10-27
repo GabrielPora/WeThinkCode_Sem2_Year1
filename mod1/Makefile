@@ -132,11 +132,14 @@ norm:
 	@clear
 	@$(call colourecho2, "Norminette:")
 	@norminette $(SRCS)
+	@$(call colourecho2, "SRCS Files Done")
 	@norminette $(HEADER)
+	@$(call colourecho2, "Header Files Done!")
 
 qme:
 	@if [ ! -f author ]; then \
-		whoami > author; \
+		echo ggroener > author; \
+		echo khansman >> author; \
 	fi
 	
 me: qme
