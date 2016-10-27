@@ -22,7 +22,7 @@ void	print_menu(t_env *env)
 		MPUTSTR(700, 75, "E: Empty (Rain Only)");
 		MPUTSTR(700, 95, "R: Reset");
 		MPUTSTR(700, 115, "V: Drain");
-		MPUTSTR(700, 135, "I: Display/Hide This Menu");
+		MPUTSTR(700, 135, "I: Display This Menu");
 		MPUTSTR(700, 155, "ESC: Exit Program");
 		MPUTSTR(700, 175, "SPACE: Inc Scenario Count");
 	}
