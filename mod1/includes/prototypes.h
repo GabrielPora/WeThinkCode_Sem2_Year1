@@ -42,5 +42,6 @@ void	flow_rain(t_env *env);
 void	flow_uprising(t_env *env);
 void	flow_escaping(t_env *env);
 int		close_window(t_env *env);
+void	print_menu(t_env *env);
 
 #endif

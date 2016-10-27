@@ -14,9 +14,9 @@
 
 /*
 ** Debug:
-** printf("key number = %i\n", key);
-** printf("temp = %i\n", (int)temp);
-** printf("env->scenario = %i\n", (int)env->scenario);
+** printf("key number = %i\n", key);//debug
+** printf("temp = %i\n", (int)temp);//debug
+** printf("env->scenario = %i\n", (int)env->scenario);//debug
 */
 
 static void	key_listener2(int key, t_env *env)
@@ -31,6 +31,8 @@ static void	key_listener2(int key, t_env *env)
 		env->scenario = ESCAPING;
 	else if (key == KEY_V && env->scenario != ESCAPING)
 		env->scenario = EMPTYING;
+	else if (key == KEY_I)
+		env->print_menu = 1;
 }
 
 int			key_listener(int key, void *data)
@@ -40,6 +42,7 @@ int			key_listener(int key, void *data)
 	static char			set;
 
 	env = (t_env*)data;
+	env->print_menu = 0;
 	if (!set && ++set)
 		temp = env->scenario;
 	if (key == KEY_R)
@@ -51,8 +54,8 @@ int			key_listener(int key, void *data)
 	else if (key == KEY_SPACE)
 	{
 		env->scenar_count += 50;
-		if (env->scenar_count > MAP_SIZE / 4. * 50.)
-			env->scenar_count = MAP_SIZE / 4. * 50.;
+		if (env->scenar_count > MAP_SIZE * 12.5)
+			env->scenar_count = MAP_SIZE * 12.5;
 	}
 	else
 		key_listener2(key, env);

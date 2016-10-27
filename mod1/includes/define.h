@@ -41,5 +41,10 @@
 # define KEY_E     14
 # define KEY_V     9
 # define KEY_R     15
+# define KEY_I     34
+
+# define MENU_COL  0xfee01e
+
+# define MPUTSTR(cx, cy, ss) mlx_string_put(MLX, WIN, cx, cy, MENU_COL, ss)
 
 #endif

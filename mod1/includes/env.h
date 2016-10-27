@@ -26,6 +26,7 @@ typedef struct	s_env
 	int			scenar_count;
 	int			flow_pause;
 	int			pause;
+	char		print_menu;
 }				t_env;
 
 #endif

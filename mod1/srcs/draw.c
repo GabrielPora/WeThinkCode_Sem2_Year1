@@ -77,6 +77,7 @@ void			draw(t_env *env)
 	}
 	mlx_put_image_to_window(MLX, WIN, env->window->img, 0, 0);
 	var.str = SCENARIO == RAIN ? "Rain" : SET_W_OR_U;
-	mlx_string_put(MLX, WIN, 11, 11, 0, var.str);
+	print_menu(env);
+	mlx_string_put(MLX, WIN, 10, 10, 0, var.str);
 	mlx_string_put(MLX, WIN, 10, 10, 0xECECEC, var.str);
 }

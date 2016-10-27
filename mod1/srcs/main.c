@@ -23,6 +23,7 @@ static t_env	main2(t_env env, char **av)
 	map_post_load(&env);
 	env.window->width = 1000;
 	env.window->height = 750;
+	env.print_menu = 1;
 	window_init(&env);
 	scenar_wave(&env);
 	mlx_loop_hook(env.window->mlx, loop_listener, &env);

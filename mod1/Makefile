@@ -49,6 +49,7 @@ SRCS_NAME = main.c 					\
 			flow_rain.c 			\
 			flow_uprising.c 		\
 			flow_escaping.c 		\
+			print_menu.c			\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
