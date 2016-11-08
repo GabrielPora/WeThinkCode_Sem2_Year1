@@ -1,0 +1,41 @@
+[taskmaster]
+%taskmaster_log_file;~/Desktop/taskmaster.log;
+#new_program{test}
+(
+	%executable_path;/bin/ls;
+	%executable_argument;-l -a;
+	%set_env;testing;var;
+	%set_env;hello;world;
+	%working_dir;~/Desktop;
+	%auto_start;false;
+	%exit_signal;SIGTERM;
+	%stderr_to_file;~/Desktop//error.log;
+	%stdout_to_file;~/Desktop//ls.log
+	%close_stdout;false
+	$close_stderror;false
+	%set_umask;1234
+	%print_on_taskmaster;false
+	%stop_time;20
+	%exit_code;-1
+	%auto_restart;false;20
+)
+#new_program{test2}
+(
+	%executable_path;/bin/ls;
+	%executable_argument;-l -a;
+	%set_env;testing;var;
+	%set_env;hello;world;
+	%working_dir;~/Desktop;
+	%auto_start;false;
+	%exit_signal;SIGTERM;
+//	%stderr_to_file;~/Desktop//error.log;
+//	%stdout_to_file;~/Desktop//ls.log
+	%close_stdout;false
+	$close_stderror;false
+	%set_umask;1234
+	%print_on_taskmaster;true
+	%stop_time;20
+	%exit_code;-1
+	%auto_restart;false;20
+)
+[end_taskmaster]
