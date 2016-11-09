@@ -109,7 +109,7 @@ static void fill_line(t_env *env, char *line, int stmp)
 	free(splitted);
 }
 
-void parse_file(t_env *env, char *file)
+void read_file(t_env *env, char *file)
 {
 	char *line;
 	char *tmp;
