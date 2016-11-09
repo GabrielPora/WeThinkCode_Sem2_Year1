@@ -21,6 +21,10 @@ INCLUDES_PATH = includes/
 SRCS_PATH = srcs/
 
 SRCS_NAME = main.c 					\
+			get_next_line.c 		\
+			parse_file.c 			\
+			valid_int.c 			\
+			dump_puzzle.c 			\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
@@ -41,6 +45,10 @@ INCLUDES = -I includes/ -I libft/includes
 #INCLUDES = -I includes/ -I libft/includes -I /usr/X11/include
 
 HEADER = 	$(INCLUDES_PATH)npuzzle.h 		\
+			$(INCLUDES_PATH)define.h		\
+			$(INCLUDES_PATH)includes.h		\
+			$(INCLUDES_PATH)env.h			\
+			$(INCLUDES_PATH)prototypes.h	\
 
 all: qme odir $(NAME)
 
