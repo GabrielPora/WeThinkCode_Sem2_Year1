@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = mod1
+NAME = npuzzle
 
 CFLAGS = -Wall -Wextra -Werror -g -Ofast
 
