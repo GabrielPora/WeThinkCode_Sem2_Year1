@@ -14,14 +14,14 @@
 
 int		valid_int(char *str)
 {
-	if (str[0] == '-')
+	if (str[0] == '-') //check if it a blank space.
 	{
 		if (ft_strlen(str) > 11)
 			return (0);
 	}
 	else if (ft_strlen(str) > 10)
 		return (0);
-	if (ft_atol(str) > INT_MAX || ft_atol(str) < INT_MIN)
+	if (ft_atol(str) > INT_MAX || ft_atol(str) < INT_MIN) //makes sure that it falls into the min and max rage of int
 		return (0);
 	return (1);
 }

@@ -16,7 +16,7 @@ static void alloc_puzzle(t_env *env)
 {
 	int i;
 
-	if (!(env->puzzle = malloc(sizeof(*env->puzzle) * env->size)))
+	if (!(env->puzzle = malloc(sizeof(*env->puzzle) * env->size))) //Checks if the puzzle can allocate memory for it
 	{
 		ft_putendl_fd("npuzzle: failed to malloc puzzle", 2);
 		exit(EXIT_FAILURE);
@@ -24,7 +24,7 @@ static void alloc_puzzle(t_env *env)
 	i = 0;
 	while (i < env->size)
 	{
-		if (!(env->puzzle[i] = malloc(sizeof(**env->puzzle) * env->size)))
+		if (!(env->puzzle[i] = malloc(sizeof(**env->puzzle) * env->size))) //makes sure that it doesn't go over the size limit
 		{
 			ft_putendl_fd("npuzzle: failed to malloc puzzle", 2);
 			exit(EXIT_FAILURE);
@@ -41,6 +41,7 @@ static int case_value_exists(t_env *env, int stmp, int i)
 
 	value = env->puzzle[stmp][i];
 	y = 0;
+	//will make sure that there are no duplicates in the puzzle
 	while (y < stmp)
 	{
 		x = 0;
@@ -68,45 +69,45 @@ static void fill_line(t_env *env, char *line, int stmp)
 	int i;
 
 	i = 0;
-	while (line[i])
+	while (line[i]) //converts all tas to spaces
 	{
 		if (line[i] == '\t')
 			line[i] = ' ';
 		i++;
 	}
-	if (!(splitted = ft_strsplit(line, ' ')))
+	if (!(splitted = ft_strsplit(line, ' '))) //splites all spaces
 	{
 		ft_putendl_fd("npuzzle: can't split line", 2);
 		exit(EXIT_FAILURE);
 	}
 	i = 0;
-	while (splitted[i])
+	while (splitted[i]) //checking the splited string
 	{
-		if (!valid_int(splitted[i]))
+		if (!valid_int(splitted[i])) //checks if the value is a valid int.
 		{
 			ft_putendl_fd("npuzzle: invalid case value", 2);
 			exit(EXIT_FAILURE);
 		}
-		env->puzzle[stmp][i] = ft_atoi(splitted[i]);
-		if (env->puzzle[stmp][i] < 0 || env->puzzle[stmp][i] > env->size * env->size - 1)
+		env->puzzle[stmp][i] = ft_atoi(splitted[i]); // converts to integers
+		if (env->puzzle[stmp][i] < 0 || env->puzzle[stmp][i] > env->size * env->size - 1) //makes sure that it didn't go over the size limit
 		{
 			ft_putendl_fd("npuzzle: invalid case value", 2);
 			exit(EXIT_FAILURE);
 		}
-		if (case_value_exists(env, stmp, i))
+		if (case_value_exists(env, stmp, i)) //will make sure that there are no duplicates in the puzzle
 		{
 			ft_putendl_fd("npuzzle: duplicated case value", 2);
 			exit(EXIT_FAILURE);
 		}
-		free(splitted[i]);
+		free(splitted[i]); //free the momory used 
 		i++;
 	}
-	if (i != env->size)
+	if (i != env->size) //if they don't match then something went wrong and the puzzles parts do not match.
 	{
 		ft_putendl_fd("npuzzle: incomplete line", 2);
 		exit(EXIT_FAILURE);
 	}
-	free(splitted);
+	free(splitted); //free the momory used 
 }
 
 void read_file(t_env *env, char *file)
@@ -119,6 +120,7 @@ void read_file(t_env *env, char *file)
 
 	size = 0;
 	stmp = 0;
+	// The code below will check that everything is correct. Error checking for days :)
 	if ((fd = open(file, O_RDONLY)) == -1)
 	{
 		ft_putendl_fd("npuzzle: can't open puzzle file", 2);
@@ -152,7 +154,7 @@ void read_file(t_env *env, char *file)
 				exit(EXIT_FAILURE);
 			}
 			env->size = stmp;
-			alloc_puzzle(env);
+			alloc_puzzle(env); //Will allocate memory for the puzzle size
 			size = 1;
 			stmp = 0;
 		}
@@ -163,10 +165,10 @@ void read_file(t_env *env, char *file)
 				ft_putendl_fd("npuzzle: (given puzzle) size is superior to given (puzzle size)", 2);
 				exit(EXIT_FAILURE);
 			}
-			fill_line(env, line, stmp);
+			fill_line(env, line, stmp); //Will read line by line and seperate the numbers. can read if it is tabs or spaces.
 			stmp++;
 		}
-		free(line);
+		free(line); //making sure to free the memory allocated
 	}
 	close(fd);
 }
