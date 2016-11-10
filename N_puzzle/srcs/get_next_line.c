@@ -17,7 +17,7 @@ char *get_next_line(int fd)
 	ssize_t readed;
 	char *result;
 	char *buff;
-
+	// will read file line by line
 	if (!(buff = malloc(sizeof(*buff) * 2)))
 	{
 		ft_putendl_fd("npuzzle: can't malloc", 2);

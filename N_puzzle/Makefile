@@ -49,6 +49,7 @@ HEADER = 	$(INCLUDES_PATH)npuzzle.h 		\
 			$(INCLUDES_PATH)includes.h		\
 			$(INCLUDES_PATH)env.h			\
 			$(INCLUDES_PATH)prototypes.h	\
+			$(INCLUDES_PATH)state.h			\
 
 all: qme odir $(NAME)
 
