@@ -16,7 +16,7 @@ static void alloc_puzzle(t_env *env)
 {
 	int i;
 
-	if (!(env->puzzle = malloc(sizeof(*env->puzzle) * env->size))) //Checks if the puzzle can allocate memory for it
+	if (!(env->start->puzzle = malloc(sizeof(*env->start->puzzle) * env->size))) //Checks if the puzzle can allocate memory for it
 	{
 		ft_putendl_fd("npuzzle: failed to malloc puzzle", 2);
 		exit(EXIT_FAILURE);
@@ -24,7 +24,7 @@ static void alloc_puzzle(t_env *env)
 	i = 0;
 	while (i < env->size)
 	{
-		if (!(env->puzzle[i] = malloc(sizeof(**env->puzzle) * env->size))) //makes sure that it doesn't go over the size limit
+		if (!(env->start->puzzle[i] = malloc(sizeof(**env->start->puzzle) * env->size))) //makes sure that it doesn't go over the size limit
 		{
 			ft_putendl_fd("npuzzle: failed to malloc puzzle", 2);
 			exit(EXIT_FAILURE);
@@ -39,7 +39,7 @@ static int case_value_exists(t_env *env, int stmp, int i)
 	int y;
 	int x;
 
-	value = env->puzzle[stmp][i];
+	value = env->start->puzzle[stmp][i];
 	y = 0;
 	//will make sure that there are no duplicates in the puzzle
 	while (y < stmp)
@@ -47,7 +47,7 @@ static int case_value_exists(t_env *env, int stmp, int i)
 		x = 0;
 		while (x < env->size)
 		{
-			if (env->puzzle[y][x] == value)
+			if (env->start->puzzle[y][x] == value)
 				return (1);
 			x++;
 		}
@@ -56,7 +56,7 @@ static int case_value_exists(t_env *env, int stmp, int i)
 	x = 0;
 	while (x < i)
 	{
-		if (env->puzzle[stmp][x] == value)
+		if (env->start->puzzle[stmp][x] == value)
 			return (1);
 		x++;
 	}
@@ -88,8 +88,8 @@ static void fill_line(t_env *env, char *line, int stmp)
 			ft_putendl_fd("npuzzle: invalid case value", 2);
 			exit(EXIT_FAILURE);
 		}
-		env->puzzle[stmp][i] = ft_atoi(splitted[i]); // converts to integers
-		if (env->puzzle[stmp][i] < 0 || env->puzzle[stmp][i] > env->size * env->size - 1) //makes sure that it didn't go over the size limit
+		env->start->puzzle[stmp][i] = ft_atoi(splitted[i]); // converts to integers
+		if (env->start->puzzle[stmp][i] < 0 || env->start->puzzle[stmp][i] > env->size * env->size - 1) //makes sure that it didn't go over the size limit
 		{
 			ft_putendl_fd("npuzzle: invalid case value", 2);
 			exit(EXIT_FAILURE);
@@ -130,11 +130,13 @@ void read_file(t_env *env, char *file)
 	{
 		if ((tmp = ft_strchr(line, '#')))
 			tmp[0] = '\0';
+		tmp = line;
 		if (!(line = ft_strtrim(line)))
 		{
 			ft_putendl_fd("npuzzle: can't trim line", 2);
 			exit(EXIT_FAILURE);
 		}
+		free(tmp);
 		if (!line[0])
 			continue;
 		if (!size)

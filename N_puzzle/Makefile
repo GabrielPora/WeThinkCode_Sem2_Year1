@@ -36,7 +36,7 @@ SRCS_NAME = main.c 					\
 			state_list_free.c 		\
 			state_free.c 			\
 			state_expend.c 			\
-			state_copy.c 			\
+			copy_state.c 			\
 			manhattan.c 			\
 			generate_random.c 		\
 			is_solvable.c 			\

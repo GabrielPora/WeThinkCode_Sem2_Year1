@@ -29,7 +29,7 @@ int				state_list_contains(t_env *env, t_state_list *lst, t_state *state);
 void			state_list_free(t_state_list *lst);
 void			state_free(t_env *env, t_state *state);
 t_state_list	*state_expend(t_env *env, t_state *state);
-t_state 		*state_copy(t_env *env, t_state *from);
+t_state 		*copy_state(t_env *env, t_state *from);
 int				manhattan(t_env *env, t_state *state);
 void			generate_random(t_env *env);
 int				is_solvable(t_env *env);
