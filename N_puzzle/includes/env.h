@@ -15,7 +15,9 @@
 
 typedef struct	s_env
 {
-	int			**puzzle;
+	t_state		*start;
+	t_state		*end;
 	int			size;
+	int			algo;
 }				t_env;
 #endif

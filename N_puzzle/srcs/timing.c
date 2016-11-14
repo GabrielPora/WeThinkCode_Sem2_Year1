@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   timing.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 11:14:54 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/09 11:36:46 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/14 15:19:10 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/14 15:19:16 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#include "npuzzle.h"
 
-# include <limits.h>
-# include <fcntl.h>
-# include <stdlib.h>
-# include <math.h>
-# include <sys/time.h>
-# include <stdio.h>
+long	timing(void)
+{
+	struct timeval time;
 
-#endif
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}

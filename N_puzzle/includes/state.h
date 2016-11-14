@@ -21,7 +21,11 @@ typedef struct		s_state_list
  
 typedef struct		s_state
 {
+
+	t_state			*pred;
  	int 			**puzzle;
+	int				g;
+	int				h;
 }					t_state;
 
 #endif

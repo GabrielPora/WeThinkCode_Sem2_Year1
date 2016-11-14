@@ -24,7 +24,27 @@ SRCS_NAME = main.c 					\
 			get_next_line.c 		\
 			parse_file.c 			\
 			valid_int.c 			\
-			dump_puzzle.c 			\
+			dump_state.c 			\
+			state_list_push.c 		\
+			state_list_remove.c 	\
+			astar.c 				\
+			state_new.c 			\
+			build_end.c 			\
+			state_new_size.c 		\
+			state_equals.c 			\
+			state_list_contains.c 	\
+			state_list_free.c 		\
+			state_free.c 			\
+			state_expend.c 			\
+			state_copy.c 			\
+			manhattan.c 			\
+			generate_random.c 		\
+			is_solvable.c 			\
+			timing.c 				\
+			print_solution.c 		\
+			state_list_size.c 		\
+			misplaced.c 			\
+			row_column.c 			\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
