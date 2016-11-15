@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   equals_state.c                                     :+:      :+:    :+:   */
+/*   push_list_state.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 17:38:08 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/14 17:38:09 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/15 06:45:44 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/15 06:45:44 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "npuzzle.h"
 
-int equals_state(t_env *env, t_state *s1, t_state *s2)
+void push_list_state(t_state_list **lst, t_state *state)
 {
-	int x;
-	int y;
+	t_state_list *new;
 
-	y = 0;
-	while (y < env->size)
+	if (!(new = malloc(sizeof(*new))))
 	{
-		x = 0;
-		while (x < env->size)
-		{
-			if (s1->puzzle[y][x] != s2->puzzle[y][x])
-				return (0);
-			x++;
-		}
-		y++;
+		ft_putendl_fd("npuzzle: failed to malloc new state elem", 2);
+		exit(EXIT_FAILURE);
 	}
-	return (1);
+	new->next = NULL;
+	new->state = state;
+
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return;
+	}
+	new->next = *lst;
+	*lst = new;
 }

@@ -13,6 +13,8 @@
 #ifndef ENV_H
 # define ENV_H
 
+# include <state.h>
+
 typedef struct	s_env
 {
 	t_state		*start;

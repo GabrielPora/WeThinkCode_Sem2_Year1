@@ -22,27 +22,27 @@ SRCS_PATH = srcs/
 
 SRCS_NAME = main.c 					\
 			get_next_line.c 		\
-			parse_file.c 			\
+			read_file.c 			\
 			valid_int.c 			\
 			dump_state.c 			\
-			state_list_push.c 		\
-			state_list_remove.c 	\
+			push_list_state.c 		\
+			remove_list_state.c 	\
 			astar.c 				\
-			state_new.c 			\
+			new_state.c 			\
 			build_end.c 			\
-			state_new_size.c 		\
-			state_equals.c 			\
-			state_list_contains.c 	\
-			state_list_free.c 		\
-			state_free.c 			\
-			state_expend.c 			\
+			new_size_state.c 		\
+			equals_state.c 			\
+			list_contents_state.c 	\
+			free_list_state.c 		\
+			free_state.c 			\
+			expend_state.c 			\
 			copy_state.c 			\
 			manhattan.c 			\
 			generate_random.c 		\
 			is_solvable.c 			\
 			timing.c 				\
 			print_solution.c 		\
-			state_list_size.c 		\
+			size_list_state.c 		\
 			misplaced.c 			\
 			row_column.c 			\
 

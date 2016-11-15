@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   equals_state.c                                     :+:      :+:    :+:   */
+/*   remove_list_state.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 17:38:08 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/14 17:38:09 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/15 06:46:57 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/15 06:46:57 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "npuzzle.h"
 
-int equals_state(t_env *env, t_state *s1, t_state *s2)
+void remove_list_state(t_state_list **lst, t_state *state)
 {
-	int x;
-	int y;
+	t_state_list *tmp;
+	t_state_list *ite;
+	t_state_list *prv;
 
-	y = 0;
-	while (y < env->size)
+	if (!(*lst))
+		return;
+	if ((*lst)->state == state)
 	{
-		x = 0;
-		while (x < env->size)
-		{
-			if (s1->puzzle[y][x] != s2->puzzle[y][x])
-				return (0);
-			x++;
-		}
-		y++;
+		tmp = *lst;
+		*lst = (*lst)->next;
+		free(tmp);
+		return;
 	}
-	return (1);
+	ite = *lst;
+	prv = NULL;
+	while (ite)
+	{
+		if (ite->state == state)
+		{
+			prv->next = ite->next;
+			free(ite);
+			return;
+		}
+		prv = ite;
+		ite = ite->next;
+	}
 }

@@ -13,6 +13,12 @@
 #ifndef STATE_H
 # define STATE_H
 
+# include <env.h>
+
+
+typedef struct s_state_list t_state_list;
+typedef struct s_state t_state;
+
 typedef struct		s_state_list
 {
 	t_state 		*state;

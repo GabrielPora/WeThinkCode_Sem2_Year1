@@ -11,31 +11,31 @@
 /* ************************************************************************** */
 
 #ifndef PROTOTYPES_H
-# define PROTOYPES_H
+# define PROTOTYPES_H
 
 char			*get_next_line(int fd);
 void			read_file(t_env *env, char *file);
 int				valid_int(char *str);
 void			dump_puzzle(t_env *env, int **puzzle);
 void			dump_state(t_env *env, t_state *state);
-void			state_list_push(t_state_list **lst, t_state *state);
-void			state_list_remove(t_state_list **lst, t_state *state);
+void			push_list_state(t_state_list **lst, t_state *state);
+void			remove_list_state(t_state_list **lst, t_state *state);
 void			astar(t_env *env);
-t_state			*state_new();
+t_state			*new_state();
 void 			build_end(t_env *env);
-t_state			*state_new_size(t_env *env);
-int				state_equals(t_env *env, t_state *s1, t_state *s2);
-int				state_list_contains(t_env *env, t_state_list *lst, t_state *state);
-void			state_list_free(t_state_list *lst);
-void			state_free(t_env *env, t_state *state);
-t_state_list	*state_expend(t_env *env, t_state *state);
+t_state			*new_size_state(t_env *env);
+int				equals_state(t_env *env, t_state *s1, t_state *s2);
+int				list_contents_state(t_env *env, t_state_list *lst, t_state *state);
+void			free_list_state(t_state_list *lst);
+void			free_state(t_env *env, t_state *state);
+t_state_list	*expend_state(t_env *env, t_state *state);
 t_state 		*copy_state(t_env *env, t_state *from);
 int				manhattan(t_env *env, t_state *state);
 void			generate_random(t_env *env);
 int				is_solvable(t_env *env);
 long			timing(void);
 void			print_solution(t_env *env, t_state *state);
-int				state_list_size(t_state_list *lst);
+int				size_list_state(t_state_list *lst);
 int				misplaced(t_env *env, t_state *state);
 int				row_column(t_env *env, t_state *state);
 

@@ -18,7 +18,7 @@ t_state *copy_state(t_env *env, t_state *from)
 	int y;
 	int x;
 
-	state = state_new_size(env);
+	state = new_size_state(env);
 	y = 0;
 	while (y < env->size)
 	{

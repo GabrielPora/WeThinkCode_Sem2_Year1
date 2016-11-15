@@ -52,8 +52,8 @@ void astar(t_env *env)
 	int success = 0;
 	int size_tmp;
 
-	state_list_push(&opened, env->start);
-	if ((size_tmp = state_list_size(opened) + state_list_size(closed)) > complexity_size)
+	push_list_state(&opened, env->start);
+	if ((size_tmp = size_list_state(opened) + size_list_state(closed)) > complexity_size)
 	{
 		complexity_size = size_tmp;
 	}
@@ -61,23 +61,23 @@ void astar(t_env *env)
 	{
 		best_state = get_from_eur(env, opened);
 		complexity_time++;
-		if (state_equals(env, best_state, env->end))
+		if (equals_state(env, best_state, env->end))
 		{
 			success = 1;
 			break;
 		}
-		state_list_remove(&opened, best_state);
-		state_list_push(&closed, best_state);
-		expend = state_expend(env, best_state);
-		if ((size_tmp = state_list_size(opened) + state_list_size(closed) + state_list_size(expend)) > complexity_size)
+		remove_list_state(&opened, best_state);
+		push_list_state(&closed, best_state);
+		expend = expend_state(env, best_state);
+		if ((size_tmp = size_list_state(opened) + size_list_state(closed) + size_list_state(expend)) > complexity_size)
 		{
 			complexity_size = size_tmp;
 		}
 		while (expend)
 		{
-			if (!state_list_contains(env, opened, expend->state) && !state_list_contains(env, closed, expend->state))
+			if (!list_contents_state(env, opened, expend->state) && !list_contents_state(env, closed, expend->state))
 			{
-				state_list_push(&opened, expend->state);
+				push_list_state(&opened, expend->state);
 				expend->state->pred = best_state;
 				expend->state->g = best_state->g + 1;
 			}
@@ -87,12 +87,12 @@ void astar(t_env *env)
 				{
 					expend->state->g = best_state->g + 1;
 					expend->state->pred = best_state;
-					if (state_list_contains(env, closed, expend->state))
+					if (list_contents_state(env, closed, expend->state))
 					{
-						state_list_remove(&closed, expend->state);
-						state_list_push(&opened, expend->state);
+						remove_list_state(&closed, expend->state);
+						push_list_state(&opened, expend->state);
 					}
-					else if (!state_list_contains(env, opened, expend->state))
+					else if (!list_contents_state(env, opened, expend->state))
 					{
 						free(expend->state);
 					}
@@ -102,12 +102,12 @@ void astar(t_env *env)
 			expend = expend->next;
 			free(tmp);
 		}
-		state_list_free(expend);
+		free_list_state(expend);
 	}
 	if (success)
 	{
 		ft_putendl("solution: ");
-		print_solution(env, best_state);
+		//print_solution(env, best_state);
 		ft_putstr("time complexity: ");
 		ft_putnbr(complexity_time);
 		ft_putchar('\n');

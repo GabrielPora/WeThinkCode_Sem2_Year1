@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   equals_state.c                                     :+:      :+:    :+:   */
+/*   size_list_state.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/14 17:38:08 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/14 17:38:09 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/15 06:48:00 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/15 06:48:01 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "npuzzle.h"
 
-int equals_state(t_env *env, t_state *s1, t_state *s2)
+int size_list_state(t_state_list *lst)
 {
-	int x;
-	int y;
+	int size;
 
-	y = 0;
-	while (y < env->size)
+	size = 0;
+	while (lst)
 	{
-		x = 0;
-		while (x < env->size)
-		{
-			if (s1->puzzle[y][x] != s2->puzzle[y][x])
-				return (0);
-			x++;
-		}
-		y++;
+		size++;
+		lst = lst->next;
 	}
-	return (1);
+	return (size);
 }

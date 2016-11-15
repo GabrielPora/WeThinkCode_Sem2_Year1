@@ -14,7 +14,7 @@
 
 void	dump_state(t_env *env, t_state *state)
 {
-	int	x
+	int	x;
 	int	y;
 
 	y = 0;
