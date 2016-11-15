@@ -12,7 +12,7 @@
 
 NAME = npuzzle
 
-CFLAGS = -Wall -Wextra -Werror -g -Ofast -flto=8 -march=native
+CFLAGS = -Wall -Wextra -Werror -g -Ofast -flto -march=native
 
 CC = gcc
 
