@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "npuzzle.h"
-
-void	dump_state(t_env *env, t_state *state)
+/*void	dump_state(t_env *env, t_state *state)
 {
 	int	x;
 	int	y;
@@ -25,10 +23,24 @@ void	dump_state(t_env *env, t_state *state)
 		{
 			ft_putnbr(state->puzzle[y][x]);
 			if (x != env->size -1)
-				ft_putchar(' ');
+				printf("%d%c", state->puzzle[y][x], x == env->size - 1 ? '\n' : ' ');
 			x++;
 		}
-		ft_putchar('\n');
 		y++;
+	}
+}*/
+
+#include "npuzzle.h"
+
+void	dump_state(t_env *env, t_state *state)
+{
+	for (int y = 0; y < env->size; ++y) // above code might be better to use rather
+	{
+		for (int x = 0; x < env->size; ++x)
+		{
+			printf("%d", state->puzzle[y][x]);
+			if (x != env->size - 1)
+				printf("%d%c", state->puzzle[y][x], x == env->size - 1 ? '\n' : ' ');
+		}
 	}
 }

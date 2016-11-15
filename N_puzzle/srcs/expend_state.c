@@ -41,6 +41,7 @@ t_state_list *expend_state(t_env *env, t_state *state)
 		new_tmp = copy_state(env, state);
 		new_tmp->puzzle[y][x] = new_tmp->puzzle[y - 1][x];
 		new_tmp->puzzle[y - 1][x] = 0;
+		cal_score_state(env, new_tmp);
 		push_list_state(&lst, new_tmp);
 	}
 	if (y != env->size - 1)
@@ -48,6 +49,7 @@ t_state_list *expend_state(t_env *env, t_state *state)
 		new_tmp = copy_state(env, state);
 		new_tmp->puzzle[y][x] = new_tmp->puzzle[y + 1][x];
 		new_tmp->puzzle[y + 1][x] = 0;
+		cal_score_state(env, new_tmp);
 		push_list_state(&lst, new_tmp);
 	}
 	if (x != 0)
@@ -55,6 +57,7 @@ t_state_list *expend_state(t_env *env, t_state *state)
 		new_tmp = copy_state(env, state);
 		new_tmp->puzzle[y][x] = new_tmp->puzzle[y][x - 1];
 		new_tmp->puzzle[y][x - 1] = 0;
+		cal_score_state(env, new_tmp);
 		push_list_state(&lst, new_tmp);
 	}
 	if (x != env->size - 1)
@@ -62,6 +65,7 @@ t_state_list *expend_state(t_env *env, t_state *state)
 		new_tmp = copy_state(env, state);
 		new_tmp->puzzle[y][x] = new_tmp->puzzle[y][x + 1];
 		new_tmp->puzzle[y][x + 1] = 0;
+		cal_score_state(env, new_tmp);
 		push_list_state(&lst, new_tmp);
 	}
 	return (lst);

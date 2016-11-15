@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.h                                            :+:      :+:    :+:   */
+/*   cal_score_state.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 09:44:20 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/10 09:44:21 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/15 09:20:00 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/15 09:20:04 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STATE_H
-# define STATE_H
+#include "npuzzle.h"
 
-# include <env.h>
-
-
-typedef struct s_state_list t_state_list;
-typedef struct s_state t_state;
-
-typedef struct		s_state_list
+void	cal_score_state(t_env *env, t_state *state)
 {
-	t_state 		*state;
- 	t_state_list	*next;
-}					t_state_list;
- 
-typedef struct		s_state
-{
-
-	t_state			*pred;
-	int				score;
- 	int 			**puzzle;
-	int				g;
-	int				h;
-}					t_state;
-
-#endif
+	if (env->algo == 1)
+		state->score = manhattan(env, state);
+	else if (env->algo == 2)
+		state->score = misplaced(env, state);
+	else
+		state->score = row_column(env, state);
+}

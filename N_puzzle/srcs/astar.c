@@ -12,34 +12,6 @@
 
 #include "npuzzle.h"
 
-static t_state *get_from_eur(t_env *env, t_state_list *lst)
-{
-	t_state_list *tmp;
-	t_state *best;
-	int best_score;
-	int tmp_score;
-
-	best_score = -1;
-	tmp = lst;
-	best = NULL;
-	while (tmp)
-	{
-		if (env->algo == 1)
-			tmp_score = manhattan(env, tmp->state);
-		else if (env->algo == 2)
-			tmp_score = misplaced(env, tmp->state);
-		else
-			tmp_score = row_column(env, tmp->state);
-		if (best_score == -1 || tmp_score < best_score)
-		{
-			best = tmp->state;
-			best_score = tmp_score;
-		}
-		tmp = tmp->next;
-	}
-	return (best);
-}
-
 void astar(t_env *env)
 {
 	t_state_list *opened = NULL;
@@ -59,7 +31,7 @@ void astar(t_env *env)
 	}
 	while (opened && !success)
 	{
-		best_state = get_from_eur(env, opened);
+		best_state = opened->state;
 		complexity_time++;
 		if (equals_state(env, best_state, env->end))
 		{
@@ -106,17 +78,12 @@ void astar(t_env *env)
 	}
 	if (success)
 	{
-		ft_putendl("solution: ");
-		//print_solution(env, best_state);
-		ft_putstr("time complexity: ");
-		ft_putnbr(complexity_time);
-		ft_putchar('\n');
-		ft_putstr("size complexity: ");
-		ft_putnbr(complexity_size);
-		ft_putchar('\n');
-		ft_putstr("number of moves: ");
-		ft_putnbr(best_state->g);
-		ft_putchar('\n');
+		setvbuf(stdout, NULL, _IOFBF, BUFSIZ);
+		printf("solution: ");
+		print_solution(env, best_state);
+		printf("time complexity: %d\nsize complexity: %d\nnumber of moves: %d\n", complexity_time, complexity_size, best_state->g);
+		fflush(stdout);
+		setvbuf(stdout, NULL, _IOLBF, BUFSIZ);
 	}
 	else
 	{

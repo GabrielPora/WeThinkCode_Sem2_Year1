@@ -38,5 +38,6 @@ void			print_solution(t_env *env, t_state *state);
 int				size_list_state(t_state_list *lst);
 int				misplaced(t_env *env, t_state *state);
 int				row_column(t_env *env, t_state *state);
+void			cal_score_state(t_env *env, t_state *state);
 
 #endif

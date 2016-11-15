@@ -12,7 +12,7 @@
 
 NAME = npuzzle
 
-CFLAGS = -Wall -Wextra -Werror -g -Ofast -flto -march=native
+CFLAGS = -Wall -Wextra -Werror -g -Ofast -flto -march=native -g
 
 CC = gcc
 
@@ -45,6 +45,7 @@ SRCS_NAME = main.c 					\
 			size_list_state.c 		\
 			misplaced.c 			\
 			row_column.c 			\
+			cal_score_state.c 		\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
