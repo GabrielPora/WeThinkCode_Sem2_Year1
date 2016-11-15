@@ -98,7 +98,12 @@ int			is_solvable(t_env *env)
 	end_inversions = get_inversions(env, end_tab);
 	if (env->size % 2 == 0)
 	{
-		return ((start_inversions + blank_line(env, start_tab)) % 2 == (end_inversions + blank_line(env, end_tab)) % 2);
+		int result = (start_inversions + blank_line(env, start_tab)) % 2 == (end_inversions + blank_line(env, end_tab)) % 2;
+		free(start_tab);
+		free(end_tab);
+		return (result);
 	}
+	free(start_tab);
+	free(end_tab);
 	return (start_inversions % 2 == end_inversions % 2);
 }
