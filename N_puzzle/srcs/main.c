@@ -16,6 +16,7 @@ int		main(int argc, char **argv)
 {
 	t_env	env;
 
+	ft_bzero(&env, sizeof(env)); // this is to avoid segfaults
 	srand(timing());
 	if (argc < 3)
 	{
@@ -52,7 +53,15 @@ int		main(int argc, char **argv)
  		generate_random(&env);
  	}
  	else
+	{
+
  		read_file(&env, argv[2]);
+		if (env.size < 2 || env.size > 255)
+		{
+			ft_putendl_fd("npuzzle: invalid size, must be integer between 2 and 255\nuse:\nnpuzzle <--manhattan | --misplaced | --row_column> --random size", 2);
+			exit(EXIT_FAILURE);
+		}
+	}
  	ft_putendl("start:");
  	dump_state(&env, env.start);
  	env.end = new_size_state(&env);
