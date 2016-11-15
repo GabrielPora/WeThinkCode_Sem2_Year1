@@ -55,7 +55,7 @@ void astar(t_env *env)
 			}
 			else
 			{
-				if (expend->state->g + expend->state->h > best_state->g + expend->state->h)
+				if (expend->state->g + expend->state->score > best_state->g + expend->state->score)
 				{
 					expend->state->g = best_state->g + 1;
 					expend->state->pred = best_state;
