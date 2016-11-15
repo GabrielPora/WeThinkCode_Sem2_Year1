@@ -34,7 +34,7 @@
 
 int equals_state(t_env *env, t_state *s1, t_state *s2)
 {
-	if (s1->score != s2->score)
+	if (s1->h != s2->h)
 		return (0);
 	for (int y = 0; y < env->size; y++)
 	{

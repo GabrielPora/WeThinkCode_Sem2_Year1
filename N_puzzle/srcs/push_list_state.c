@@ -36,7 +36,7 @@ static void	push(t_state_list **list, t_state_list *state)
 	lst = *list;
 	while (lst)
 	{
-		if (state->state->score + state->state->g <= lst->state->score + lst->state->g)
+		if (state->state->f <= lst->state->f) // this is better than previous one
 		{
 			insert(list, lst, prv, state);
 			return;

@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.h                                            :+:      :+:    :+:   */
+/*   get_score.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 09:44:20 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/10 09:44:21 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/15 14:25:46 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/15 14:25:46 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STATE_H
-# define STATE_H
+#include "npuzzle.h"
 
-# include <env.h>
-# include <tree.h>
-
-typedef struct s_state_list t_state_list;
-typedef struct s_state t_state;
-
-typedef struct		s_state_list
+int	get_score(t_env *env, t_state *s1, t_state *s2)
 {
-	t_state 		*state;
- 	t_state_list	*next;
-}					t_state_list;
- 
-typedef struct		s_state
-{
-
-	t_state			*pred;
- 	int 			**puzzle;
-	int				f;
-	int				g;
-	int				h;
-}					t_state;
-
-#endif
+	if (env->algo == 1)
+		return (manhattan(env, s1, s2));
+	else if (env->algo == 2)
+		return (misplaced(env, s1, s2));
+	return (row_column(env, s1, s2));
+}

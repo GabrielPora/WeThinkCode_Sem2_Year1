@@ -30,15 +30,20 @@ void			free_list_state(t_state_list *lst);
 void			free_state(t_env *env, t_state *state);
 t_state_list	*expend_state(t_env *env, t_state *state);
 t_state 		*copy_state(t_env *env, t_state *from);
-int				manhattan(t_env *env, t_state *state);
+int				manhattan(t_env *env, t_state *s1, t_state *s2);
 void			generate_random(t_env *env);
 int				is_solvable(t_env *env);
 long			timing(void);
 void			print_solution(t_env *env, t_state *state);
 int				size_list_state(t_state_list *lst);
-int				misplaced(t_env *env, t_state *state);
-int				row_column(t_env *env, t_state *state);
+int				misplaced(t_env *env, t_state *s1, t_state *s2); // changed to improve
+int				row_column(t_env *env, t_state *s1, t_state *s2); // changed to improve
 void			cal_score_state(t_env *env, t_state *state);
 int				weight_state(t_state *old, t_state *new);
+int				get_score(t_env *env, t_state *s1, t_state *s2); // added to get score
+t_state_list	*get_list_state(t_env *env, t_state_list *lst, t_state *state);
+void			push_closed_tree(t_env *env, t_closed_tree *tree, t_state *state); //tree calls
+t_state			*get_closed_tree(t_env *env, t_closed_tree *tree, t_state *state); //tree calls
+void			remove_closed_tree(t_env *env, t_closed_tree *tree, t_state *state); //tree calls
 
 #endif

@@ -47,6 +47,11 @@ SRCS_NAME = main.c 					\
 			row_column.c 			\
 			cal_score_state.c 		\
 			weight_state.c 			\
+			get_list_state.c 		\
+			push_closed_tree.c 		\
+			get_closed_tree.c 		\
+			remove_closed_tree.c 	\
+			get_score.c 			\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
@@ -72,6 +77,7 @@ HEADER = 	$(INCLUDES_PATH)npuzzle.h 		\
 			$(INCLUDES_PATH)env.h			\
 			$(INCLUDES_PATH)prototypes.h	\
 			$(INCLUDES_PATH)state.h			\
+			$(INCLUDES_PATH)tree.h			\
 
 all: qme odir $(NAME)
 

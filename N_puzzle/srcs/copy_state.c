@@ -31,6 +31,6 @@ t_state *copy_state(t_env *env, t_state *from)
 		}
 		//y++;
 	}
-	state->score = from->score;
+	state->h = from->h;
 	return (state);
 }

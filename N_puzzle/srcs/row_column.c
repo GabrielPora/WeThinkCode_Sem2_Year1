@@ -77,7 +77,7 @@ int row_column(t_env *env, t_state *state)
 
 #include "npuzzle.h"
 
-static int row_column_sub(t_env *env, t_state *state, int nb)
+static int row_column_sub(t_env *env, t_state *s1, t_state *s2, int nb)
 {
 	int stateX = 0;
 	int stateY = 0;
@@ -88,7 +88,7 @@ static int row_column_sub(t_env *env, t_state *state, int nb)
 	{
 		for (stateX = 0; stateX < env->size; ++stateX)
 		{
-			if (state->puzzle[stateY][stateX] == nb)
+			if (s1->puzzle[stateY][stateX] == nb)
 				goto secondLoop;
 		}
 	}
@@ -97,7 +97,7 @@ secondLoop:
 	{
 		for (endX = 0; endX < env->size; ++endX)
 		{
-			if (env->end->puzzle[endY][endX] == nb)
+			if (s2->puzzle[endY][endX] == nb)
 				goto endThing;
 		}
 	}
@@ -105,7 +105,7 @@ endThing:
 	return ((stateX != endX ? 1 : 0) + (stateY != endY ? 1 : 0));
 }
 
-int row_column(t_env *env, t_state *state)
+int row_column(t_env *env, t_state *s1, t_state *s2)
 {
 	int size = env->size * env->size;
 	int total;
@@ -113,7 +113,7 @@ int row_column(t_env *env, t_state *state)
 	total = 0;
 	for (int i = 0; i < size; ++i)
 	{
-		total += row_column_sub(env, state, i);
+		total += row_column_sub(env, s1, s2, i);
 		i++;
 	}
 	return (total);

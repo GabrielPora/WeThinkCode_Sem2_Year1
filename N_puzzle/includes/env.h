@@ -14,6 +14,7 @@
 # define ENV_H
 
 # include <state.h>
+# include <tree.h>
 
 typedef struct	s_env
 {

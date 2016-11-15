@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.h                                            :+:      :+:    :+:   */
+/*   remove_closed_tree.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 09:44:20 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/10 09:44:21 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/15 14:24:25 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/15 14:24:25 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STATE_H
-# define STATE_H
+#include "npuzzle.h"
 
-# include <env.h>
-# include <tree.h>
-
-typedef struct s_state_list t_state_list;
-typedef struct s_state t_state;
-
-typedef struct		s_state_list
+void	remove_closed_tree(t_env *env, t_closed_tree *tree, t_state *state)
 {
-	t_state 		*state;
- 	t_state_list	*next;
-}					t_state_list;
- 
-typedef struct		s_state
-{
+	t_closed_tree *lst;
+	int size = env->size * env->size;
+	int i = 0;
 
-	t_state			*pred;
- 	int 			**puzzle;
-	int				f;
-	int				g;
-	int				h;
-}					t_state;
-
-#endif
+	lst = tree;
+	while (i < size)
+	{
+		lst = lst->child[state->puzzle[i / 3][i % 3]];
+		if (!lst)
+		{
+			ft_putendl("FAILED Damn!");
+			exit(EXIT_FAILURE);
+			return ;
+		}
+		++i;
+	}
+	lst->state = NULL;
+}
