@@ -19,7 +19,7 @@ int		main(int argc, char **argv)
 	srand(timing());
 	if (argc < 3)
 	{
-		ft_putendl_fd("npuzzle: usage: npuzzle <--manhattan | --misplaced | --row_column> file\nnpuzzle <--manhattan | --misplaced | --row_column> --random size", 2);
+		ft_putendl_fd("npuzzle: use:\nnpuzzle <--manhattan | --misplaced | --row_column> file\nnpuzzle <--manhattan | --misplaced | --row_column> --random size", 2);
 		exit(EXIT_FAILURE);
 	}
 	if (!ft_strcmp(argv[1], "--manhattan"))
@@ -30,23 +30,23 @@ int		main(int argc, char **argv)
  		env.algo = 3;
  	else
  	{
-		ft_putendl_fd("npuzzle: invalid algorithm\nusage: npuzzle <--manhattan | --misplaced | --row_column> file\nnpuzzle <--manhattan | --misplaced | --row_column> --random size>", 2);
- 		exit(EXIT_FAILURE);
+		ft_putendl_fd("npuzzle: invalid algorithm\nuse:\nnpuzzle <--manhattan | --misplaced | --row_column> file\nnpuzzle <--manhattan | --misplaced | --row_column> --random size>", 2);
+  		exit(EXIT_FAILURE);
  	}
  	env.start = new_state();
  	if (!ft_strcmp(argv[2], "--random"))
  	{
  		if (argc < 3)
  		{
- 			ft_putendl_fd("npuzzle: usage: npuzzle <--manhattan | --misplaced | --row_column> --random size", 2);
- 			exit(EXIT_FAILURE);
+ 			ft_putendl_fd("npuzzle: use:\nnpuzzle <--manhattan | --misplaced | --row_column> --random size", 2);
+  			exit(EXIT_FAILURE);
  		}
  		char *tmp = argv[3];
  		while (*tmp == '0')
  			tmp++;
  		if (!ft_strisdigit(argv[3]) || ft_strlen(tmp) > 3 || (env.size = ft_atoi(tmp)) > 255 || env.size < 2)
  		{
- 			ft_putendl_fd("npuzzle: invalid size, must be integer between 2 and 255\nusage: npuzzle <--manhattan | --misplaced | --row_column> --random size", 2);
+ 			ft_putendl_fd("npuzzle: invalid size, must be integer between 2 and 255\nuse:\nnpuzzle <--manhattan | --misplaced | --row_column> --random size", 2);
   			exit(EXIT_FAILURE);
  		}
  		generate_random(&env);

@@ -36,29 +36,30 @@ static void alloc_puzzle(t_env *env)
 static int case_value_exists(t_env *env, int stmp, int i)
 {
 	int value;
-	int y;
-	int x;
+	//int y;
+	//int x;
 
 	value = env->start->puzzle[stmp][i];
-	y = 0;
+	//y = 0;
 	//will make sure that there are no duplicates in the puzzle
-	while (y < stmp)
+	//uncomment comment to change to while loop.
+	for (int y = 0; y < stmp; y++)//while (y < stmp)
 	{
-		x = 0;
-		while (x < env->size)
+		//x = 0;
+		for (int x = 0; x < env->size; x++)//while (x < env->size)
 		{
 			if (env->start->puzzle[y][x] == value)
 				return (1);
-			x++;
+			//x++;
 		}
-		y++;
+		//y++;
 	}
-	x = 0;
-	while (x < i)
+	//x = 0;
+	for (int x = 0; x < i; x++)//while (x < i)
 	{
 		if (env->start->puzzle[stmp][x] == value)
 			return (1);
-		x++;
+		//x++;
 	}
 	return (0);
 }

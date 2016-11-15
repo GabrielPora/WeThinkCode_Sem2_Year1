@@ -15,20 +15,21 @@
 t_state *copy_state(t_env *env, t_state *from)
 {
 	t_state *state;
-	int y;
-	int x;
+	//int y;
+	//int x;
 
 	state = new_size_state(env);
-	y = 0;
-	while (y < env->size)
+	//y = 0;
+	// if you want to use the while then uncomment the commented code
+	for (int y = 0; y < env->size; y++)//while (y < env->size)
 	{
-		x = 0;
-		while (x < env->size)
+		//x = 0;
+		for (int x = 0; x < env->size; x++) //while (x < env->size)
 		{
 			state->puzzle[y][x] = from->puzzle[y][x];
-			x++;
+			//x++;
 		}
-		y++;
+		//y++;
 	}
 	state->score = from->score;
 	return (state);
