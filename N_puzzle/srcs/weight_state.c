@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   define.h                                           :+:      :+:    :+:   */
+/*   weight_state.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/09 11:14:30 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/09 11:20:47 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/15 13:21:11 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/15 13:21:12 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINE_H
-# define DEFINE_H
+#include "npuzzle.h"
 
-# define UNIFORM_COST 0
-
-#endif
+int	weight_state(t_state *old, t_state *new)
+{
+	(void)old;
+	(void)new;
+	return (1);
+}

@@ -47,17 +47,18 @@ void astar(t_env *env)
 		}
 		while (expend)
 		{
+			expend->state->g = best_state->g + 1; // better weight system
 			if (!list_contents_state(env, opened, expend->state) && !list_contents_state(env, closed, expend->state))
 			{
 				push_list_state(&opened, expend->state);
 				expend->state->pred = best_state;
-				expend->state->g = best_state->g + 1;
+				expend->state->g = best_state->g + weight_state(best_state, expend->state); // better weight system
 			}
 			else
 			{
-				if (expend->state->g + expend->state->score > best_state->g + expend->state->score)
+				if (expend->state->g > best_state->g + weight_state(best_state, expend->state)) // better weight system
 				{
-					expend->state->g = best_state->g + 1;
+					expend->state->g = best_state->g + weight_state(best_state, expend->state); // better weight system
 					expend->state->pred = best_state;
 					if (list_contents_state(env, closed, expend->state))
 					{
