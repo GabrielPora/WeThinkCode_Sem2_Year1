@@ -32,7 +32,6 @@ typedef struct		s_state
 	int				score;
  	int 			**puzzle;
 	int				g;
-	int				h;
 }					t_state;
 
 #endif

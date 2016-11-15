@@ -23,6 +23,5 @@ t_state *new_state()
 	}
 	state->pred = NULL;
 	state->g = 0;
-	state->h = 0;
 	return (state);
 }
