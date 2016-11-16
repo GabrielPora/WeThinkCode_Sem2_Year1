@@ -123,7 +123,7 @@ void astar(t_env *env)
 			check = check->pred;
 		}
 		setvbuf(stdout, NULL, _IOFBF, BUFSIZ);
-		printf("solution: ");
+		printf("solution: \n");
 		print_solution(env, best_state);
 		printf("time complexity: %d\nsize complexity: %d\nnumber of moves: %d\n", complexity_time, complexity_size, i);
 		fflush(stdout);
