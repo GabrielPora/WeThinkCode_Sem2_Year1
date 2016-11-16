@@ -100,10 +100,17 @@ void astar(t_env *env)
 	}
 	if (success)
 	{
+		t_state *check = best_state;
+		int i = 0;
+		while (check) // added a better count number here to check what the best state.
+		{
+			++i;
+			check = check->pred;
+		}
 		setvbuf(stdout, NULL, _IOFBF, BUFSIZ);
 		printf("solution: ");
 		print_solution(env, best_state);
-		printf("time complexity: %d\nsize complexity: %d\nnumber of moves: %d\n", complexity_time, complexity_size, best_state->g);
+		printf("time complexity: %d\nsize complexity: %d\nnumber of moves: %d\n", complexity_time, complexity_size, i);
 		fflush(stdout);
 		setvbuf(stdout, NULL, _IOLBF, BUFSIZ);
 	}
