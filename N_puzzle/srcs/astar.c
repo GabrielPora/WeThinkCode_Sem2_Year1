@@ -70,6 +70,7 @@ void astar(t_env *env)
 			{
 				tmp = expend;
 				expend = expend->next;
+				state_free(env, tmp->state);
 				free(tmp);
 				continue;
 			}
@@ -86,29 +87,31 @@ void astar(t_env *env)
 				push_list_state(&opened, expend->state);
 				push_tree_state(env, &state_tree, expend->state, 1);
 				opened_size++;
-			}
-			else if (tmp_g >= tmp_state->g)
-			{
 				tmp = expend;
 				expend = expend->next;
 				free(tmp);
 				continue;
 			}
-			else
+			else if (tmp_g >= tmp_state->g)
 			{
-				tmp_state->pred = best_state;
-				tmp_state->g = tmp_g;
-				tmp_state->f = 0;
-				if (!env->greedy)
-					tmp_state->f += tmp_state->g;
-				if (!env->uniform)
-					tmp_state->f += tmp_state->h;
+				tmp = expend;
+				expend = expend->next;
+				state_free(env,tmp->state);
+				free(tmp);
+				continue;
 			}
+			tmp_state->pred = best_state;
+			tmp_state->g = tmp_g;
+			tmp_state->f = 0;
+			if (!env->greedy)
+				tmp_state->f += tmp_state->g;
+			if (!env->uniform)
+				tmp_state->f += tmp_state->h;
 			tmp = expend;
 			expend = expend->next;
+			state_free(env, tmp->state);
 			free(tmp);
 		}
-		free_list_state(expend);
 	}
 	if (success)
 	{
@@ -130,4 +133,6 @@ void astar(t_env *env)
 	{
 		ft_putendl("This puzzle is not solvable");
 	}
+	free_tree_state(env, &state_tree);
+	state_list_free(opened);
 }

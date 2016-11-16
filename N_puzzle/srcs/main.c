@@ -135,6 +135,6 @@ int		main(int argc, char **argv)
  	else
  		printf("This puzzle is not solvable\n");
  		//ft_putendl("This puzzle is not solvable");
-  	return (1);
+  	return (EXIT_SUCCESS);
  	(void)argv;
 }

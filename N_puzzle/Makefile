@@ -51,6 +51,7 @@ SRCS_NAME = main.c 					\
 			push_tree_state.c 		\
 			get_tree_state.c 		\
 			set_tree_state.c 		\
+			free_tree_state.c 		\
 			get_score.c 			\
 			euclidean.c 			\
 

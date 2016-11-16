@@ -45,6 +45,7 @@ t_state_list	*get_list_state(t_env *env, t_state_list *lst, t_state *state);
 void            push_tree_state(t_env *env, t_state_tree *tree, t_state *state, int opened); //tree calls
 t_state         *get_tree_state(t_env *env, t_state_tree *tree, t_state *state, int *is_closed); //tree calls
 void            set_tree_state(t_env *env, t_state_tree *tree, t_state *state, int opened); //tree calls
+void            free_tree_state(t_env *env, t_state_tree *node);
 int				euclidean(t_env *env, t_state *s1, t_state *s2);
 
 #endif
