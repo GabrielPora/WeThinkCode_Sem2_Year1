@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tree.h                                             :+:      :+:    :+:   */
+/*   get_tree_state.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/15 13:42:04 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/15 13:42:05 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/15 14:22:24 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/15 14:22:25 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TREE_H
-# define TREE_H
+#include "npuzzle.h"
 
-# include <state.h>
-typedef struct s_state t_state;
-//# include <env.h>
-
-typedef struct s_closed_tree t_closed_tree;
-
-typedef struct		s_closed_tree 
+t_state	*get_tree_state(t_env *env, t_tree_state *tree, t_state *state, int *is_closed)
 {
-	t_state			*state;
-	t_closed_tree	**child;	
-}					t_closed_tree;
+	t_tree_state *lst;
+	int size = env->size * env->size;
+	int i = 0;
 
-#endif
+	lst = tree;
+	while (i < size)
+	{
+		lst = lst->child[state->puzzle[i / env->size][i % env->size]];
+		if (!lst)
+		{
+			return (NULL);
+		}
+		++i;
+	}
+	if (is_closed)
+		*is_closed = !lst->opened;
+	return (lst->state);
+}

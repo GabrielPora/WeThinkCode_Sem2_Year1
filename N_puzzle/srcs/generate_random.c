@@ -12,7 +12,7 @@
 
 #include "npuzzle.h"
 
-static void swap(int **puzzle, int x1, int y1, int x2, int y2)
+static void swap(unsigned short **puzzle, int x1, int y1, int x2, int y2)
 {
 	int tmp;
 
@@ -21,7 +21,7 @@ static void swap(int **puzzle, int x1, int y1, int x2, int y2)
 	puzzle[y2][x2] = tmp;
 }
 
-static void shuffle(t_env *env, int **puzzle)
+static void shuffle(t_env *env, unsigned short **puzzle)
 {
 	int x;
 	int y;

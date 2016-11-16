@@ -42,9 +42,9 @@ void			cal_score_state(t_env *env, t_state *state);
 int				weight_state(t_state *old, t_state *new);
 int				get_score(t_env *env, t_state *s1, t_state *s2); // added to get score
 t_state_list	*get_list_state(t_env *env, t_state_list *lst, t_state *state);
-void			push_closed_tree(t_env *env, t_closed_tree *tree, t_state *state); //tree calls
-t_state			*get_closed_tree(t_env *env, t_closed_tree *tree, t_state *state); //tree calls
-void			remove_closed_tree(t_env *env, t_closed_tree *tree, t_state *state); //tree calls
+void            push_tree_state(t_env *env, t_state_tree *tree, t_state *state, int opened); //tree calls
+t_state         *get_tree_state(t_env *env, t_state_tree *tree, t_state *state, int *is_closed); //tree calls
+void            set_tree_state(t_env *env, t_state_tree *tree, t_state *state, int opened); //tree calls
 int				euclidean(t_env *env, t_state *s1, t_state *s2);
 
 #endif

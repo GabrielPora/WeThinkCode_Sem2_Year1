@@ -78,11 +78,11 @@ int		main(int argc, char **argv)
 		char *tmp = argv[i];
  		while (*tmp == '0')
  			tmp++;
- 		int i = 0;
-		while (tmp[i])
-			if (!isdigit(tmp[i++])) // can use ft_isdigit here. i got it in my libft
+ 		int k = 0;
+		while (tmp[k])
+			if (!isdigit(tmp[k++])) // can use ft_isdigit here. i got it in my libft
 			{
-				fprintf(stderr, "npuzzle: invalid size");
+				fprintf(stderr, "npuzzle: invalid size\n");
 				print_usage();
 				exit(EXIT_FAILURE);
 			}
@@ -90,7 +90,7 @@ int		main(int argc, char **argv)
  		if (strlen(tmp) > 3 || (env.size = atoi(tmp)) > 255 || env.size < 2)
  		{
  			//ft_putendl_fd("npuzzle: invalid size, must be integer between 2 and 255");
-  			fprintf(stderr, "npuzzle: invalid size, must be integer between 2 and 255");
+  			fprintf(stderr, "npuzzle: invalid size, must be integer between 2 and 255\n");
 			print_usage();
   			exit(EXIT_FAILURE);
  		}
@@ -103,20 +103,26 @@ int		main(int argc, char **argv)
 		if (env.size < 2 || env.size > 255)
 		{			
  			//ft_putendl_fd("npuzzle: invalid size, must be integer between 2 and 255");
-			fprintf(stderr, "npuzzle: invalid size, must be integer between 2 and 255");
+			fprintf(stderr, "npuzzle: invalid size, must be integer between 2 and 255\n");
 			print_usage();
 			exit(EXIT_FAILURE);
 		}
 	}
+	if (argv[++i])
+	{
+		fprintf(stderr, "npuzzle: too much parameters\n");
+		print_usage();
+		exit(EXIT_FAILURE);
+	}
  	//ft_putendl("start:");
- 	printf("start:");
+ 	printf("start:\n");
  	dump_state(&env, env.start);
  	env.end = new_size_state(&env);
  	build_end(&env);
 	cal_score_state(&env, env.end);
 	cal_score_state(&env, env.start);
  	//ft_putendl("\nend:");
- 	printf("\nend:");
+ 	printf("\nend\n:");
  	dump_state(&env, env.end);
  	//ft_putchar('\n');
  	printf("\n");

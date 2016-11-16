@@ -1,15 +1,15 @@
 #include "npuzzle.h"
 
-static void get_diff(t_env *env, t_state *state, int ax, int ay, int val, int *dx, int *dy)
+static void get_diff(t_env *env, t_state *state, int ax, int ay, int val, double *dx, int *dy)
 {
+	(void)dy;
 	for (int y = 0; y < env->size; ++y)
 	{
 		for (int x = 0; x < env->size; ++x)
 		{
 			if (state->puzzle[y][x] == val)
 			{
-				*dx += abs(x - ax);
-				*dy += abs(y - ay);
+				*dx += sqrt(pow(abs(x - ax), 2) + pow(abs(y - ay), 2));
 				return;
 			}
 		}
@@ -18,7 +18,7 @@ static void get_diff(t_env *env, t_state *state, int ax, int ay, int val, int *d
 
 int euclidean(t_env *env, t_state *s1, t_state *s2)
 {
-	int dx = 0;
+	double dx = 0;
 	int dy = 0;
 
 	for (int y = 0; y < env->size; ++y)
@@ -28,5 +28,5 @@ int euclidean(t_env *env, t_state *s1, t_state *s2)
 			get_diff(env, s2, x, y, s1->puzzle[y][x], &dx, &dy);
 		}
 	}
-	return (sqrt(dx * dx + dy * dy));
+	return (dx);
 }

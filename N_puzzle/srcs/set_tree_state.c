@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_closed_tree.c                                  :+:      :+:    :+:   */
+/*   set_tree_state.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/15 14:22:24 by ggroener          #+#    #+#             */
-/*   Updated: 2016/11/15 14:22:25 by ggroener         ###   ########.fr       */
+/*   Created: 2016/11/15 14:24:25 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/15 14:24:25 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "npuzzle.h"
 
-t_state	*get_closed_tree(t_env *env, t_closed_tree *tree, t_state *state)
+void	set_tree_state(t_env *env, t_state_tree *tree, t_state *state, int opened)
 {
-	t_closed_tree *lst;
+	t_tree_state *lst;
 	int size = env->size * env->size;
 	int i = 0;
 
@@ -24,9 +24,11 @@ t_state	*get_closed_tree(t_env *env, t_closed_tree *tree, t_state *state)
 		lst = lst->child[state->puzzle[i / env->size][i % env->size]];
 		if (!lst)
 		{
-			return (NULL);
+			ft_putendl("FAILED Damn!");
+			exit(EXIT_FAILURE);
+			return ;
 		}
 		++i;
 	}
-	return (lst->state);
+	lst->opened = opened;
 }
