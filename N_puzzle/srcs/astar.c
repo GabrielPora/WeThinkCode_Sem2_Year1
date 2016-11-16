@@ -30,22 +30,22 @@ void astar(t_env *env)
 	int closed_size = 0;
 	int tmp_g;
 
-	ft_bzero(&closed, sizeof(closed));
+	memset(&closed, 0, sizeof(closed));
 	if (!(closed.child = malloc(sizeof(*closed.child) * env->size * env->size)))
 	{
 		ft_putendl_fd("nuzzle: malloc failed", 2);
 		exit(EXIT_FAILURE);
 	}
-	ft_bzero(closed.child, sizeof(*closed.child) * env->size * env->size);
-	ft_bzero(&opened_tree, sizeof(opened_tree)); // added for better processing speed
-	if (!(opened_tree.childs = malloc(sizeof(*opened_tree.childs) * env->size * env->size))) // added for better processing speed
+	memset(closed.child, 0, sizeof(*closed.child) * env->size * env->size);
+	memset(&opened_tree, 0, sizeof(opened_tree));
+	if (!(opened_tree.child = malloc(sizeof(*opened_tree.child) * env->size * env->size))) // added for better processing speed
 	{
 		ft_putendl_fd("npuzzle: malloc failed", 2);
 		exit(EXIT_FAILURE);
 	}
-	ft_bzero(opened_tree.childs, sizeof(*opened_tree.childs) * env->size *env->size); // added for better processing speed
+	memset(opened_tree.child, 0, sizeof(*opened_tree.child) * env->size *env->size);
 	push_list_state(&opened, env->start);
-	closed_tree_push(env, &opened_tree, env->start); // added for better processing speed
+	push_closed_tree(env, &opened_tree, env->start); // added for better processing speed
 	if ((size_tmp = opened_size + closed_size) > complexity_size)
 	{
 		complexity_size = size_tmp;
@@ -87,7 +87,11 @@ void astar(t_env *env)
 			{
 				expend->state->pred = best_state;
 				expend->state->g = tmp_g;
-				expend->state->f = expend->state->g + expend->state->h;
+				expend->state->f = 0;
+				if (!env->greedy)
+					expend->state->f += expend->state->g;
+				if (!env->uniform)
+					expend->state->f += expend->state->h;
 				push_list_state(&opened, expend->state);
 				push_closed_tree(env, &opened_tree, expend->state);
 				opened_size++;
@@ -103,7 +107,11 @@ void astar(t_env *env)
 			{
 				tmp_nei->pred = best_state;
 				tmp_nei->g = tmpg;
-				tmp_nei->f = tmp_nei->g + tmp_nei->h;
+				tmp_nei->f = 0;
+				if (!env->greedy)
+					tmp_nei->f += tmp_nei->g;
+				if (!env->uniform)
+					tmp_nei->f += tmp_nei->h;
 			}
 			tmp = expend;
 			expend = expend->next;

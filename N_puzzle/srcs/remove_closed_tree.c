@@ -21,7 +21,7 @@ void	remove_closed_tree(t_env *env, t_closed_tree *tree, t_state *state)
 	lst = tree;
 	while (i < size)
 	{
-		lst = lst->child[state->puzzle[i / 3][i % 3]];
+		lst = lst->child[state->puzzle[i / env->size][i % env->size]];
 		if (!lst)
 		{
 			ft_putendl("FAILED Damn!");

@@ -23,7 +23,7 @@ void	push_closed_tree(t_env *env, t_closed_tree *tree, t_state *state)
 	lst = tree;
 	while (i < size)
 	{
-		int nb = state->puzzle[i / 3][i % 3];
+		int nb = state->puzzle[i / env->size][i % env->size];
 		if (lst->child[nb])
 		{
 			lst = lst->child[nb];
@@ -35,13 +35,13 @@ void	push_closed_tree(t_env *env, t_closed_tree *tree, t_state *state)
 			ft_putendl_fd("npuzzle: malloc failed", 2);
 			exit(EXIT_FAILURE);
 		}
-		ft_bzero(new, sizeof(*new));
+		memset(new, 0, sizeof(*new));
 		if (!(new->child = malloc(sizeof(*new->child) * size)))
 		{
 			ft_putendl_fd("npuzzle: malloc failed", 2);
 			exit(EXIT_FAILURE);
 		}
-		ft_bzero(new->child, sizeof(*new->child) * size);
+		memset(new->child, 0, sizeof(*new->child) * size);
 		lst->child[nb] = new;
 		lst = new;
 		++i;
