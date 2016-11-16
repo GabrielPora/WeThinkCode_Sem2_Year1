@@ -81,8 +81,8 @@ void astar(t_env *env)
 				free(tmp);
 				continue;
 			}
-			tmpg = best_state->g + 1;
-			tmp_nei = get_closed_trees(env, &opened_tree, expend->state);
+			tmp_g = best_state->g + 1;
+			tmp_nei = get_closed_tree(env, &opened_tree, expend->state);
 			if (!tmp_nei)
 			{
 				expend->state->pred = best_state;
@@ -96,7 +96,7 @@ void astar(t_env *env)
 				push_closed_tree(env, &opened_tree, expend->state);
 				opened_size++;
 			}
-			else if (tmpg >= tmp_nei->g)
+			else if (tmp_g >= tmp_nei->g)
 			{
 				tmp = expend;
 				expend = expend->next;
@@ -106,7 +106,7 @@ void astar(t_env *env)
 			else
 			{
 				tmp_nei->pred = best_state;
-				tmp_nei->g = tmpg;
+				tmp_nei->g = tmp_g;
 				tmp_nei->f = 0;
 				if (!env->greedy)
 					tmp_nei->f += tmp_nei->g;
