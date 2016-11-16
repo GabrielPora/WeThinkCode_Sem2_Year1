@@ -52,7 +52,7 @@ SRCS_NAME = main.c 					\
 			get_closed_tree.c 		\
 			remove_closed_tree.c 	\
 			get_score.c 			\
-			euclidian.c 			\
+			euclidean.c 			\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
