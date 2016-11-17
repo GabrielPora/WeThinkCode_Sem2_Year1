@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_tree_state.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/17 08:44:54 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/17 08:44:55 by ggroener         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "npuzzle.h"
 
-void free_tree_state(t_env *env, t_state_tree *node)
+void free_tree_state(t_env *env, t_tree_state *node)
 {
 	int size = env->size * env->size;
 	int i = 0;
@@ -14,5 +26,5 @@ void free_tree_state(t_env *env, t_state_tree *node)
 	}
 	free(node->child);
 	if (node->state)
-		state_free(env, node->state);
+		free_state(env, node->state);
 }

@@ -12,7 +12,7 @@
 
 #include "npuzzle.h"
 
-void	push_tree_state(t_env *env, t_state_tree *tree, t_state *state, int opened)
+void	push_tree_state(t_env *env, t_tree_state *tree, t_state *state, int opened)
 {
 	t_tree_state *lst;
 	t_tree_state *new;

@@ -14,7 +14,7 @@
 
 void astar(t_env *env)
 {
-	t_state_tree state_tree; // added for better processing speed
+	t_tree_state state_tree; // added for better processing speed
 	t_state_list *opened = NULL;
 	t_state *best_state;
 	t_state_list *expend;
@@ -28,6 +28,7 @@ void astar(t_env *env)
 	int opened_size = 0;
 	int closed_size = 0;
 	int tmp_g;
+	int is_closed = 0;
 
 	memset(&state_tree, 0, sizeof(state_tree));
 	if (!(state_tree.child = malloc(sizeof(*state_tree.child) * env->size * env->size)))
@@ -64,13 +65,13 @@ void astar(t_env *env)
 		}
 		while (expend)
 		{
-			tmp_state = state_tree_get(env, &state_tree, expend->state, &is_closed);
+			tmp_state = get_tree_state(env, &state_tree, expend->state, &is_closed);
 			in_closed = tmp_state != NULL && is_closed;
 			if (in_closed)
 			{
 				tmp = expend;
 				expend = expend->next;
-				state_free(env, tmp->state);
+				free_state(env, tmp->state);
 				free(tmp);
 				continue;
 			}
@@ -96,7 +97,7 @@ void astar(t_env *env)
 			{
 				tmp = expend;
 				expend = expend->next;
-				state_free(env,tmp->state);
+				free_state(env,tmp->state);
 				free(tmp);
 				continue;
 			}
@@ -109,7 +110,7 @@ void astar(t_env *env)
 				tmp_state->f += tmp_state->h;
 			tmp = expend;
 			expend = expend->next;
-			state_free(env, tmp->state);
+			free_state(env, tmp->state);
 			free(tmp);
 		}
 	}
@@ -134,5 +135,5 @@ void astar(t_env *env)
 		ft_putendl("This puzzle is not solvable");
 	}
 	free_tree_state(env, &state_tree);
-	state_list_free(opened);
+	free_list_state(opened);
 }

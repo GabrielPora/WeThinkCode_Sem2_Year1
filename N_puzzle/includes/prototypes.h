@@ -39,13 +39,13 @@ int				size_list_state(t_state_list *lst);
 int				misplaced(t_env *env, t_state *s1, t_state *s2); // changed to improve
 int				row_column(t_env *env, t_state *s1, t_state *s2); // changed to improve
 void			cal_score_state(t_env *env, t_state *state);
-int				weight_state(t_state *old, t_state *new);
+int				cost_state(t_state *old, t_state *new);
 int				get_score(t_env *env, t_state *s1, t_state *s2); // added to get score
 t_state_list	*get_list_state(t_env *env, t_state_list *lst, t_state *state);
-void            push_tree_state(t_env *env, t_state_tree *tree, t_state *state, int opened); //tree calls
-t_state         *get_tree_state(t_env *env, t_state_tree *tree, t_state *state, int *is_closed); //tree calls
-void            set_tree_state(t_env *env, t_state_tree *tree, t_state *state, int opened); //tree calls
-void            free_tree_state(t_env *env, t_state_tree *node);
+void            push_tree_state(t_env *env, t_tree_state *tree, t_state *state, int opened); //tree calls
+t_state         *get_tree_state(t_env *env, t_tree_state *tree, t_state *state, int *is_closed); //tree calls
+void            set_tree_state(t_env *env, t_tree_state *tree, t_state *state, int opened); //tree calls
+void            free_tree_state(t_env *env, t_tree_state *node);
 int				euclidean(t_env *env, t_state *s1, t_state *s2);
 
 #endif

@@ -46,7 +46,7 @@ SRCS_NAME = main.c 					\
 			misplaced.c 			\
 			row_column.c 			\
 			cal_score_state.c 		\
-			weight_state.c 			\
+			cost_state.c 			\
 			get_list_state.c 		\
 			push_tree_state.c 		\
 			get_tree_state.c 		\
