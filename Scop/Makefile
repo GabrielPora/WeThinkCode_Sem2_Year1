@@ -114,6 +114,10 @@ norme: norm
 norm:
 	@clear
 	@$(call colourecho2, "Norminette:")
+	@find ./srcs -name "*.c" -maxdepth 1 -type f -exec norminette  {} \;
+	@find ./includes -name "*.h" -maxdepth 1 -type f -exec norminette  {} \;
+
+o_norme:
 	@norminette $(SRCS)
 	@norminette $(HEADER)
 
