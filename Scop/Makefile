@@ -117,6 +117,8 @@ norm:
 	@norminette $(SRCS)
 	@norminette $(HEADER)
 
+fnorm: fnorme
+
 fnorme:
 	@clear
 	@$(call colourecho2, "Norminette:")
