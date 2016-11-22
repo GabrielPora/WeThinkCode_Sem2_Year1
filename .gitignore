@@ -12,6 +12,4 @@ a.out
 .VC.*
 *.nfs.*
 *.plist
-*.pdf
-fractol
 tmp.txt
