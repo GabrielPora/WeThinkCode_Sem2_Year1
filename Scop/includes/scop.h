@@ -136,7 +136,7 @@ void		process_special_keys(int key, int x, int y);
 /*
 ** read_obj.c
 */
-
+int			read_obj(int ac, char **av);
 /*
 ** render_scene.c
 */
@@ -145,6 +145,12 @@ void		render_scene(void);
 ** set_colour.c
 */
 int			set_colour(float r, float g, float b);
+/*
+** store_obj.c
+*/
+void		store_struct(void const *struc, size_t size, t_list **pos);
+void		store_vertex(char *line, t_list **pos);
+void		store_face(char *line, t_list **pos);
 /*
 ** trim.c
 */
