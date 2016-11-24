@@ -51,9 +51,9 @@
 /*
 ** Colours
 */
-float	red = 1.0;
-float	blue = 1.0;
-float	green = 1.0;
+float		red = 1.0;
+float		blue = 1.0;
+float		green = 1.0;
 
 /*
 ** Setup
@@ -65,6 +65,11 @@ float	angle = 0;
 ** Prototypes |
 ** ----------/
 */
+
+/*
+** render_scene.c
+*/
+void		render_scene(void);
 
 /*
 **                                /----------\                                **
