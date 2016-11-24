@@ -40,7 +40,7 @@ OBJS_NAME = $(SRCS_NAME:.c=.o)
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 
 #uncomment these to work on Mac and comment to work on Linux.
-LIBRARY = -lmlx -L libft/ -lft -framework OpenGL -framework AppKit
+LIBRARY = -lmlx -L libft/ -L minilibx_macos/ -lft -framework OpenGL -framework AppKit
 
 INCLUDES = -I includes/ -I libft/includes
 
@@ -67,6 +67,7 @@ endef
 
 $(NAME): $(OBJS)
 	@Make -C libft
+	@Make -C minilibx_macos
 	@$(call colourecho, " - Making $(NAME)")
 	@clear
 	@$(CC) $(CFLAGS2) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
@@ -89,6 +90,7 @@ clean:
 
 fclean: clean
 	@Make fclean -C libft
+	@Make -C minilibx_macos
 	@$(call colourecho, "Clearing executable files")
 	@rm -f $(NAME)
 	@$(call colourecho, "fclean done")
