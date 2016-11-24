@@ -1,6 +1,6 @@
 #include "../includes/scop.h"
 
-void processSpecialKeys(int key, int x, int y)
+void process_special_keys(int key, int x, int y)
 {
 	(void)x;
 	(void)y;

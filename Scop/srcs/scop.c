@@ -9,10 +9,10 @@ int		main(int ac, char **av)
 	glutInitWindowSize(320,320);
 	glutCreateWindow("Lighthouse3D- GLUT Tutorial");
 	glutDisplayFunc(renderScene);
-	glutReshapeFunc(changeSize);
+	glutReshapeFunc(change_size);
 	glutIdleFunc(renderScene);
-	glutKeyboardFunc(processNormalKeys);
-	glutSpecialFunc(processSpecialKeys);
+	glutKeyboardFunc(process_normal_keys);
+	glutSpecialFunc(process_special_keys);
 	glutMainLoop();
 	return (1);
 }

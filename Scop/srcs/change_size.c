@@ -1,6 +1,6 @@
 #include "../includes/scop.h"
 
-void changeSize(int w, int h)
+void change_size(int w, int h)
 {
 	float	ratio;
 
