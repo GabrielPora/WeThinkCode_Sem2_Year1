@@ -1,12 +1,12 @@
 #include "../includes/scop.h"
 
-void	change_size(int w, int h)
+void changeSize(int w, int h)
 {
 	float	ratio;
 
 	if (h == 0)
 		h = 1;
-	ratio = w * 1.0 / h;
+	ratio =  w * 1.0 / h;
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, w, h);

@@ -1,5 +1,5 @@
 #include "../includes/scop.h"
-
+/*
 void	init_glut(int ac, char **av)
 {
 	glutInit(&ac, av);
@@ -14,3 +14,4 @@ void	init_glut(int ac, char **av)
 	glutSpecialFunc(process_special_keys);
 	glutMainLoop();
 }
+*/
