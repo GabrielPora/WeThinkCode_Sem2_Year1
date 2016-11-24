@@ -94,13 +94,13 @@ typedef struct		s_face
 	float			blue = 1.0;
 	float			green = 1.0;
 	float			angle = 0;
-	t_list			*list = NULL;
+	t_list			*lst = NULL;
 # else
 	extern float	red;
 	extern float	blue;
 	extern float	green;
 	extern float	angle;
-	extern t_list	*list;
+	extern t_list	*lst;
 # endif
 
 /*
@@ -117,6 +117,10 @@ void		change_size(int w, int h);
 ** error_quit.c
 */
 void		error_quit(char *message);
+/*
+** ft_atof.c
+*/
+float		ft_atof(const char *str);
 /*
 ** init_glut.c
 */
@@ -141,6 +145,13 @@ void		render_scene(void);
 ** set_colour.c
 */
 int			set_colour(float r, float g, float b);
+/*
+** trim.c
+*/
+char		*trim_start(char *str);
+void		trim_end(char *str);
+int			trim_tabs(char *line);
+void		trim_str(char *str);
 
 /*
 **                                /----------\                                **
