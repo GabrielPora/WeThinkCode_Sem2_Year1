@@ -10,10 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fractol
+NAME = scop
 
-CFLAGS =	-framework OpenGL -framework GLUT -Wno-deprecated-declarations \
-			-Wall -Wextra -Werror -g -Ofast
+CFLAGS =	-Wno-deprecated-declarations -Wall -Wextra -Werror -g -Ofast
+
+CFLAGS2 =	-framework OpenGL -framework GLUT -Wno-deprecated-declarations \
+			-g -Ofast
 
 CC = gcc
 
@@ -21,19 +23,12 @@ INCLUDES_PATH = includes/
 
 SRCS_PATH = srcs/
 
-SRCS_NAME = event_listener.c 			\
-			fractol.c 					\
-			window_init.c 				\
-			mandelbrot.c 				\
-			julia.c 					\
-			burningship.c 				\
-			env_init.c 					\
-			draw.c 						\
-			close_window.c 				\
-			pixel_put.c 				\
-			error_quit.c 				\
-			formula.c					\
-			mlx_opengl.m 				\
+SRCS_NAME = change_size.c 				\
+			init_glut.c 				\
+			process_normal_keys.c 		\
+			process_special_keys.c 		\
+			render_scene.c 				\
+			scop.c 						\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
@@ -53,15 +48,7 @@ INCLUDES = -I includes/ -I libft/includes
  
 #INCLUDES = -I includes/ -I libft/includes -I /usr/X11/include
 
-HEADER = 	$(INCLUDES_PATH)complex.h	 	\
-			$(INCLUDES_PATH)coord.h 		\
-			$(INCLUDES_PATH)env.h 			\
-			$(INCLUDES_PATH)fractol.h 		\
-			$(INCLUDES_PATH)includes.h 		\
-			$(INCLUDES_PATH)position.h 		\
-			$(INCLUDES_PATH)window.h 		\
-			$(INCLUDES_PATH)define.h 		\
-			$(INCLUDES_PATH)mlx_opengl.h 	\
+HEADER = 	$(INCLUDES_PATH)scop.h		\
 
 all: qme odir $(NAME)
 
@@ -81,7 +68,7 @@ $(NAME): $(OBJS)
 	@Make -C libft
 	@$(call colourecho, " - Making $(NAME)")
 	@clear
-	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
+	@$(CC) $(CFLAGS2) -o $(NAME) $^ $(LIBRARY) $(INCLUDES) -I$(INCLUDES_PATH)
 	@clear
 	@$(call colourecho, "Make Done!")
 

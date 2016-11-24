@@ -37,6 +37,11 @@
 */
 
 /*
+** Keys
+*/
+# define KEY_ESC   27
+
+/*
 ** ----------\
 ** Structures |
 ** ----------/
@@ -48,17 +53,17 @@
 ** ----------/
 */
 
-/*
-** Colours
-*/
-float		red = 1.0;
-float		blue = 1.0;
-float		green = 1.0;
-
-/*
-** Setup
-*/
-float	angle = 0;
+# ifdef  MAIN_FILE
+	float	red = 1.0;
+	float	blue = 1.0;
+	float	green = 1.0;
+	float	angle = 0;
+# else
+	extern float	red;
+	extern float	blue;
+	extern float	green;
+	extern float	angle;
+# endif
 
 /*
 ** ----------\
@@ -66,6 +71,22 @@ float	angle = 0;
 ** ----------/
 */
 
+/*
+** change_size.c
+*/
+void		change_size(int w, int h);
+/*
+** init_glut.c
+*/
+void		init_glut(int ac, char **av);
+/*
+** process_normal_keys.c
+*/
+void		process_normal_keys(unsigned char key, int x, int y);
+/*
+** process_special_keys.c
+*/
+void		process_special_keys(int key, int x, int y);
 /*
 ** render_scene.c
 */
