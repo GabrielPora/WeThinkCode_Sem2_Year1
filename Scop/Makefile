@@ -28,6 +28,7 @@ SRCS_NAME = change_size.c 				\
 			process_normal_keys.c 		\
 			process_special_keys.c 		\
 			render_scene.c 				\
+			set_colour.c				\
 			scop.c 						\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
