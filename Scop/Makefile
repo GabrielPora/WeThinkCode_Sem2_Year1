@@ -24,9 +24,11 @@ INCLUDES_PATH = includes/
 SRCS_PATH = srcs/
 
 SRCS_NAME = change_size.c 				\
+			error_quit.c				\
 			init_glut.c 				\
 			process_normal_keys.c 		\
 			process_special_keys.c 		\
+			read_obj.c					\
 			render_scene.c 				\
 			set_colour.c				\
 			scop.c 						\
