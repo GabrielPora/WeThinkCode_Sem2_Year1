@@ -40,7 +40,7 @@ OBJS_NAME = $(SRCS_NAME:.c=.o)
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 
 #uncomment these to work on Mac and comment to work on Linux.
-LIBRARY = -lmlx -L libft/ -L minilibx_macos/ -lft -framework OpenGL -framework AppKit
+LIBRARY = -lmlx -L libft/ -lft -L minilibx_macos/ -lft -framework OpenGL -framework AppKit
 
 INCLUDES = -I includes/ -I libft/includes
 
