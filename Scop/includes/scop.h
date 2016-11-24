@@ -91,6 +91,10 @@ void		process_special_keys(int key, int x, int y);
 ** render_scene.c
 */
 void		renderScene(void);
+/*
+** set_colour.c
+*/
+int			set_colour(float r, float g, float b);
 
 /*
 **                                /----------\                                **
