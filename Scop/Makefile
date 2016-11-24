@@ -27,6 +27,7 @@ SRCS_NAME = change_size.c 				\
 			error_quit.c				\
 			ft_atof.c					\
 			init_glut.c 				\
+			print_list.c				\
 			process_normal_keys.c 		\
 			process_special_keys.c 		\
 			read_obj.c					\

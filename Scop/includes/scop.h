@@ -64,7 +64,7 @@
 
 typedef struct	s_vertex
 {
-	char			type;
+	int				type;
 	float			x;
 	float			y;
 	float			z;
@@ -73,14 +73,14 @@ typedef struct	s_vertex
 
 typedef struct		s_face
 {
-	char			type;
+	int				type;
 	float			x;
 	float			y;
 	float			z;
 	float			w;
-	int				t_x;
-	int				t_y;
-	int				t_z;
+	float			t_x;
+	float			t_y;
+	float			t_z;
 }					t_face;
 
 /*
@@ -125,6 +125,12 @@ float		ft_atof(const char *str);
 ** init_glut.c
 */
 void		init_glut(int ac, char **av);
+/*
+** print_list.c
+*/
+void		print_vetex(t_vertex *vertex);
+void		print_face(t_face *face);
+void		print_list(t_list *list);
 /*
 ** process_normal_keys.c
 */

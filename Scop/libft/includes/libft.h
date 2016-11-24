@@ -22,6 +22,7 @@
 
 # include <stdarg.h>
 # include <string.h>
+# include <stdio.h>
 
 # define BUFF_SIZE 32
 # define HEX "0123456789abcdef"

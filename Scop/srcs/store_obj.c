@@ -49,7 +49,7 @@ void	store_face(char *line, t_list **pos)
 		error_quit("Error: failed to malloc memory for the face.");
 	ft_bzero(face, sizeof(t_face));
 	parts = ft_strsplit(line, ' ');
-	if (!ft_strchr(line, '/'))
+	if (ft_strchr(line, '/') != NULL)
 		error_quit("Error: textured faces aren't yet supporterd.");
 	if (parts[0] == NULL || parts[1] == NULL || parts[2] == NULL)
 		error_quit("Error: Invalid face");
