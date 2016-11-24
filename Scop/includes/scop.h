@@ -90,7 +90,7 @@ void		process_special_keys(int key, int x, int y);
 /*
 ** render_scene.c
 */
-void		renderScene(void);
+void		render_scene(void);
 /*
 ** set_colour.c
 */
