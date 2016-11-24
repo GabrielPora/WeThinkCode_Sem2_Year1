@@ -12,7 +12,8 @@
 
 NAME = fractol
 
-CFLAGS = -Wall -Wextra -Werror -g -Ofast
+CFLAGS =	-framework OpenGL -framework GLUT -Wno-deprecated-declarations \
+			-Wall -Wextra -Werror -g -Ofast
 
 CC = gcc
 
