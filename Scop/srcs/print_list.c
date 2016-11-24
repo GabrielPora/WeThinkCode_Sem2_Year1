@@ -28,9 +28,9 @@ void	print_list(t_list *list)
 	t_list	*pos;
 	int		tmp;
 
-	if (list)
+	if (list == NULL)
 	{
-		ft_putendl("Error: print_list called without a NULL argument");
+		ft_putendl("Error: print_list called with a NULL argument");
 		return ;
 	}
 	pos = list;
