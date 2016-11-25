@@ -164,6 +164,10 @@ void		ft_print_memory(const void *addr, size_t size);
 */
 void		init_glut(int ac, char **av);
 /*
+** matrix_add.c
+*/
+t_matrix	matrix_add(t_matrix first, t_matrix second);
+/*
 ** matrix_create.c
 */
 t_matrix	matrix_create(unsigned int x, unsigned int y);
