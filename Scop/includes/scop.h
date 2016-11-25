@@ -197,6 +197,7 @@ t_matrix	matrix_transpose(t_matrix source);
 */
 void		print_vetex(t_vertex *vertex);
 void		print_face(t_face *face);
+void		print_list_details(t_list *pos);
 void		print_list(t_list *list);
 /*
 ** process_normal_keys.c

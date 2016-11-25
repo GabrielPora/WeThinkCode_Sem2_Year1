@@ -16,7 +16,7 @@
  **	This file is debug purposes, to test the content of the linked list
  */
 
-void		print_vetex(t_vertex *vertex)
+void	print_vetex(t_vertex *vertex)
 {
 	printf("\tTYPE:\tvetex\n");
 	printf("\tX:\t%f\n", vertex->x);
@@ -25,7 +25,7 @@ void		print_vetex(t_vertex *vertex)
 	printf("\tW:\t%f\n", vertex->w);
 }
 
-void		print_face(t_face *face)
+void	print_face(t_face *face)
 {
 	printf("\tTYPE:\tface\n");
 	printf("\tX:\t%f\n", face->x);
@@ -37,10 +37,16 @@ void		print_face(t_face *face)
 	printf("\tT_Z:\t%f\n", face->t_z);
 }
 
-static void	print_pos_details(t_list *pos)
+void	print_list_details(t_list *pos)
 {
 	char	tmp;
 
+
+	if (pos == NULL)
+	{
+		ft_putendl("Error: print_list called with a NULL argument");
+		return ;
+	}
 	printf("List Item: size: %zu; Has Content: %s, Has next: %s\n",
 			pos->content_size,
 			((pos->content != NULL) ? "YES" : "NO"),
@@ -57,7 +63,7 @@ static void	print_pos_details(t_list *pos)
 	}
 }
 
-void		print_list(t_list *list)
+void	print_list(t_list *list)
 {
 	t_list	*pos;
 
@@ -70,7 +76,7 @@ void		print_list(t_list *list)
 	ft_putendl("--- PRINTING LINKED LIST ---");
 	while (pos != NULL)
 	{
-		print_pos_details(pos);
+		print_list_details(pos);
 		pos = pos->next;
 	}
 	ft_putendl("--- DONE PRINTING LINKED LIST ---");
