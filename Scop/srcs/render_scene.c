@@ -34,7 +34,7 @@ void	render_vertex(void)
 }
 
 /*
-** To Restore the Hardcoded version, add replace render_vertex with: 
+** To Restore the Hardcoded version, replace render_vertex with: 
 **	glBegin(GL_POLYGON);
 **	glVertex3f(-2.0f, -2.0f, 0.0f);
 **	glVertex3f(2.0f, 0.0f, 0.0f);
