@@ -131,6 +131,7 @@ void		error_quit(char *message);
 */
 int			free_lst(t_list *list);
 int			safe_free_lst(t_list **list);
+int			safe_free(void **item);
 /*
 ** ft_atof.c
 */

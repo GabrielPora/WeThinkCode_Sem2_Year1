@@ -28,3 +28,12 @@ int		safe_free_lst(t_list **list)
 	*list = NULL;
 	return (k);
 }
+
+int		safe_free(void **item)
+{
+	if (item == NULL)
+		return (-1);
+	free(*item);
+	*item = NULL;
+	return (1);
+}
