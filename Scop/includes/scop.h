@@ -231,6 +231,10 @@ char		*trim_start(char *str);
 void		trim_end(char *str);
 int			trim_tabs(char *line);
 void		trim_str(char *str);
+/*
+** vertex_create.c
+*/
+t_vertex	vertex_create(float x, float y, float z, float w);
 
 /*
 **                                /----------\                                **

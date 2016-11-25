@@ -46,6 +46,7 @@ SRCS_NAME = change_size.c 				\
 			scop.c 						\
 			store_obj.c					\
 			trim.c						\
+			vertex_create.c				\
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
