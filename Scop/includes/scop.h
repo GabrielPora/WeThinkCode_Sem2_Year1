@@ -99,9 +99,9 @@ typedef struct		s_matrix
 
 typedef struct		s_mat_mul
 {
-	int				c;
-	int				d;
-	int				k;
+	unsigned int	c;
+	unsigned int	d;
+	unsigned int	k;
 	int				sum;
 	struct s_matrix	multiply;
 }					t_mat_mul;
