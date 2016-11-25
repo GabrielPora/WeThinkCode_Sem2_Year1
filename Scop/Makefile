@@ -25,12 +25,14 @@ SRCS_PATH = srcs/
 
 SRCS_NAME = change_size.c 				\
 			error_quit.c				\
+			exit_prog.c					\
 			ft_atof.c					\
 			ft_print_memory.c			\
 			init_glut.c 				\
 			print_list.c				\
 			process_normal_keys.c 		\
 			process_special_keys.c 		\
+			free_lst.c					\
 			read_obj.c					\
 			render_scene.c 				\
 			set_colour.c				\

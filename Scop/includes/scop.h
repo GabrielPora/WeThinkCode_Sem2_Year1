@@ -119,9 +119,18 @@ typedef struct		s_face
 */
 void		change_size(int w, int h);
 /*
+** exit_prog.c
+*/
+void		exit_prog(void);
+/*
 ** error_quit.c
 */
 void		error_quit(char *message);
+/*
+** free_lst.c
+*/
+int			free_lst(t_list *list);
+int			safe_free_lst(t_list **list);
 /*
 ** ft_atof.c
 */
