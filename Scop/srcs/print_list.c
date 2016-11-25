@@ -63,7 +63,7 @@ void	print_list(t_list *list)
 			else if (tmp == TYPE_FACE)
 				print_face((t_face *)(pos->content));
 			else
-				printf("\tpos content is of an unknown data structure.\n");
+				printf("\tTYPE:\tunknown\n");
 		}
 		pos = pos->next;
 	}
