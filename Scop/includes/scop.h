@@ -181,9 +181,13 @@ t_matrix	matrix_clear(t_matrix matrix);
 */
 t_matrix	matrix_multiply(t_matrix first, t_matrix second);
 /*
-** matrix_multiply.c
+** matrix_sub.c
 */
 t_matrix	matrix_sub(t_matrix first, t_matrix second);
+/*
+** matrix_transpose.c
+*/
+t_matrix	matrix_transpose(t_matrix source);
 /*
 ** print_list.c
 */
