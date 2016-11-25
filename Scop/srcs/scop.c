@@ -19,8 +19,8 @@ int		main(int ac, char **av)
 	print_list(g_lst);//debug
 	glutInit(&ac, av);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowPosition(100,100);
-	glutInitWindowSize(320,320);
+	glutInitWindowPosition(200, 200);
+	glutInitWindowSize(640, 640);
 	glutCreateWindow("Lighthouse3D- GLUT Tutorial");
 	glutDisplayFunc(render_scene);
 	glutReshapeFunc(change_size);
