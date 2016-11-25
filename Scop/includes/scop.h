@@ -168,6 +168,11 @@ void		init_glut(int ac, char **av);
 */
 t_matrix	matrix_create(unsigned int x, unsigned int y);
 /*
+** matrix_destroy.c
+*/
+int			matrix_destroy(t_matrix matrix);
+t_matrix	matrix_clear(t_matrix matrix);
+/*
 ** matrix_multiply.c
 */
 t_matrix	matrix_multiply(t_matrix first, t_matrix second);
