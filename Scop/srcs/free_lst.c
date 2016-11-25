@@ -33,6 +33,8 @@ int		safe_free(void **item)
 {
 	if (item == NULL)
 		return (-1);
+	if (*item == NULL)
+		return (0);
 	free(*item);
 	*item = NULL;
 	return (1);
