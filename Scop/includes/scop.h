@@ -114,18 +114,18 @@ typedef struct		s_mat_mul
 
 # ifdef MAIN_FILE
 
-float			g_red = 1.0;
-float			g_blue = 1.0;
-float			g_green = 1.0;
-float			g_angle = 0;
-t_list			*g_lst = NULL;
+float				g_red = 1.0;
+float				g_blue = 1.0;
+float				g_green = 1.0;
+float				g_angle = 0;
+t_list				*g_lst = NULL;
 # else
 
-extern float	g_red;
-extern float	g_blue;
-extern float	g_green;
-extern float	g_angle;
-extern t_list	*g_lst;
+extern float		g_red;
+extern float		g_blue;
+extern float		g_green;
+extern float		g_angle;
+extern t_list		*g_lst;
 # endif
 
 /*
@@ -137,107 +137,107 @@ extern t_list	*g_lst;
 /*
 ** change_size.c
 */
-void		change_size(int w, int h);
+void				change_size(int w, int h);
 /*
 ** exit_prog.c
 */
-void		exit_prog(void);
+void				exit_prog(void);
 /*
 ** error_quit.c
 */
-void		error_quit(char *message);
+void				error_quit(char *message);
 /*
 ** free_lst.c
 */
-int			free_lst(t_list *list);
-int			safe_free_lst(t_list **list);
-int			safe_free(void **item);
+int					free_lst(t_list *list);
+int					safe_free_lst(t_list **list);
+int					safe_free(void **item);
 /*
 ** ft_atof.c
 */
-float		ft_atof(const char *str);
+float				ft_atof(const char *str);
 /*
 ** ft_print_memory.c
 */
-void		print_hex(unsigned char num);
-void		ft_print_memory(const void *addr, size_t size);
+void				print_hex(unsigned char num);
+void				ft_print_memory(const void *addr, size_t size);
 /*
 ** init_glut.c
 */
-void		init_glut(int ac, char **av);
+void				init_glut(int ac, char **av);
 /*
 ** matrix_add.c
 */
-t_matrix	matrix_add(t_matrix first, t_matrix second);
+t_matrix			matrix_add(t_matrix first, t_matrix second);
 /*
 ** matrix_create.c
 */
-t_matrix	matrix_create(unsigned int x, unsigned int y);
+t_matrix			matrix_create(unsigned int x, unsigned int y);
 /*
 ** matrix_destroy.c
 */
-int			matrix_destroy(t_matrix matrix);
-t_matrix	matrix_clear(t_matrix matrix);
+int					matrix_destroy(t_matrix matrix);
+t_matrix			matrix_clear(t_matrix matrix);
 /*
 ** matrix_identity.c
 */
-t_matrix	matrix_identity(unsigned int size);
+t_matrix			matrix_identity(unsigned int size);
 /*
 ** matrix_multiply.c
 */
-t_matrix	matrix_multiply(t_matrix first, t_matrix second);
+t_matrix			matrix_multiply(t_matrix first, t_matrix second);
 /*
 ** matrix_sub.c
 */
-t_matrix	matrix_sub(t_matrix first, t_matrix second);
+t_matrix			matrix_sub(t_matrix first, t_matrix second);
 /*
 ** matrix_transpose.c
 */
-t_matrix	matrix_transpose(t_matrix source);
+t_matrix			matrix_transpose(t_matrix source);
 /*
 ** print_list.c
 */
-void		print_vetex(t_vertex *vertex);
-void		print_face(t_face *face);
-void		print_list_details(t_list *pos);
-void		print_list(t_list *list);
+void				print_vetex(t_vertex *vertex);
+void				print_face(t_face *face);
+void				print_list_details(t_list *pos);
+void				print_list(t_list *list);
 /*
 ** process_normal_keys.c
 */
-void		process_normal_keys(unsigned char key, int x, int y);
+void				process_normal_keys(unsigned char key, int x, int y);
 /*
 ** process_special_keys.c
 */
-void		process_special_keys(int key, int x, int y);
+void				process_special_keys(int key, int x, int y);
 /*
 ** read_obj.c
 */
-int			read_obj(int ac, char **av);
+int					read_obj(int ac, char **av);
 /*
 ** render_scene.c
 */
-void		render_scene(void);
+void				render_scene(void);
 /*
 ** set_colour.c
 */
-int			set_colour(float r, float g, float b);
+int					set_colour(float r, float g, float b);
 /*
 ** store_obj.c
 */
-void		store_struct(void const *struc, size_t size, t_list **pos);
-void		store_vertex(char *line, t_list **pos);
-void		store_face(char *line, t_list **pos);
+void				store_struct(void const *struc, size_t size, t_list **pos);
+void				store_vertex(char *line, t_list **pos);
+void				store_face(char *line, t_list **pos);
 /*
 ** trim.c
 */
-char		*trim_start(char *str);
-void		trim_end(char *str);
-int			trim_tabs(char *line);
-void		trim_str(char *str);
+char				*trim_start(char *str);
+void				trim_end(char *str);
+int					trim_tabs(char *line);
+void				trim_str(char *str);
 /*
 ** vertex_create.c
 */
-t_vertex	vertex_create(float x, float y, float z, float w);
+t_vertex			vertex_create(float x, float y, float z, float w);
 
 /*
 **                                /----------\                                **
