@@ -69,7 +69,7 @@
 
 typedef struct	s_vertex
 {
-	int				type;
+	char			type;
 	float			x;
 	float			y;
 	float			z;
@@ -78,7 +78,7 @@ typedef struct	s_vertex
 
 typedef struct		s_face
 {
-	int				type;
+	char			type;
 	float			x;
 	float			y;
 	float			z;

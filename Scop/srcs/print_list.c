@@ -6,6 +6,7 @@
 
 void	print_vetex(t_vertex *vertex)
 {
+	printf("\tTYPE: vetex\n");
 	printf("\tX: %f\n", vertex->x);
 	printf("\tY: %f\n", vertex->y);
 	printf("\tZ: %f\n", vertex->z);
@@ -14,6 +15,7 @@ void	print_vetex(t_vertex *vertex)
 
 void	print_face(t_face *face)
 {
+	printf("\tTYPE: face\n");
 	printf("\tX: %f\n", face->x);
 	printf("\tY: %f\n", face->y);
 	printf("\tZ: %f\n", face->z);
@@ -26,7 +28,7 @@ void	print_face(t_face *face)
 void	print_list(t_list *list)
 {
 	t_list	*pos;
-	int		tmp;
+	char	tmp;
 
 	if (list == NULL)
 	{
@@ -37,16 +39,18 @@ void	print_list(t_list *list)
 	ft_putendl("--- PRINTING LINKED LIST ---");
 	while (pos != NULL)
 	{
-		printf("List Item: size: %zu; Has Content: %s, Has next: %s\n", list->content_size,
-			((list->content) ? "YES" : "No"), ((list->content) ? "YES" : "No"));
-		if (list->content_size && list->content && (tmp = (int)list->content))
+		printf("List Item: size: %zu; Has Content: %s, Has next: %s\n", pos->content_size,
+			((pos->content != NULL) ? "YES" : "No"),
+			((pos->next != NULL) ? "YES" : "No"));
+		if (pos->content_size && pos->content != NULL)
 		{
+			ft_memcpy(&tmp, pos->content, 1);
 			if (tmp == TYPE_VERTEX)
-				print_vetex((t_vertex *)(list->content));
+				print_vetex((t_vertex *)(pos->content));
 			else if (tmp == TYPE_FACE)
-				print_face((t_face *)(list->content));
+				print_face((t_face *)(pos->content));
 			else
-				printf("\tList content is of an unknown data structure.\n");
+				printf("\tpos content is of an unknown data structure.\n");
 		}
 		pos = pos->next;
 	}
