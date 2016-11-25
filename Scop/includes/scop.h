@@ -34,10 +34,12 @@
 
 # include "../libft/includes/libft.h"
 
-//# include "../minilibx_macos/mlx.h"
-//# include "../minilibx_macos/mlx_int.h"
-//# include "../minilibx_macos/mlx_new_window.h"
-//# include "../minilibx_macos/mlx_opengl.h"
+/*
+** # include "../minilibx_macos/mlx.h"
+** # include "../minilibx_macos/mlx_int.h"
+** # include "../minilibx_macos/mlx_new_window.h"
+** # include "../minilibx_macos/mlx_opengl.h"
+*/
 
 /*
 ** ----------\
@@ -87,6 +89,22 @@ typedef struct		s_face
 	float			t_y;
 	float			t_z;
 }					t_face;
+
+typedef struct		s_matrix
+{
+	unsigned int	x;
+	unsigned int	y;
+	int				**matrix;		
+}					t_matrix;
+
+typedef struct		s_mat_mul
+{
+	int				c;
+	int				d;
+	int				k;
+	int				sum;
+	struct s_matrix	multiply;
+}					t_mat_mul;
 
 /*
 ** ----------\
@@ -145,6 +163,14 @@ void		ft_print_memory(const void *addr, size_t size);
 ** init_glut.c
 */
 void		init_glut(int ac, char **av);
+/*
+** matrix_create.c
+*/
+t_matrix	matrix_create(unsigned int x, unsigned int y);
+/*
+** matrix_multiply.c
+*/
+t_matrix	matrix_multiply(t_matrix first, t_matrix second);
 /*
 ** print_list.c
 */

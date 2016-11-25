@@ -29,6 +29,8 @@ SRCS_NAME = change_size.c 				\
 			ft_atof.c					\
 			ft_print_memory.c			\
 			init_glut.c 				\
+			matrix_create.c				\
+			matrix_multiply.c			\
 			print_list.c				\
 			process_normal_keys.c 		\
 			process_special_keys.c 		\
