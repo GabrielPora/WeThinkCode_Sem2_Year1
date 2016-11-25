@@ -13,13 +13,14 @@ int		read_obj(int ac, char **av)
 	pos = NULL;
 	while (get_next_line(fd, &line))
 	{
-		if (!line)
+		if (line == NULL)
 			continue ;
 		trim_str(line);
 		if (*line == 'v')
 			store_vertex(line, &pos);
 		else if (*line == 'f')
 			store_face(line, &pos);
+		free(line);
 	}
 	return (1);
 }

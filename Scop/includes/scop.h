@@ -57,6 +57,11 @@
 # define TYPE_FACE   2
 
 /*
+** Other
+*/
+# define BASE_STR2 char *base = "0123456789abcdef";
+
+/*
 ** ----------\
 ** Structures |
 ** ----------/
@@ -121,6 +126,11 @@ void		error_quit(char *message);
 ** ft_atof.c
 */
 float		ft_atof(const char *str);
+/*
+** ft_print_memory.c
+*/
+void		print_hex(unsigned char num);
+void		ft_print_memory(const void *addr, size_t size);
 /*
 ** init_glut.c
 */

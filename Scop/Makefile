@@ -26,6 +26,7 @@ SRCS_PATH = srcs/
 SRCS_NAME = change_size.c 				\
 			error_quit.c				\
 			ft_atof.c					\
+			ft_print_memory.c			\
 			init_glut.c 				\
 			print_list.c				\
 			process_normal_keys.c 		\
