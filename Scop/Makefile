@@ -33,6 +33,7 @@ SRCS_NAME = change_size.c 				\
 			matrix_create.c				\
 			matrix_destroy.c			\
 			matrix_multiply.c			\
+			matrix_sub.c				\
 			print_list.c				\
 			process_normal_keys.c 		\
 			process_special_keys.c 		\

@@ -181,6 +181,10 @@ t_matrix	matrix_clear(t_matrix matrix);
 */
 t_matrix	matrix_multiply(t_matrix first, t_matrix second);
 /*
+** matrix_multiply.c
+*/
+t_matrix	matrix_sub(t_matrix first, t_matrix second);
+/*
 ** print_list.c
 */
 void		print_vetex(t_vertex *vertex);
