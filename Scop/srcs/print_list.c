@@ -41,7 +41,6 @@ void	print_list_details(t_list *pos)
 {
 	char	tmp;
 
-
 	if (pos == NULL)
 	{
 		ft_putendl("Error: print_list called with a NULL argument");
