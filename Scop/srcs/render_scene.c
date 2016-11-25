@@ -6,7 +6,7 @@
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 09:39:22 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/25 10:17:38 by khansman         ###   ########.fr       */
+/*   Updated: 2016/11/25 10:21:37 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	render_scene(void)
 	glLoadIdentity();
 	gluLookAt(0.0f, 0.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 	glRotatef(g_angle, 0.0f, 1.0f, 0.0f);
-	glColor3f(g_red,g_green,g_blue);
+	glColor3f(g_red, g_green, g_blue);
 	glBegin(GL_TRIANGLES);
-	glVertex3f( -2.0f, -2.0f, 0.0f);
-	glVertex3f( 2.0f, 0.0f, 0.0f);
-	glVertex3f( 0.0f, 2.0f, 0.0f);
+	glVertex3f(-2.0f, -2.0f, 0.0f);
+	glVertex3f(2.0f, 0.0f, 0.0f);
+	glVertex3f(0.0f, 2.0f, 0.0f);
 	glEnd();
 	g_angle += 0.1f;
 	glutSwapBuffers();

@@ -6,7 +6,7 @@
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 09:40:59 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/25 09:41:03 by khansman         ###   ########.fr       */
+/*   Updated: 2016/11/25 10:22:58 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		trim_tabs(char *line)
 	int		k;
 
 	k = -1;
-	if (!line || ! *line)
+	if (!line || !*line)
 		return (-1);
 	while (line[++k])
 		if (line[k] == '\t')
