@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_list.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/25 09:37:45 by khansman          #+#    #+#             */
+/*   Updated: 2016/11/25 09:38:13 by khansman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/scop.h"
 
 /*
@@ -39,7 +51,8 @@ void	print_list(t_list *list)
 	ft_putendl("--- PRINTING LINKED LIST ---");
 	while (pos != NULL)
 	{
-		printf("List Item: size: %zu; Has Content: %s, Has next: %s\n", pos->content_size,
+		printf("List Item: size: %zu; Has Content: %s, Has next: %s\n",
+				pos->content_size,
 			((pos->content != NULL) ? "YES" : "NO"),
 			((pos->next != NULL) ? "YES" : "NO"));
 		if (pos->content_size && pos->content != NULL)
