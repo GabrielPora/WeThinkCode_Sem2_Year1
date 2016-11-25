@@ -14,3 +14,4 @@ a.out
 *.plist
 tmp.txt
 scop
+tmp.c
