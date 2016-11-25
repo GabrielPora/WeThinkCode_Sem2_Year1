@@ -33,6 +33,17 @@ void	render_vertex(void)
 	glEnd();
 }
 
+/*
+** To Restore the Hardcoded version, add replace render_vertex with: 
+**	glBegin(GL_POLYGON);
+**	glVertex3f(-2.0f, -2.0f, 0.0f);
+**	glVertex3f(2.0f, 0.0f, 0.0f);
+**	glVertex3f(0.0f, 2.0f, 0.0f);
+**	glVertex3f(3.0f, 3.0f, 3.0f);
+**	glVertex3f(2.0f, 0.0f, 0.0f);
+**	glEnd();
+*/
+
 void	render_scene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -40,11 +51,7 @@ void	render_scene(void)
 	gluLookAt(0.0f, 0.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 	glRotatef(g_angle, 0.0f, 1.0f, 0.0f);
 	glColor3f(g_red, g_green, g_blue);
-	glBegin(GL_TRIANGLES);
-	glVertex3f(-2.0f, -2.0f, 0.0f);
-	glVertex3f(2.0f, 0.0f, 0.0f);
-	glVertex3f(0.0f, 2.0f, 0.0f);
-	glEnd();
+	render_vertex();
 	g_angle += 0.1f;
 	glutSwapBuffers();
 }
