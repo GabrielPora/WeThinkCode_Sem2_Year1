@@ -14,17 +14,20 @@
 
 void	render_vertex(void)
 {
-	t_list		*list;
-	t_vertex	*ver;
-	char		type;
+	t_list			*list;
+	t_vertex		*ver;
+	char			type;
+	unsigned int	k;
 
 	list = g_lst;
 	glBegin(GL_POLYGON);
-	while (list)
+	k = 0;
+	while (list && (++k + 1))
 	{
 		ft_memcpy(&type, list->content, 1);
 		if (type == TYPE_VERTEX)
 		{
+			glColor3f(((k) % 3) , ((k + 1) % 3), ((k + 2) % 3));
 			ver = (t_vertex *)list->content;
 			glVertex4f(ver->x, ver->y, ver->z, ver->w);
 		}
