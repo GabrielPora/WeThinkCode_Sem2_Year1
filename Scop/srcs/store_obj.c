@@ -22,42 +22,38 @@ void	store_struct(void const *struc, size_t size, t_list **pos)
 
 void	store_vertex(char *line, t_list **pos)
 {
-	t_vertex	*vertex;
+	t_vertex	vertex;
 	char		**parts;
 
-	if (!(vertex = malloc(sizeof(t_vertex))))
-		error_quit("Error: Failed to malloc memory for the vertex.");
-	ft_bzero(vertex, sizeof(t_vertex));
+	ft_bzero(&vertex, sizeof(t_vertex));
 	parts = ft_strsplit(line, ' ');
 	if (parts[1] == NULL || parts[2] == NULL || parts[3] == NULL)
 		error_quit("Error: invalid vertex.");
-	vertex->type = TYPE_VERTEX;
-	vertex->x = ft_atof(parts[1]);
-	vertex->y = ft_atof(parts[2]);
-	vertex->z = ft_atof(parts[3]);
-	vertex->w = (parts[4]) ? ft_atof(parts[4]) : 1.0f;
+	vertex.type = TYPE_VERTEX;
+	vertex.x = ft_atof(parts[1]);
+	vertex.y = ft_atof(parts[2]);
+	vertex.z = ft_atof(parts[3]);
+	vertex.w = (parts[4]) ? ft_atof(parts[4]) : 1.0f;
 	ft_free_2d_array(&parts);
-	store_struct((void const *)vertex, sizeof(t_vertex), pos);
+	store_struct((void const *)&vertex, sizeof(t_vertex), pos);
 }
 
 void	store_face(char *line, t_list **pos)
 {
-	t_face		*face;
+	t_face		face;
 	char		**parts;
 
-	if (!(face = malloc(sizeof(t_face))))
-		error_quit("Error: failed to malloc memory for the face.");
-	ft_bzero(face, sizeof(t_face));
+	ft_bzero(&face, sizeof(t_face));
 	parts = ft_strsplit(line, ' ');
 	if (ft_strchr(line, '/') != NULL)
 		error_quit("Error: textured faces aren't yet supporterd.");
 	if (parts[1] == NULL || parts[2] == NULL || parts[3] == NULL)
 		error_quit("Error: Invalid face");
-	face->type = TYPE_FACE;
-	face->x = ft_atof(parts[1]);
-	face->y = ft_atof(parts[2]);
-	face->z = ft_atof(parts[3]);
-	face->w = (parts[4]) ? ft_atof(parts[4]) : 1;
+	face.type = TYPE_FACE;
+	face.x = ft_atof(parts[1]);
+	face.y = ft_atof(parts[2]);
+	face.z = ft_atof(parts[3]);
+	face.w = (parts[4]) ? ft_atof(parts[4]) : 1;
 	ft_free_2d_array(&parts);
-	store_struct((void const *)face, sizeof(t_face), pos);
+	store_struct((void const *)&face, sizeof(t_face), pos);
 }
