@@ -177,6 +177,10 @@ t_matrix	matrix_create(unsigned int x, unsigned int y);
 int			matrix_destroy(t_matrix matrix);
 t_matrix	matrix_clear(t_matrix matrix);
 /*
+** matrix_identity.c
+*/
+t_matrix	matrix_identity(unsigned int size);
+/*
 ** matrix_multiply.c
 */
 t_matrix	matrix_multiply(t_matrix first, t_matrix second);

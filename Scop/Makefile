@@ -32,6 +32,7 @@ SRCS_NAME = change_size.c 				\
 			matrix_add.c				\
 			matrix_create.c				\
 			matrix_destroy.c			\
+			matrix_identity.c			\
 			matrix_multiply.c			\
 			matrix_sub.c				\
 			matrix_transpose.c			\
