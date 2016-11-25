@@ -14,8 +14,8 @@
 
 int		set_colour(float r, float g, float b)
 {
-	red = r;
-	green = g;
-	blue = b;
+	g_red = r;
+	g_green = g;
+	g_blue = b;
 	return (1);
 }

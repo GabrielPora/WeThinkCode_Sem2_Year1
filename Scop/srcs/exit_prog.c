@@ -14,6 +14,6 @@
 
 void	exit_prog(void)
 {
-	safe_free_lst(&lst);
+	safe_free_lst(&g_lst);
 	exit(0);
 }

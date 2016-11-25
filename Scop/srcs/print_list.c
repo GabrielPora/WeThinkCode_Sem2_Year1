@@ -13,8 +13,8 @@
 #include "../includes/scop.h"
 
 /*
- **	This file is debug purposes, to test the content of the linked list
- */
+**	This file is debug purposes, to test the content of the linked list
+*/
 
 void	print_vetex(t_vertex *vertex)
 {

@@ -6,7 +6,7 @@
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 09:39:22 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/25 09:39:59 by khansman         ###   ########.fr       */
+/*   Updated: 2016/11/25 10:17:38 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	render_vertex(void)
 	t_vertex	*ver;
 	char		type;
 
-	list = lst;
+	list = g_lst;
 	glBegin(GL_POLYGON);
 	while (list)
 	{
@@ -37,14 +37,14 @@ void	render_scene(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	gluLookAt(0.0f, 0.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,  0.0f);
-	glRotatef(angle, 0.0f, 1.0f, 0.0f);
-	glColor3f(red,green,blue);
+	gluLookAt(0.0f, 0.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+	glRotatef(g_angle, 0.0f, 1.0f, 0.0f);
+	glColor3f(g_red,g_green,g_blue);
 	glBegin(GL_TRIANGLES);
-	glVertex3f(-2.0f,-2.0f, 0.0f);
-	glVertex3f( 2.0f, 0.0f, 0.0);
-	glVertex3f( 0.0f, 2.0f, 0.0);
+	glVertex3f( -2.0f, -2.0f, 0.0f);
+	glVertex3f( 2.0f, 0.0f, 0.0f);
+	glVertex3f( 0.0f, 2.0f, 0.0f);
 	glEnd();
-	angle+=0.1f;
+	g_angle += 0.1f;
 	glutSwapBuffers();
 }

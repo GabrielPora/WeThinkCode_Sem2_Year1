@@ -20,9 +20,9 @@ void	store_struct(void const *struc, size_t size, t_list **pos)
 		return ;
 	if (!(new_link = ft_lstnew(struc, size)))
 		error_quit("Error: failed to store item in memory.");
-	if (!lst)
+	if (!g_lst)
 	{
-		lst = new_link;
+		g_lst = new_link;
 		(*pos) = new_link;
 	}
 	else

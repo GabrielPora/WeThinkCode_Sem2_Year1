@@ -20,11 +20,11 @@
 */
 
 # ifdef __APPLE__
-	# include <OpenGL/gl.h>
-	# include <GLUT/glut.h>
+#  include <OpenGL/gl.h>
+#  include <GLUT/glut.h>
 # else
-	# include <GL/gl.h>
-	# include <GL/glut.h>
+#  include <GL/gl.h>
+#  include <GL/glut.h>
 # endif
 
 # include <stdlib.h>
@@ -69,7 +69,7 @@
 ** ----------/
 */
 
-typedef struct	s_vertex
+typedef struct		s_vertex
 {
 	char			type;
 	float			x;
@@ -94,7 +94,7 @@ typedef struct		s_matrix
 {
 	unsigned int	x;
 	unsigned int	y;
-	int				**matrix;		
+	int				**matrix;
 }					t_matrix;
 
 typedef struct		s_mat_mul
@@ -112,18 +112,20 @@ typedef struct		s_mat_mul
 ** ----------/
 */
 
-# ifdef  MAIN_FILE
-	float			red = 1.0;
-	float			blue = 1.0;
-	float			green = 1.0;
-	float			angle = 0;
-	t_list			*lst = NULL;
+# ifdef MAIN_FILE
+
+float			g_red = 1.0;
+float			g_blue = 1.0;
+float			g_green = 1.0;
+float			g_angle = 0;
+t_list			*g_lst = NULL;
 # else
-	extern float	red;
-	extern float	blue;
-	extern float	green;
-	extern float	angle;
-	extern t_list	*lst;
+
+extern float	g_red;
+extern float	g_blue;
+extern float	g_green;
+extern float	g_angle;
+extern t_list	*g_lst;
 # endif
 
 /*

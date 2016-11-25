@@ -15,6 +15,6 @@
 void	error_quit(char *message)
 {
 	ft_putendl(message);
-	safe_free_lst(&lst);
+	safe_free_lst(&g_lst);
 	exit(0);
 }

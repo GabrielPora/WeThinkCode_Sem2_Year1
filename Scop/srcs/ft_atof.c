@@ -15,7 +15,7 @@
 static size_t	ft_len_untill(const char *str, char c)
 {
 	size_t	k;
-	
+
 	k = 0;
 	if (!str)
 		return (0);
