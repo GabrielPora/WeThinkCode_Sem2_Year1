@@ -27,7 +27,7 @@ void	render_vertex(void)
 		{
 			ver = (t_vertex *)list->content;
 			glVertex4f(ver->x, ver->y, ver->z, ver->w);
-		}§
+		}
 		list = list->next;
 	}
 	glEnd();
