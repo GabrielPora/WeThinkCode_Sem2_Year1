@@ -43,7 +43,7 @@ void	print_list_details(t_list *pos)
 
 	if (pos == NULL)
 	{
-		ft_putendl("Error: print_list called with a NULL argument");
+		ft_putendl("Error: print_list_details called with a NULL argument");
 		return ;
 	}
 	printf("List Item: size: %zu; Has Content: %s, Has next: %s\n",
