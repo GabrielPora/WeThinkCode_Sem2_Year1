@@ -64,6 +64,7 @@
 # define TYPE_MTL     7
 # define TYPE_MTLFILE 8
 # define TYPE_SMOOTH  9
+# define TYPE_PSPACE 10
 
 # define F_VERTEX     0b00000001
 # define F_TEXTURE    0b00000010
@@ -88,6 +89,14 @@ typedef struct		s_vertex
 	float			z;
 	float			w;
 }					t_vertex;
+
+typedef struct		s_vertex2
+{
+	char			type;
+	float			u;
+	float			v;
+	float			w;
+}					t_vertex2;
 
 typedef struct		s_face
 {
@@ -245,6 +254,9 @@ void				store_face(char *line, t_list **pos);
 */
 void				store_struct(void const *struc, size_t size, t_list **pos);
 void				store_vertex(char *line, t_list **pos);
+void				store_normal(char *line, t_list **pos);
+void				store_texture(char *line, t_list **pos);
+void				store_pspace(char *line, t_list **pos);
 /*
 ** trim.c
 */

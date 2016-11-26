@@ -28,7 +28,7 @@ void	print_vetex(t_vertex *vertex)
 void	print_face(t_face *face)
 {
 	printf("\tTYPE:\tface\n");
-	printf("\nVERTEX SET: %s; TEXTURE SET %s; NORMAL SET %s\n",
+	printf("\tVERTEX SET: %s; TEXTURE SET %s; NORMAL SET %s\n",
 		(face->set & F_VERTEX) ? "YES" : "NO",
 		(face->set & F_TEXTURE) ? "YES" : "NO",
 		(face->set & F_NORMAL) ? "YES" : "NO");

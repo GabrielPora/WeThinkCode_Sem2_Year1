@@ -11,22 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
-/*
-static void	store_type(char *line, t_list *pos)
-{
-	if (*line == 'v')
-	{
-		if (line[1] == 'n')
-			store_normal(line, pos);
-		else if (line[1] == 't')
-			store_texture(line, pos);
-		else
-			store_vertex(line, pos);
-	}
-	else if (*line == 'f')
-		store_face(line, pos);
-}
-*/
+
 int			read_obj(int ac, char **av)
 {
 	int			fd;
@@ -44,7 +29,16 @@ int			read_obj(int ac, char **av)
 			continue ;
 		trim_str(line);
 		if (*line == 'v')
-			store_vertex(line, &pos);
+		{
+			if (line[1] == 'n')
+				store_normal(line, &pos);
+			else if (line[1] == 't')
+				store_texture(line, &pos);
+			else if (line[1] == 'p')
+				store_pspace(line, &pos);
+			else
+				store_vertex(line, &pos);
+		}
 		else if (*line == 'f')
 			store_face(line, &pos);
 		free(line);
