@@ -24,6 +24,7 @@ INCLUDES_PATH = includes/
 SRCS_PATH = srcs/
 
 SRCS_NAME = change_size.c 				\
+			count_elements.c			\
 			error_quit.c				\
 			exit_prog.c					\
 			ft_atof.c					\
@@ -43,6 +44,7 @@ SRCS_NAME = change_size.c 				\
 			render_scene.c 				\
 			set_colour.c				\
 			scop.c 						\
+			store_face.c				\
 			store_obj.c					\
 			trim.c						\
 			vertex_create.c				\

@@ -55,8 +55,20 @@
 /*
 ** Objects
 */
-# define TYPE_VERTEX 1
-# define TYPE_FACE   2
+# define TYPE_VERTEX  1
+# define TYPE_TEXTURE 2
+# define TYPE_NORMAL  3
+# define TYPE_FACE    4
+# define TYPE_GROUP   5
+# define TYPE_OBJNAME 6
+# define TYPE_MTL     7
+# define TYPE_MTLFILE 8
+# define TYPE_SMOOTH  9
+# define TYPE_PSPACE 10
+
+# define F_VERTEX     0b00000001
+# define F_TEXTURE    0b00000010
+# define F_NORMAL     0b00000100
 
 /*
 ** Other
@@ -78,6 +90,14 @@ typedef struct		s_vertex
 	float			w;
 }					t_vertex;
 
+typedef struct		s_vertex2
+{
+	char			type;
+	float			u;
+	float			v;
+	float			w;
+}					t_vertex2;
+
 typedef struct		s_face
 {
 	char			type;
@@ -88,6 +108,10 @@ typedef struct		s_face
 	float			t_x;
 	float			t_y;
 	float			t_z;
+	float			n_x;
+	float			n_y;
+	float			n_z;
+	char			set;
 }					t_face;
 
 typedef struct		s_matrix
@@ -146,6 +170,10 @@ extern t_list		*g_lst;
 ** change_size.c
 */
 void				change_size(int w, int h);
+/*
+** change_size.c
+*/
+int					count_elements(char type);
 /*
 ** exit_prog.c
 */
@@ -207,7 +235,7 @@ t_matrix			matrix_transpose(t_matrix source);
 */
 void				print_vetex(t_vertex *vertex);
 void				print_face(t_face *face);
-void				print_list_details(t_list *pos);
+void				print_list_details(t_list *pos, unsigned int k);
 void				print_list(t_list *list);
 /*
 ** process_normal_keys.c
@@ -230,11 +258,17 @@ void				render_scene(void);
 */
 int					set_colour(float r, float g, float b);
 /*
+** store_face.c
+*/
+void				store_face(char *line, t_list **pos);
+/*
 ** store_obj.c
 */
 void				store_struct(void const *struc, size_t size, t_list **pos);
 void				store_vertex(char *line, t_list **pos);
-void				store_face(char *line, t_list **pos);
+void				store_normal(char *line, t_list **pos);
+void				store_texture(char *line, t_list **pos);
+void				store_pspace(char *line, t_list **pos);
 /*
 ** trim.c
 */

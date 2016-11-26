@@ -27,7 +27,7 @@ void	render_vertex(void)
 		ft_memcpy(&type, list->content, 1);
 		if (type == TYPE_VERTEX)
 		{
-			glColor3f(((k) % 3) , ((k + 1) % 3), ((k + 2) % 3));
+			glColor3f(((k) % 3), ((k + 1) % 3), ((k + 2) % 3));
 			ver = (t_vertex *)list->content;
 			glVertex4f(ver->x, ver->y, ver->z, ver->w);
 		}
@@ -37,7 +37,7 @@ void	render_vertex(void)
 }
 
 /*
-** To Restore the Hardcoded version, replace render_vertex with: 
+** To Restore the Hardcoded version, replace render_vertex with:
 **	glBegin(GL_POLYGON);
 **	glVertex3f(-2.0f, -2.0f, 0.0f);
 **	glVertex3f(2.0f, 0.0f, 0.0f);

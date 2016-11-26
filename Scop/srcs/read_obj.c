@@ -6,13 +6,25 @@
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/25 09:39:10 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/25 09:39:12 by khansman         ###   ########.fr       */
+/*   Updated: 2016/11/26 11:29:43 by khansman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
 
-int		read_obj(int ac, char **av)
+static void	find_vertex_func(char *line, t_list **pos)
+{
+	if (line[1] == 'n')
+		store_normal(line, pos);
+	else if (line[1] == 't')
+		store_texture(line, pos);
+	else if (line[1] == 'p')
+		store_pspace(line, pos);
+	else
+		store_vertex(line, pos);
+}
+
+int			read_obj(int ac, char **av)
 {
 	int			fd;
 	char		*line;
@@ -29,7 +41,7 @@ int		read_obj(int ac, char **av)
 			continue ;
 		trim_str(line);
 		if (*line == 'v')
-			store_vertex(line, &pos);
+			find_vertex_func(line, &pos);
 		else if (*line == 'f')
 			store_face(line, &pos);
 		free(line);
