@@ -41,6 +41,10 @@ void	trim_end(char *str)
 		str[k + 1] = '\0';
 }
 
+/*
+** Modified to trim comments as well as tabs.
+*/
+
 int		trim_tabs(char *line)
 {
 	int		k;
@@ -49,8 +53,12 @@ int		trim_tabs(char *line)
 	if (!line || !*line)
 		return (-1);
 	while (line[++k])
+	{
 		if (line[k] == '\t')
 			line[k] = ' ';
+		else if (line[k] == '#')
+			line[k] = '\0';
+	}
 	return (k);
 }
 
