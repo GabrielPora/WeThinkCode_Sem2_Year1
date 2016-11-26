@@ -64,15 +64,15 @@ static void	store_f_part(t_face *face, char *part, char pos)
 	sub_parts = ft_strsplit(part, '/');
 	if ((F_VERTEX & face->set) && sub_parts[0] != NULL)
 	{
-		store_f_piece(face, pos, 1, ft_atof(sub_parts[0]));
+		store_f_piece(face, pos, 1, atof(sub_parts[0]));
 		if ((F_TEXTURE & face->set) && sub_parts[1] != NULL)
 		{
-			store_f_piece(face, pos, 2, ft_atof(sub_parts[1]));
+			store_f_piece(face, pos, 2, atof(sub_parts[1]));
 			if ((F_NORMAL & face->set) && sub_parts[2] != NULL)
-				store_f_piece(face, pos, 3, ft_atof(sub_parts[2]));
+				store_f_piece(face, pos, 3, atof(sub_parts[2]));
 		}
 		else if ((F_NORMAL & face->set) && sub_parts[1])
-			store_f_piece(face, pos, 3, ft_atof(sub_parts[1]));
+			store_f_piece(face, pos, 3, atof(sub_parts[1]));
 	}
 	else
 		error_quit("Error: unsupported format. A face must contain vertexes");
@@ -93,7 +93,7 @@ void		store_face(char *line, t_list **pos)
 	store_f_part(&face, parts[1], 1);
 	store_f_part(&face, parts[2], 2);
 	store_f_part(&face, parts[3], 3);
-	face.w = (parts[4] != NULL) ? ft_atof(parts[4]) : 1.0f;
+	face.w = (parts[4] != NULL) ? atof(parts[4]) : 1.0f;
 	ft_free_2d_array(&parts);
 	store_struct((void const *)&face, sizeof(t_face), pos);
 }

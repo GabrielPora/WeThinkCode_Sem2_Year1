@@ -42,10 +42,10 @@ void	store_vertex(char *line, t_list **pos)
 	if (parts[1] == NULL || parts[2] == NULL || parts[3] == NULL)
 		error_quit("Error: invalid vertex.");
 	vertex.type = TYPE_VERTEX;
-	vertex.x = ft_atof(parts[1]);
-	vertex.y = ft_atof(parts[2]);
-	vertex.z = ft_atof(parts[3]);
-	vertex.w = (parts[4]) ? ft_atof(parts[4]) : 1.0f;
+	vertex.x = atof(parts[1]);
+	vertex.y = atof(parts[2]);
+	vertex.z = atof(parts[3]);
+	vertex.w = (parts[4]) ? atof(parts[4]) : 1.0f;
 	ft_free_2d_array(&parts);
 	store_struct((void const *)&vertex, sizeof(t_vertex), pos);
 }
@@ -60,10 +60,10 @@ void	store_normal(char *line, t_list **pos)
 	if (parts[1] == NULL || parts[2] == NULL || parts[3] == NULL)
 		error_quit("Error: invalid normal.");
 	vertex.type = TYPE_NORMAL;
-	vertex.x = ft_atof(parts[1]);
-	vertex.y = ft_atof(parts[2]);
-	vertex.z = ft_atof(parts[3]);
-	vertex.w = (parts[4]) ? ft_atof(parts[4]) : 1.0f;
+	vertex.x = atof(parts[1]);
+	vertex.y = atof(parts[2]);
+	vertex.z = atof(parts[3]);
+	vertex.w = (parts[4]) ? atof(parts[4]) : 1.0f;
 	ft_free_2d_array(&parts);
 	store_struct((void const *)&vertex, sizeof(t_vertex), pos);
 }
@@ -78,9 +78,9 @@ void	store_texture(char *line, t_list **pos)
 	if (parts[1] == NULL || parts[2] == NULL)
 		error_quit("Error: invalid texture.");
 	vertex.type = TYPE_TEXTURE;
-	vertex.u = ft_atof(parts[1]);
-	vertex.v = ft_atof(parts[2]);
-	vertex.w = (parts[3] != NULL) ? ft_atof(parts[3]) : 0;
+	vertex.u = atof(parts[1]);
+	vertex.v = atof(parts[2]);
+	vertex.w = (parts[3] != NULL) ? atof(parts[3]) : 0;
 	ft_free_2d_array(&parts);
 	store_struct((void const *)&vertex, sizeof(t_vertex), pos);
 }
@@ -95,9 +95,9 @@ void	store_pspace(char *line, t_list **pos)
 	if (parts[1] == NULL || parts[2] == NULL)
 		error_quit("Error: invalid paramiter space.");
 	vertex.type = TYPE_PSPACE;
-	vertex.u = ft_atof(parts[1]);
-	vertex.v = ft_atof(parts[2]);
-	vertex.w = (parts[3] != NULL) ? ft_atof(parts[3]) : 0;
+	vertex.u = atof(parts[1]);
+	vertex.v = atof(parts[2]);
+	vertex.w = (parts[3] != NULL) ? atof(parts[3]) : 0;
 	ft_free_2d_array(&parts);
 	store_struct((void const *)&vertex, sizeof(t_vertex), pos);
 }
