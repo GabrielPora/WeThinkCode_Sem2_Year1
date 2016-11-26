@@ -163,6 +163,10 @@ extern t_list		*g_lst;
 */
 void				change_size(int w, int h);
 /*
+** change_size.c
+*/
+int					count_elements(char type);
+/*
 ** exit_prog.c
 */
 void				exit_prog(void);

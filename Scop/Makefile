@@ -24,6 +24,7 @@ INCLUDES_PATH = includes/
 SRCS_PATH = srcs/
 
 SRCS_NAME = change_size.c 				\
+			count_elements.c			\
 			error_quit.c				\
 			exit_prog.c					\
 			ft_atof.c					\
