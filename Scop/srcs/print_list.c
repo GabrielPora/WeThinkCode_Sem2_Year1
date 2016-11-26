@@ -28,13 +28,19 @@ void	print_vetex(t_vertex *vertex)
 void	print_face(t_face *face)
 {
 	printf("\tTYPE:\tface\n");
-	printf("\tX:\t%f\n", face->x);
-	printf("\tY:\t%f\n", face->y);
-	printf("\tZ:\t%f\n", face->z);
-	printf("\tW:\t%f\n", face->w);
-	printf("\tT_X:\t%f\n", face->t_x);
-	printf("\tT_Y:\t%f\n", face->t_y);
-	printf("\tT_Z:\t%f\n", face->t_z);
+	printf("\nVERTEX SET: %s; TEXTURE SET %s; NORMAL SET %s\n",
+		(face->set & F_VERTEX) ? "YES" : "NO",
+		(face->set & F_TEXTURE) ? "YES" : "NO",
+		(face->set & F_NORMAL) ? "YES" : "NO");
+	if (face->set & F_VERTEX)
+		printf("\tX:\t%f\n\tY:\t%f\n\tZ:\t%f\n\tW:\t%f\n",
+			face->x, face->y, face->z, face->w);
+	if (face->set & F_TEXTURE)
+		printf("\tT_X:\t%f\n\tT_Y:\t%f\n\tT_Z:\t%f\n",
+			face->t_x, face->t_y, face->t_z);
+	if (face->set & F_NORMAL)
+		printf("\tN_X:\t%f\n\tN_Y:\t%f\n\tN_Z:\t%f\n",
+			face->n_x, face->n_y, face->n_z);
 }
 
 void	print_list_details(t_list *pos)

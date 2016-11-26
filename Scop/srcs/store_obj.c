@@ -49,7 +49,7 @@ void	store_vertex(char *line, t_list **pos)
 	ft_free_2d_array(&parts);
 	store_struct((void const *)&vertex, sizeof(t_vertex), pos);
 }
-
+/*
 void	store_face(char *line, t_list **pos)
 {
 	t_face		face;
@@ -68,4 +68,4 @@ void	store_face(char *line, t_list **pos)
 	face.w = (parts[4]) ? ft_atof(parts[4]) : 1;
 	ft_free_2d_array(&parts);
 	store_struct((void const *)&face, sizeof(t_face), pos);
-}
+}*/

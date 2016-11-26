@@ -43,6 +43,7 @@ SRCS_NAME = change_size.c 				\
 			render_scene.c 				\
 			set_colour.c				\
 			scop.c 						\
+			store_face.c				\
 			store_obj.c					\
 			trim.c						\
 			vertex_create.c				\

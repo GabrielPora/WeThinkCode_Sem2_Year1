@@ -11,8 +11,23 @@
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
-
-int		read_obj(int ac, char **av)
+/*
+static void	store_type(char *line, t_list *pos)
+{
+	if (*line == 'v')
+	{
+		if (line[1] == 'n')
+			store_normal(line, pos);
+		else if (line[1] == 't')
+			store_texture(line, pos);
+		else
+			store_vertex(line, pos);
+	}
+	else if (*line == 'f')
+		store_face(line, pos);
+}
+*/
+int			read_obj(int ac, char **av)
 {
 	int			fd;
 	char		*line;

@@ -55,8 +55,19 @@
 /*
 ** Objects
 */
-# define TYPE_VERTEX 1
-# define TYPE_FACE   2
+# define TYPE_VERTEX  1
+# define TYPE_TEXTURE 2
+# define TYPE_NORMAL  3
+# define TYPE_FACE    4
+# define TYPE_GROUP   5
+# define TYPE_OBJNAME 6
+# define TYPE_MTL     7
+# define TYPE_MTLFILE 8
+# define TYPE_SMOOTH  9
+
+# define F_VERTEX     0b00000001
+# define F_TEXTURE    0b00000010
+# define F_NORMAL     0b00000100
 
 /*
 ** Other
@@ -88,6 +99,10 @@ typedef struct		s_face
 	float			t_x;
 	float			t_y;
 	float			t_z;
+	float			n_x;
+	float			n_y;
+	float			n_z;
+	char			set;
 }					t_face;
 
 typedef struct		s_matrix
@@ -222,11 +237,14 @@ void				render_scene(void);
 */
 int					set_colour(float r, float g, float b);
 /*
+** store_face.c
+*/
+void				store_face(char *line, t_list **pos);
+/*
 ** store_obj.c
 */
 void				store_struct(void const *struc, size_t size, t_list **pos);
 void				store_vertex(char *line, t_list **pos);
-void				store_face(char *line, t_list **pos);
 /*
 ** trim.c
 */
