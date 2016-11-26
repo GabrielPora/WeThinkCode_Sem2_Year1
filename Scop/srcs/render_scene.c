@@ -67,8 +67,25 @@ void	draw_snowman()
 	glutSwapBuffers();
 }
 
+void	computePos(float g_deltaMove)
+{
+	g_x += g_deltaMove * g_lx * 0.1f;
+	g_z += g_deltaMove * g_lz * 0.1f;
+}
+
+void	computeDir(float g_deltaAngle)
+{
+	g_angle += g_deltaAngle;
+	g_lx = sin(g_angle);
+	g_lz = -cos(g_angle);
+}
+
 void	render_scene(void)
 {	
+	/*if (g_deltaMove)
+		computePos(g_deltaMove);
+	if (g_deltaAngle)
+		computeDir(g_deltaAngle);*/
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Color and Depth Buffers
 	glLoadIdentity(); // Reset transformations
 	//gluLookAt(g_x, 1.0f, g_z, g_x + g_lx, 1.0f, g_z + g_lz,	0.0f, 1.0f, 0.0f); // Set the camera
