@@ -47,11 +47,41 @@ void	render_vertex(void)
 **	glEnd();
 */
 
-void	render_scene(void)
+void	draw_snowman()
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glLoadIdentity();
+	int	i;
+	int	j;
+
+	j = -3;
+	i = -3;
+	while (i < 3)
+	{
+		while (j < 3)
+		{
+			glPushMatrix();
+			glTranslatef(i * 10.0, 0, j * 10.0);
+			drawSnowMan();
+			glPopMatrix();
+		}
+	}
+	glutSwapBuffers();
+}
+
+void	render_scene(void)
+{	
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Color and Depth Buffers
+	glLoadIdentity(); // Reset transformations
+	//gluLookAt(g_x, 1.0f, g_z, g_x + g_lx, 1.0f, g_z + g_lz,	0.0f, 1.0f, 0.0f); // Set the camera
 	gluLookAt(0.0f, 0.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+	glColor3f(0.9f, 0.9f, 0.9f);
+	/*glBegin(GL_QUADS);
+		glVertex3f(-100.0f, 0.0f, -100.0f);
+		glVertex3f(-100.0f, 0.0f,  100.0f);
+		glVertex3f( 100.0f, 0.0f,  100.0f);
+		glVertex3f( 100.0f, 0.0f, -100.0f);
+	glEnd();
+	draw_snowman();
+	//glutSwapBuffers();*/
 	glRotatef(g_angle, 0.0f, 1.0f, 0.0f);
 	glColor3f(g_red, g_green, g_blue);
 	render_vertex();

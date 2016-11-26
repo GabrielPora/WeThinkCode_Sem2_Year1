@@ -118,6 +118,10 @@ float				g_red = 1.0;
 float				g_blue = 1.0;
 float				g_green = 1.0;
 float				g_angle = 0;
+float				g_lx = 0.0f;
+float				g_lz = -1.0f;
+float				g_x = 0.0f;
+float				g_z = 5.0f;
 t_list				*g_lst = NULL;
 # else
 
@@ -125,6 +129,10 @@ extern float		g_red;
 extern float		g_blue;
 extern float		g_green;
 extern float		g_angle;
+extern float		g_lx;
+extern float		g_lz;
+extern float		g_x;
+extern float		g_z;
 extern t_list		*g_lst;
 # endif
 
@@ -238,6 +246,12 @@ void				trim_str(char *str);
 ** vertex_create.c
 */
 t_vertex			vertex_create(float x, float y, float z, float w);
+
+
+/*
+** snowman.c
+*/
+void				drawSnowMan();
 
 /*
 **                                /----------\                                **
