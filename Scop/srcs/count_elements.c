@@ -25,9 +25,10 @@ int		count_elements(char type)
 		if (l->content)
 		{
 			ft_memcpy(&tmp, l->content, 1);
-			if (tmp = type)
+			if (tmp == type)
 				k++;
 		}
 		l = l->next;
 	}
+	return (k);
 }
