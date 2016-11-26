@@ -146,6 +146,8 @@ float				g_lx = 0.0f;
 float				g_lz = -1.0f;
 float				g_x = 0.0f;
 float				g_z = 5.0f;
+float				g_deltaAngle = 0.0f;
+float				g_deltaMove = 0;
 t_list				*g_lst = NULL;
 t_vertex			**g_vertecies = NULL;
 # else
@@ -158,6 +160,8 @@ extern float		g_lx;
 extern float		g_lz;
 extern float		g_x;
 extern float		g_z;
+extern float		g_deltaAngle;
+extern float		g_deltaMove;
 extern t_list		*g_lst;
 extern t_vertex		**g_vertecies;
 # endif
