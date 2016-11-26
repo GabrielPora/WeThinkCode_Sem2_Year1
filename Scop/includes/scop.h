@@ -147,6 +147,7 @@ float				g_lz = -1.0f;
 float				g_x = 0.0f;
 float				g_z = 5.0f;
 t_list				*g_lst = NULL;
+t_vertex			**g_vertecies = NULL;
 # else
 
 extern float		g_red;
@@ -158,6 +159,7 @@ extern float		g_lz;
 extern float		g_x;
 extern float		g_z;
 extern t_list		*g_lst;
+extern t_vertex		**g_vertecies;
 # endif
 
 /*
@@ -171,7 +173,7 @@ extern t_list		*g_lst;
 */
 void				change_size(int w, int h);
 /*
-** change_size.c
+** count_elements.c
 */
 int					count_elements(char type);
 /*
@@ -253,6 +255,10 @@ int					read_obj(int ac, char **av);
 ** render_scene.c
 */
 void				render_scene(void);
+/*
+** set_arrays.c
+*/
+void				set_vertix_arr(void);
 /*
 ** set_colour.c
 */

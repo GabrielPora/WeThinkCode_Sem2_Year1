@@ -14,7 +14,9 @@
 
 void	error_quit(char *message)
 {
-	ft_putendl(message);
+	ft_putendl((message != NULL) ? "Error: An unlabled error occured." :
+		message);
 	safe_free_lst(&g_lst);
+	safe_free((void **)&g_vertecies);
 	exit(0);
 }

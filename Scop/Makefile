@@ -42,6 +42,7 @@ SRCS_NAME = change_size.c 				\
 			free_lst.c					\
 			read_obj.c					\
 			render_scene.c 				\
+			set_arrays.c				\
 			set_colour.c				\
 			scop.c 						\
 			store_face.c				\

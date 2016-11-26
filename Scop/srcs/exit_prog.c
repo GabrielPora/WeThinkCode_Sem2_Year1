@@ -15,5 +15,6 @@
 void	exit_prog(void)
 {
 	safe_free_lst(&g_lst);
+	safe_free((void **)&g_vertecies);
 	exit(0);
 }
