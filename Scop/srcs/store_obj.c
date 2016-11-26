@@ -65,7 +65,7 @@ void	store_normal(char *line, t_list **pos)
 	vertex.z = ft_atof(parts[3]);
 	vertex.w = (parts[4]) ? ft_atof(parts[4]) : 1.0f;
 	ft_free_2d_array(&parts);
-	store_struct((void const *)&vertex, sizeof(t_vertex), pos);	
+	store_struct((void const *)&vertex, sizeof(t_vertex), pos);
 }
 
 void	store_texture(char *line, t_list **pos)
@@ -82,7 +82,7 @@ void	store_texture(char *line, t_list **pos)
 	vertex.v = ft_atof(parts[2]);
 	vertex.w = (parts[3] != NULL) ? ft_atof(parts[3]) : 0;
 	ft_free_2d_array(&parts);
-	store_struct((void const *)&vertex, sizeof(t_vertex), pos);	
+	store_struct((void const *)&vertex, sizeof(t_vertex), pos);
 }
 
 void	store_pspace(char *line, t_list **pos)
