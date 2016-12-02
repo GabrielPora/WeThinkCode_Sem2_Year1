@@ -3,37 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ggroener <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 09:39:22 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/25 10:21:37 by khansman         ###   ########.fr       */
+/*   Created: 2016/11/25 09:39:22 by ggroener          #+#    #+#             */
+/*   Updated: 2016/11/27 11:59:44 by ggroener         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/scop.h"
 
+/*
+** RED Diffused light, and infinite light location.
+*/
+
+GLfloat g_light_diffuse[] = L_DIFF;
+GLfloat g_light_position[] = LIGHT_POS;
+
+void	set_normal(t_face *face)
+{
+	normalise_point(VER2(x), VER2(y), VER2(z));
+	glVertex3f(VER(x, x), VER(x, y), VER(x, z));
+	glVertex3f(VER(y, x), VER(y, y), VER(y, z));
+	glVertex3f(VER(z, x), VER(z, y), VER(z, z));
+	if (face->w)
+		glVertex3f(VER(w, x), VER(w, y), VER(w, z));
+	if (face->w && face->u)
+		glVertex3f(VER(u, x), VER(u, y), VER(u, z));
+	if (face->w && face->u && face->v)
+		glVertex3f(VER(v, x), VER(v, y), VER(v, z));
+	if (face->w && face->u && face->v && face->o)
+		glVertex3f(VER(o, x), VER(o, y), VER(o, z));
+	if (face->w && face->u && face->v && face->o && face->p)
+		glVertex3f(VER(p, x), VER(p, y), VER(p, z));
+}
+
 void	render_vertex(void)
 {
-	t_list			*list;
-	t_vertex		*ver;
-	char			type;
-	unsigned int	k;
+	t_list		*k;
+	t_face		*face;
+	char		tmp;
 
-	list = g_lst;
-	glBegin(GL_POLYGON);
-	k = 0;
-	while (list && (++k + 1))
+	k = g_lst;
+	while (k != NULL)
 	{
-		ft_memcpy(&type, list->content, 1);
-		if (type == TYPE_VERTEX)
+		if (k->content)
+			ft_memcpy(&tmp, k->content, 1);
+		if (tmp == TYPE_FACE)
 		{
-			glColor3f(((k) % 3), ((k + 1) % 3), ((k + 2) % 3));
-			ver = (t_vertex *)list->content;
-			glVertex4f(ver->x, ver->y, ver->z, ver->w);
+			face = (t_face *)k->content;
+			glBegin((g_keyhook.wire) ? REN_TYPE : GL_LINES);
+			set_normal(face);
+			glEnd();
 		}
-		list = list->next;
+		k = k->next;
 	}
-	glEnd();
 }
 
 /*
@@ -47,61 +70,32 @@ void	render_vertex(void)
 **	glEnd();
 */
 
-void	draw_snowman()
-{
-	int	i;
-	int	j;
-
-	j = -3;
-	i = -3;
-	while (i < 3)
-	{
-		while (j < 3)
-		{
-			glPushMatrix();
-			glTranslatef(i * 10.0, 0, j * 10.0);
-			drawSnowMan();
-			glPopMatrix();
-		}
-	}
-	glutSwapBuffers();
-}
-
-void	computePos(float g_deltaMove)
-{
-	g_x += g_deltaMove * g_lx * 0.1f;
-	g_z += g_deltaMove * g_lz * 0.1f;
-}
-
-void	computeDir(float g_deltaAngle)
-{
-	g_angle += g_deltaAngle;
-	g_lx = sin(g_angle);
-	g_lz = -cos(g_angle);
-}
-
 void	render_scene(void)
-{	
-	/*if (g_deltaMove)
-		computePos(g_deltaMove);
-	if (g_deltaAngle)
-		computeDir(g_deltaAngle);*/
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Color and Depth Buffers
-	glLoadIdentity(); // Reset transformations
-	//gluLookAt(g_x, 1.0f, g_z, g_x + g_lx, 1.0f, g_z + g_lz,	0.0f, 1.0f, 0.0f); // Set the camera
-	gluLookAt(0.0f, 0.0f, 10.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-	glColor3f(0.9f, 0.9f, 0.9f);
-	/*glBegin(GL_QUADS);
-		glVertex3f(-100.0f, 0.0f, -100.0f);
-		glVertex3f(-100.0f, 0.0f,  100.0f);
-		glVertex3f( 100.0f, 0.0f,  100.0f);
-		glVertex3f( 100.0f, 0.0f, -100.0f);
-	glEnd();
-	draw_snowman();
-	//glutSwapBuffers();*/
-	glRotatef(g_angle, 0.0f, 1.0f, 0.0f);
-	glColor3f(g_red, g_green, g_blue);
+{
+	if (g_delta_move)
+		compute_pos(g_delta_move);
+	if (g_delta_angle)
+		compute_dir(g_delta_angle);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
+	gluLookAt(g_keyhook.eyex, g_keyhook.eyey, g_keyhook.zoom,
+		g_keyhook.centerx, g_keyhook.centery, g_keyhook.centerz,
+		g_keyhook.up_x, g_keyhook.up_y, g_keyhook.up_z);
+	glColor3f(g_red, g_blue, g_green);
+	glRotatef(g_angle, g_centerpoint.center.x,
+		g_centerpoint.center.y, g_centerpoint.center.z);
 	render_vertex();
-	g_angle += 0.1f;
+	g_angle += 0.5f;
 	glutSwapBuffers();
+}
+
+void	init_gl(void)
+{
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, g_light_diffuse);
+	glLightfv(GL_LIGHT0, GL_POSITION, g_light_position);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_DEPTH_TEST);
+	glMatrixMode(GL_PROJECTION);
+	glMatrixMode(GL_MODELVIEW);
 }

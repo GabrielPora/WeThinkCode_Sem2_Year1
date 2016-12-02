@@ -19,7 +19,7 @@
 void	print_vetex(t_vertex *vertex)
 {
 	printf("\tTYPE:\t%s\n", (vertex->type == TYPE_VERTEX) ?
-		"vertex" : (vertex->type == TYPE_NORMAL) ? "normal" : "unknown");
+		P_VERTEX : "unknown");
 	printf("\tX:\t%f\n", vertex->x);
 	printf("\tY:\t%f\n", vertex->y);
 	printf("\tZ:\t%f\n", vertex->z);
@@ -28,8 +28,8 @@ void	print_vetex(t_vertex *vertex)
 
 void	print_vertex2(t_vertex2 *vertex)
 {
-	printf("\tTYPE:\t%s\n", (vertex->type == TYPE_TEXTURE) ? "texture" :
-		(vertex->type == TYPE_PSPACE) ? "parameter space" : "unknown");
+	printf("\tTYPE:\t%s\n", (vertex->type == TYPE_TEXTURE) ? P_VERTEX2
+		: "unknown");
 	printf("\tU:\t%f\n", vertex->u);
 	printf("\tV:\t%f\n", vertex->v);
 	printf("\tW:\t%f\n", vertex->w);
@@ -43,13 +43,13 @@ void	print_face(t_face *face)
 		(face->set & F_TEXTURE) ? "YES" : "NO",
 		(face->set & F_NORMAL) ? "YES" : "NO");
 	if (face->set & F_VERTEX)
-		printf("\tX:\t%f\n\tY:\t%f\n\tZ:\t%f\n\tW:\t%f\n",
+		printf("\tX:\t%d\n\tY:\t%d\n\tZ:\t%d\n\tW:\t%d\n",
 			face->x, face->y, face->z, face->w);
 	if (face->set & F_TEXTURE)
-		printf("\tT_X:\t%f\n\tT_Y:\t%f\n\tT_Z:\t%f\n",
+		printf("\tT_X:\t%d\n\tT_Y:\t%d\n\tT_Z:\t%d\n",
 			face->t_x, face->t_y, face->t_z);
 	if (face->set & F_NORMAL)
-		printf("\tN_X:\t%f\n\tN_Y:\t%f\n\tN_Z:\t%f\n",
+		printf("\tN_X:\t%d\n\tN_Y:\t%d\n\tN_Z:\t%d\n",
 			face->n_x, face->n_y, face->n_z);
 }
 

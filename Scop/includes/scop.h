@@ -6,7 +6,7 @@
 /*   By: khansman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/24 10:32:03 by khansman          #+#    #+#             */
-/*   Updated: 2016/11/24 10:32:10 by khansman         ###   ########.fr       */
+/*   Updated: 2016/11/27 10:55:49 by smahomed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@
 # include <unistd.h>
 # include <math.h>
 # include <libc.h>
+# include <signal.h>
+# include <errno.h>
+# include <ctype.h>
+# include <termios.h>
+# include <term.h>
 
 # include "../libft/includes/libft.h"
 
@@ -75,20 +80,54 @@
 */
 # define BASE_STR2 char *base = "0123456789abcdef";
 
+# define L_DIFF    {6.0, 0.0, 0.0, 1.0}
+# define LIGHT_POS {1.0, 1.0, 1.0, 0.0}
+# define REN_LARGE (face->w) ? ((face->u) ? GL_POLYGON : GL_QUADS)
+# define REN_TYPE  (REN_LARGE : GL_TRIANGLES)
+
+# define VER(X, Y)  g_vertecies[face->X - 1]->Y
+# define VER2(X)    g_vertecies[face->X - 1]
+# define P_VERTEX   "vertex" : (vertex->type == TYPE_NORMAL) ? "normal"
+# define P_VERTEX2  "texture" : (vertex->type == TYPE_PSPACE) ? "param space"
+# define S_F_P2     else store_f_piece2
+
 /*
 ** ----------\
 ** Structures |
 ** ----------/
 */
 
+typedef struct		s_keyhook
+{
+	float			zoom;
+	float			ratio;
+	char			wire;
+	float			eyex;
+	float			eyey;
+	float			eyez;
+	float			centerx;
+	float			centery;
+	float			centerz;
+	float			up_x;
+	float			up_y;
+	float			up_z;
+}					t_keyhook;
+
 typedef struct		s_vertex
 {
-	char			type;
-	float			x;
-	float			y;
-	float			z;
-	float			w;
+	char		type;
+	float		x;
+	float		y;
+	float		z;
+	float		w;
 }					t_vertex;
+
+typedef struct		s_centerpoint
+{
+	t_vertex	min;
+	t_vertex	max;
+	t_vertex	center;
+}					t_centerpoint;
 
 typedef struct		s_vertex2
 {
@@ -98,20 +137,47 @@ typedef struct		s_vertex2
 	float			w;
 }					t_vertex2;
 
+typedef struct		s_camera
+{
+	float			eye_x;
+	float			eye_y;
+	float			eye_z;
+	float			center_x;
+	float			center_y;
+	float			center_z;
+	float			up_x;
+	float			up_y;
+	float			up_z;
+}					t_camera;
+
 typedef struct		s_face
 {
-	char			type;
-	float			x;
-	float			y;
-	float			z;
-	float			w;
-	float			t_x;
-	float			t_y;
-	float			t_z;
-	float			n_x;
-	float			n_y;
-	float			n_z;
-	char			set;
+	char	type;
+	int		x;
+	int		y;
+	int		z;
+	int		w;
+	int		u;
+	int		v;
+	int		o;
+	int		p;
+	int		t_x;
+	int		t_y;
+	int		t_z;
+	int		t_w;
+	int		t_u;
+	int		t_v;
+	int		t_o;
+	int		t_p;
+	int		n_x;
+	int		n_y;
+	int		n_z;
+	int		n_w;
+	int		n_u;
+	int		n_v;
+	int		n_o;
+	int		n_p;
+	char	set;
 }					t_face;
 
 typedef struct		s_matrix
@@ -138,18 +204,26 @@ typedef struct		s_mat_mul
 
 # ifdef MAIN_FILE
 
-float				g_red = 1.0;
-float				g_blue = 1.0;
-float				g_green = 1.0;
+float				g_red = 0.0;
+float				g_blue = 0.0;
+float				g_green = 0.0;
 float				g_angle = 0;
 float				g_lx = 0.0f;
 float				g_lz = -1.0f;
 float				g_x = 0.0f;
 float				g_z = 5.0f;
-float				g_deltaAngle = 0.0f;
-float				g_deltaMove = 0;
+float				g_delta_angle = 0.0f;
+float				g_delta_move = 0;
 t_list				*g_lst = NULL;
 t_vertex			**g_vertecies = NULL;
+int					g_num_vertex = 0;
+t_vertex			*g_normals = NULL;
+char				*g_mtl_file = NULL;
+t_centerpoint		g_centerpoint;
+t_keyhook			g_keyhook;
+t_camera			g_camera;
+int					g_xorigin = -1;
+int					g_yorigin = -1;
 # else
 
 extern float		g_red;
@@ -160,18 +234,30 @@ extern float		g_lx;
 extern float		g_lz;
 extern float		g_x;
 extern float		g_z;
-extern float		g_deltaAngle;
-extern float		g_deltaMove;
+extern float		g_delta_angle;
+extern float		g_delta_move;
 extern t_list		*g_lst;
 extern t_vertex		**g_vertecies;
+extern int			g_num_vertex;
+extern t_vertex		*g_normals;
+extern char			*g_mtl_file;
+extern t_centerpoint	g_centerpoint;
+extern t_keyhook	g_keyhook;
+extern t_camera		g_camera;
+extern int			g_xorigin;
+extern int			g_yorigin;
 # endif
 
 /*
-** ----------\
+** ----------\s
 ** Prototypes |
 ** ----------/
 */
 
+/*
+** centerpoint.c
+*/
+void				centerpoint(void);
 /*
 ** change_size.c
 */
@@ -179,6 +265,8 @@ void				change_size(int w, int h);
 /*
 ** count_elements.c
 */
+void				compute_pos(float g_delta_move);
+void				compute_dir(float g_delta_angle);
 int					count_elements(char type);
 /*
 ** exit_prog.c
@@ -237,6 +325,10 @@ t_matrix			matrix_sub(t_matrix first, t_matrix second);
 */
 t_matrix			matrix_transpose(t_matrix source);
 /*
+** normalise.c
+*/
+t_vertex			normalise_point(t_vertex *p1, t_vertex *p2, t_vertex *p3);
+/*
 ** print_list.c
 */
 void				print_vetex(t_vertex *vertex);
@@ -251,6 +343,13 @@ void				process_normal_keys(unsigned char key, int x, int y);
 ** process_special_keys.c
 */
 void				process_special_keys(int key, int x, int y);
+void				press_key(int key, int xx, int yy);
+void				release_key(int key, int x, int y);
+/*
+** mousehook.c
+*/
+void				mouse_button(int button, int state, int x, int y);
+void				mouse_move(int x, int y);
 /*
 ** read_obj.c
 */
@@ -259,6 +358,7 @@ int					read_obj(int ac, char **av);
 ** render_scene.c
 */
 void				render_scene(void);
+void				init_gl(void);
 /*
 ** set_arrays.c
 */
@@ -280,6 +380,12 @@ void				store_normal(char *line, t_list **pos);
 void				store_texture(char *line, t_list **pos);
 void				store_pspace(char *line, t_list **pos);
 /*
+** term.c
+*/
+int					cursor_do(int to_print);
+void				unexpected_error(int signo);
+void				listener(void);
+/*
 ** trim.c
 */
 char				*trim_start(char *str);
@@ -290,12 +396,6 @@ void				trim_str(char *str);
 ** vertex_create.c
 */
 t_vertex			vertex_create(float x, float y, float z, float w);
-
-
-/*
-** snowman.c
-*/
-void				drawSnowMan();
 
 /*
 **                                /----------\                                **
